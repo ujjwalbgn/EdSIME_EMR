@@ -19,5 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::resources([
+    'patient' => 'PatientController',
+]);
+
+
 Route::get('/{any}', 'HomeController@index')->where('any', '.*'); //for vue router
 
