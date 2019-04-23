@@ -1,3 +1,5 @@
+<?php $nav_userProfile = 'active'; ?>
+
 @extends('layouts.master')
 
 @section('title', 'VUE')

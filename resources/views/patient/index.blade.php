@@ -1,1 +1,9 @@
-<h1>Patient</h1>
+@extends('layouts.master')
+
+@section('title', 'VUE')
+
+@section('content')
+    <div id="app">
+        <patient-table></patient-table>
+    </div>
+@endsection

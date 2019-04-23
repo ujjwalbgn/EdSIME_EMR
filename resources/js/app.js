@@ -85,6 +85,11 @@ Vue.component(
     require('./components/Profile').default
 );
 
+Vue.component(
+    'patient-table',
+    require('./components/PatientTable').default
+);
+
 
 
 const app = new Vue({
