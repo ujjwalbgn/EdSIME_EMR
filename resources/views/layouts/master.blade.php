@@ -71,6 +71,7 @@
 
         <!-- Main content -->
         <div class="content">
+            @include('layouts.sessionMessage')
             <div class="container-fluid">
                 @yield('content')
             </div><!-- /.container-fluid -->

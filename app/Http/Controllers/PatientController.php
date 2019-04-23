@@ -24,7 +24,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +35,15 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributes=  request()->validate([
+            'name' => ['required','min:2','max:200'],
+            'level' => ['required'],
+            'instructorNote' => [],
+            'barcode' => ['required','numeric','min:2'],
+        ]);
+
+        Patient::create($attributes);
+        return redirect('/patients')->with(['message' => 'Patient created successfully']);
     }
 
     /**
