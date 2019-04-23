@@ -22,7 +22,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/users" class="nav-link">
+                        <a href="/users" class="nav-link {{ Request::path() == 'users' ? 'nav-active' : '' }}" >
                             <i class="fas fa-users nav-icon tealEF"></i>
                             <p>Users</p>
                         </a>
@@ -39,10 +39,18 @@
             {{--</li>--}}
         @endcan
         <li class="nav-item">
-            <a href="/userProfile" class="nav-link">
+            <a href="/userProfile" class="nav-link {{ Request::path() == 'userProfile' ? 'nav-active' : '' }} ">
                 <i class="nav-icon fas fa-user-alt orange"></i>
                 <p>
                     Profile
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/patient" class="nav-link {{ Request::path() == 'patient' ? 'nav-active' : '' }}">
+                <i class="nav-icon fa fa-user-md indigo"></i>
+                <p>
+                    Patient
                 </p>
             </a>
         </li>

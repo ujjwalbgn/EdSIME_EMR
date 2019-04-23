@@ -15,21 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/users', function () {
-    return view('vueLoader.usersTable');
-});
-Route::get('/userProfile', function () {
-    return view('vueLoader.userProfile');
+//authenticated user can view these
+Route::middleware('auth')->group(function(){
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get('/users', function () {
+        return view('vueLoader.usersTable');
+    });
+    Route::get('/userProfile', function () {
+        return view('vueLoader.userProfile');
+    });
+    Route::resources([
+        'patient' => 'PatientController',
+    ]);
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::resources([
-    'patient' => 'PatientController',
-]);
-
-
-//Route::get('/{any}', 'HomeController@index')->where('any', '.*'); //for vue router
-
