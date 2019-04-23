@@ -16,7 +16,7 @@ class PatientController extends Controller
 
     public function index()
     {
-        //
+        return Patient::all()->first()->paginate(2);
     }
 
     public function store(Request $request)
@@ -30,6 +30,8 @@ class PatientController extends Controller
 
         return Patient::create($attributes);
 
+        return redirect()->route('patient');
+
     }
 
     public function show($id)
@@ -40,12 +42,22 @@ class PatientController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $patient = Patient::findOrFail($id);
+
+        $this->validate($request,[
+            'name' => ['required','min:2','max:200'],
+            'level' => ['required'],
+            'instructorNote' => [],
+            'barcode' => ['required','numeric','min:2'],
+        ]);
+
+        $patient->update($request->all());
     }
 
 
     public function destroy($id)
     {
-        //
+        $patient = Patient::findOrFail($id);
+        $patient->delete();
     }
 }

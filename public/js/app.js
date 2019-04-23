@@ -1893,10 +1893,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  editmode: false,
   data: function data() {
     return {
+      editmode: false,
       patients: {},
       form: new Form({
         id: '',
@@ -1908,51 +1933,132 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    editModal: function editModal(patient) {
+      this.editmode = true;
+      this.form.clear();
+      this.form.reset();
+      $('#addNew').modal('show');
+      this.form.fill(patient);
+    },
     newModal: function newModal() {
       this.editmode = false;
       this.form.reset();
       $('#addNew').modal('show');
     },
-    // loadUsers(){
-    //     if (this.$gate.isAdminOrAuthor())
-    //     {
-    //         axios.get("api/patient").then(({data}) => (this.users = data));
-    //     }
-    // },
-    editModal: function editModal(user) {
-      this.editmode = true;
-      this.form.clear();
-      this.form.reset();
-      $('#addNew').modal('show');
-      this.form.fill(user);
-    },
-    createPatient: function createPatient() {
+    loadPatients: function loadPatients() {
       var _this = this;
 
+      {
+        axios.get("api/patient").then(function (_ref) {
+          var data = _ref.data;
+          return _this.patients = data;
+        });
+      }
+    },
+    createPatient: function createPatient() {
+      var _this2 = this;
+
       //Progress bar
-      this.$Progress.start(); //Post User API
+      this.$Progress.start(); //Post Patients API
 
       this.form.post('api/patient').then(function () {
         //Fire Event
-        // Fire.$emit('LoadUser');
-        //hide Modal
+        Fire.$emit('LoadPatients'); //hide Modal
+
         $('#addNew').modal('hide'); //Sweet Alert
 
         toast.fire({
           type: 'success',
-          title: 'User Created Successfully'
+          title: 'Patient Created Successfully'
         });
       }).catch(function () {
         toast.fire({
           type: 'error',
           title: 'Oops...',
-          html: 'Something went wrong! </br> Unable to create New User. '
+          html: 'Something went wrong! </br> Unable to create New Patients. '
         });
 
-        _this.$Progress.fail();
+        _this2.$Progress.fail();
       });
       this.$Progress.finish();
+    },
+    updatePatient: function updatePatient() {
+      var _this3 = this;
+
+      this.$Progress.start();
+      this.form.put('api/patient/' + this.form.id).then(function () {
+        //Sweet Alert
+        toast.fire({
+          type: 'success',
+          title: 'Patients Updated Successfully'
+        }); //Fire Event
+
+        Fire.$emit('LoadPatients'); //hide Modal
+
+        $('#addNew').modal('hide');
+
+        _this3.$Progress.finish();
+      }).catch(function () {
+        _this3.$Progress.fail();
+
+        toast.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Unable to Update Patients!'
+        });
+      });
+    },
+    deletePatient: function deletePatient(id) {
+      var _this4 = this;
+
+      this.$Progress.start();
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        //send  request to the server
+        if (result.value) {
+          _this4.form.delete('api/patient/' + id).then(function () {
+            {
+              //Fire Event
+              Fire.$emit('LoadPatients');
+              Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+            }
+
+            _this4.$Progress.finish();
+          }).catch(function () {
+            toast.fire({
+              type: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong! Unable to Delete Patient'
+            });
+
+            _this4.$Progress.fail();
+          });
+        }
+      });
+    },
+    getResults: function getResults() {
+      var _this5 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('api/patient?page=' + page).then(function (response) {
+        _this5.patients = response.data;
+      });
     }
+  },
+  created: function created() {
+    var _this6 = this;
+
+    this.loadPatients();
+    Fire.$on('LoadPatients', function () {
+      _this6.loadPatients();
+    });
   }
 });
 
@@ -61897,7 +62003,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container mt-5" }, [
     _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
+      _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "card card-default" }, [
           _c("div", { staticClass: "card-header" }, [
             _c("h3", { staticClass: "card-title" }, [_vm._v("Patients Table")]),
@@ -61914,7 +62020,103 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "card-body table-responsive p-0" }, [
+              _c("table", { staticClass: "table table-hover" }, [
+                _c(
+                  "tbody",
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _vm._l(_vm.patients.data, function(patient) {
+                      return _c("tr", { key: patient.id }, [
+                        _c("td", [_vm._v(_vm._s(patient.id))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm._f("upText")(patient.name)))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(patient.level))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(patient.instructorNote))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(patient.barcode))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(_vm._f("filterDate")(patient.created_at))
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(_vm._f("filterDate")(patient.update_at))
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.editModal(patient)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-edit blue" })]
+                          ),
+                          _vm._v(
+                            "\n                                    /\n                                    "
+                          ),
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deletePatient(patient.id)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-trash red" })]
+                          ),
+                          _vm._v(
+                            "\n                                    /\n                                    "
+                          ),
+                          _c(
+                            "a",
+                            { attrs: { href: "/patient/" + patient.id } },
+                            [
+                              _c(
+                                "i",
+                                { staticClass: "fas fa-address-card indigo" },
+                                [_vm._v(" EHR")]
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    })
+                  ],
+                  2
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "card-footer" },
+              [
+                _c("pagination", {
+                  attrs: { data: _vm.patients },
+                  on: { "pagination-change-page": _vm.getResults }
+                })
+              ],
+              1
+            )
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -62218,28 +62420,22 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("div", { staticClass: "card-body table-responsive p-0" }, [
-        _c("table", { staticClass: "table table-hover" }, [
-          _c("tbody", [
-            _c("tr", [
-              _c("th", [_vm._v("ID")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Name")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Level")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Barcode")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Created At")]),
-              _vm._v(" "),
-              _c("th", [_vm._v("Modify")])
-            ]),
-            _vm._v(" "),
-            _c("tr")
-          ])
-        ])
-      ])
+    return _c("tr", [
+      _c("th", [_vm._v("ID")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Level")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Note")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Barcode")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Created At")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Updated At")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Modify")])
     ])
   },
   function() {

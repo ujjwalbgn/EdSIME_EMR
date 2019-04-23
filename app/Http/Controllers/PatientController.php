@@ -35,15 +35,15 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        $attributes=  request()->validate([
-            'name' => ['required','min:2','max:200'],
-            'level' => ['required'],
-            'instructorNote' => [],
-            'barcode' => ['required','numeric','min:2'],
-        ]);
-
-        Patient::create($attributes);
-        return redirect('/patients')->with(['message' => 'Patient created successfully']);
+//        $attributes=  request()->validate([
+//            'name' => ['required','min:2','max:200'],
+//            'level' => ['required'],
+//            'instructorNote' => [],
+//            'barcode' => ['required','numeric','min:2'],
+//        ]);
+//
+//        Patient::create($attributes);
+//        return redirect('/patients')->with(['message' => 'Patient created successfully']);
     }
 
     /**
@@ -54,7 +54,7 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        //
+        return view('patient.show',compact('patient'));
     }
 
     /**
