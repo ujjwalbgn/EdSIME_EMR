@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/users', function () {
+    return view('vueLoader.usersTable');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -24,5 +28,5 @@ Route::resources([
 ]);
 
 
-Route::get('/{any}', 'HomeController@index')->where('any', '.*'); //for vue router
+//Route::get('/{any}', 'HomeController@index')->where('any', '.*'); //for vue router
 

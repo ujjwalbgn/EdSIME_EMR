@@ -18,25 +18,6 @@ window.Form = Form;
 Vue.component(HasError.name, HasError);
 Vue.component(AlertError.name, AlertError);
 
-
-//Vue Router
-import VueRouter from 'vue-router'
-
-Vue.use(VueRouter);
-
-let routes = [
-    { path: '/dashboard', component: require('./views/Dashboard').default },
-    { path: '/developer', component: require('./views/Developer').default },
-    { path: '/profile', component: require('./components/Profile').default },
-    { path: '/users', component: require('./components/Users').default },
-    { path: '*', component: require('./views/404').default },
-]
-
-const router = new VueRouter({
-    mode: 'history',
-    routes
-});
-
 window.Fire = new Vue();
 
 //User Type verification gate
@@ -94,10 +75,14 @@ Vue.component(
 //Pagination
 Vue.component('pagination', require('laravel-vue-pagination'));
 
+Vue.component(
+    'users-table',
+    require('./components/Users').default
+);
+
 
 const app = new Vue({
     el: '#app',
-    router,
     data:{
         search: "",
     },
