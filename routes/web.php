@@ -18,6 +18,9 @@ Route::get('/', function () {
 Route::get('/users', function () {
     return view('vueLoader.usersTable');
 });
+Route::get('/userProfile', function () {
+    return view('vueLoader.userProfile');
+});
 
 Auth::routes();
 

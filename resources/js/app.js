@@ -80,6 +80,12 @@ Vue.component(
     require('./components/Users').default
 );
 
+Vue.component(
+    'user-profile',
+    require('./components/Profile').default
+);
+
+
 
 const app = new Vue({
     el: '#app',
