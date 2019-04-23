@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title>Lara APP</title>
+    <title>@yield('pageTitle')</title>
 
     <link rel="stylesheet" href={{asset("/css/app.css")}}>
 </head>
@@ -72,8 +72,7 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <router-view></router-view>
-                <vue-progress-bar></vue-progress-bar>
+                @yield('content')
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content -->
