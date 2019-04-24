@@ -1771,6 +1771,202 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AdmissionRecord.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AdmissionRecord.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -1780,6 +1976,8 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -61939,6 +62137,559 @@ var AlertSuccess_Component = normalizeComponent(
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AdmissionRecord.vue?vue&type=template&id=43fbb5c2&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AdmissionRecord.vue?vue&type=template&id=43fbb5c2& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("form", [
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-sm-2 col-form-label",
+              attrs: { for: "medical_record_no" }
+            },
+            [_vm._v("Patient's Medical Record No")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-10" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "medical_record_no",
+                placeholder: "Patient's Medical Record No",
+                required: ""
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-sm-2 col-form-label",
+              attrs: { for: "healthcare_provider" }
+            },
+            [_vm._v("Healthcare Provider")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-10" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "healthcare_provider",
+                placeholder: "Healthcare Provider"
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-sm-2 col-form-label",
+              attrs: { for: "address" }
+            },
+            [_vm._v("Address")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-10" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "address",
+                placeholder: "Street Address, City, State, Zip Code"
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-sm-2 col-form-label",
+              attrs: { for: "occupation" }
+            },
+            [_vm._v("Occupation")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-10" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "occupation",
+                placeholder: "Occupation"
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-sm-2 col-form-label",
+              attrs: { for: "religion" }
+            },
+            [_vm._v("Religion")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-10" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: { type: "text", id: "religion", placeholder: "Religion" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-sm-2 col-form-label",
+              attrs: { for: "ethnicity" }
+            },
+            [_vm._v("Ethnicity")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-10" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: { type: "text", id: "ethnicity", placeholder: "Ethnicity" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-sm-2 col-form-label",
+              attrs: { for: "culture" }
+            },
+            [_vm._v("Culture")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-10" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: { type: "text", id: "culture", placeholder: "Culture" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-sm-2 col-form-label",
+              attrs: { for: "nationality" }
+            },
+            [_vm._v("Nationality")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-10" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "nationality",
+                placeholder: "Nationality"
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            { staticClass: "col-sm-2 col-form-label", attrs: { for: "sex" } },
+            [_vm._v("Sex")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-10" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: { type: "text", id: "sex", placeholder: "Sex" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12" }, [
+          _c(
+            "div",
+            { staticClass: "card card-info collapsed-card card-outline" },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "card-header ",
+                  attrs: { "data-widget": "collapse" }
+                },
+                [
+                  _c("h3", { staticClass: "card-title" }, [
+                    _vm._v("Relative Contact Information:")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-tools" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-tool",
+                        attrs: { type: "button", "data-widget": "collapse" }
+                      },
+                      [_c("i", { staticClass: "fa fa-plus" })]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-2 col-form-label",
+                      attrs: { for: "relative_name" }
+                    },
+                    [_vm._v("Name")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-10" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "relative_name",
+                        placeholder: "Relative's Name"
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-2 col-form-label",
+                      attrs: { for: "relative_home_phone" }
+                    },
+                    [_vm._v("Home Phone")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-4" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "relative_home_phone",
+                        placeholder: "Relative's Home Phone"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-form-label",
+                      attrs: { for: "relative_business_phone" }
+                    },
+                    [_vm._v("Business Phone")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-4" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "relative_business_phone",
+                        placeholder: "Relative's Business Phone"
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-2 col-form-label",
+                      attrs: { for: "relative_address" }
+                    },
+                    [_vm._v("Address")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-10" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "relative_address",
+                        placeholder: "Relative's Address"
+                      }
+                    })
+                  ])
+                ])
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12" }, [
+          _c(
+            "div",
+            { staticClass: "card card-info collapsed-card card-outline" },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "card-header ",
+                  attrs: { "data-widget": "collapse" }
+                },
+                [
+                  _c("h3", { staticClass: "card-title" }, [
+                    _vm._v("Emergency Contact Information:")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-tools" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-tool",
+                        attrs: { type: "button", "data-widget": "collapse" }
+                      },
+                      [_c("i", { staticClass: "fa fa-plus" })]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-2 col-form-label",
+                      attrs: { for: "emergency_contact_name" }
+                    },
+                    [_vm._v("Name")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-10" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "emergency_contact_name",
+                        placeholder: "Emergency Contact's Name"
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-2 col-form-label",
+                      attrs: { for: "emergency_contact_home_phone" }
+                    },
+                    [_vm._v("Home Phone")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-4" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "emergency_contact_home_phone",
+                        placeholder: "Emergency Contact's Home Phone"
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-form-label",
+                      attrs: { for: "emergency_contact_business_phone" }
+                    },
+                    [_vm._v("Business Phone")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-4" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "emergency_contact_business_phone",
+                        placeholder: "Emergency Contact's Business Phone"
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-2 col-form-label",
+                      attrs: { for: "emergency_contact_home_address" }
+                    },
+                    [_vm._v("Address")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-10" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "emergency_contact_home_address",
+                        placeholder: "Emergency Contact's Address"
+                      }
+                    })
+                  ])
+                ])
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12" }, [
+          _c(
+            "div",
+            { staticClass: "card card-info collapsed-card card-outline" },
+            [
+              _c(
+                "div",
+                {
+                  staticClass: "card-header ",
+                  attrs: { "data-widget": "collapse" }
+                },
+                [
+                  _c("h3", { staticClass: "card-title" }, [
+                    _vm._v("Insurance Information:")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card-tools" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-tool",
+                        attrs: { type: "button", "data-widget": "collapse" }
+                      },
+                      [_c("i", { staticClass: "fa fa-plus" })]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "card-body" }, [
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-2 col-form-label",
+                      attrs: { for: "insurance_name" }
+                    },
+                    [_vm._v("Insurance Name")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-4" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "insurance_name",
+                        placeholder: "Insurance Name"
+                      }
+                    })
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "form-group row" }, [
+                  _c(
+                    "label",
+                    {
+                      staticClass: "col-sm-2 col-form-label",
+                      attrs: { for: "insurance_group_number" }
+                    },
+                    [_vm._v("Insurance Group Number")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-sm-4" }, [
+                    _c("input", {
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "insurance_group_number",
+                        placeholder: "Insurance Group Number"
+                      }
+                    })
+                  ])
+                ])
+              ])
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c(
+            "label",
+            {
+              staticClass: "col-sm-2 col-form-label",
+              attrs: { for: "advance_directive" }
+            },
+            [_vm._v("Advance Directive")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-10" }, [
+            _c("textarea", {
+              staticClass: "form-control",
+              attrs: { type: "text", id: "advance_directive", placeholder: "" }
+            })
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
@@ -61961,12 +62712,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
+    return _c("div", { staticClass: "container mt-5" }, [
       _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "col-md-12" }, [
           _c("div", { staticClass: "card card-default" }, [
             _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
+              _c("h3", { staticClass: "card-title" }, [
+                _vm._v("Example Component")
+              ])
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
@@ -77172,6 +77925,7 @@ Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ ".
 Vue.component('users-table', __webpack_require__(/*! ./components/Users */ "./resources/js/components/Users.vue").default);
 Vue.component('user-profile', __webpack_require__(/*! ./components/Profile */ "./resources/js/components/Profile.vue").default);
 Vue.component('patient-table', __webpack_require__(/*! ./components/PatientTable */ "./resources/js/components/PatientTable.vue").default);
+Vue.component('admission-record', __webpack_require__(/*! ./components/AdmissionRecord */ "./resources/js/components/AdmissionRecord.vue").default);
 var app = new Vue({
   el: '#app',
   data: {
@@ -77245,6 +77999,75 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/AdmissionRecord.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/AdmissionRecord.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AdmissionRecord_vue_vue_type_template_id_43fbb5c2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AdmissionRecord.vue?vue&type=template&id=43fbb5c2& */ "./resources/js/components/AdmissionRecord.vue?vue&type=template&id=43fbb5c2&");
+/* harmony import */ var _AdmissionRecord_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdmissionRecord.vue?vue&type=script&lang=js& */ "./resources/js/components/AdmissionRecord.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AdmissionRecord_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AdmissionRecord_vue_vue_type_template_id_43fbb5c2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AdmissionRecord_vue_vue_type_template_id_43fbb5c2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AdmissionRecord.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/AdmissionRecord.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/AdmissionRecord.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdmissionRecord_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./AdmissionRecord.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AdmissionRecord.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AdmissionRecord_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AdmissionRecord.vue?vue&type=template&id=43fbb5c2&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/AdmissionRecord.vue?vue&type=template&id=43fbb5c2& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdmissionRecord_vue_vue_type_template_id_43fbb5c2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./AdmissionRecord.vue?vue&type=template&id=43fbb5c2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AdmissionRecord.vue?vue&type=template&id=43fbb5c2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdmissionRecord_vue_vue_type_template_id_43fbb5c2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdmissionRecord_vue_vue_type_template_id_43fbb5c2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

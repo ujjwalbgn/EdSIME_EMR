@@ -90,6 +90,11 @@ Vue.component(
     require('./components/PatientTable').default
 );
 
+Vue.component(
+    'admission-record',
+    require('./components/AdmissionRecord').default
+);
+
 
 
 const app = new Vue({
