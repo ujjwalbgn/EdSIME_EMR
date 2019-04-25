@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResources([
     'user' => 'API\UserController',
     'patient' => 'API\PatientController',
+    'admissionRecord' => 'API\AdmissionRecordController'
 ]);
 
 Route::get('profile','API\UserController@profile');

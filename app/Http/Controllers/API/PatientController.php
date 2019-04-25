@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\AdmissionRecord;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Patient;
@@ -28,10 +29,12 @@ class PatientController extends Controller
             'barcode' => ['required','numeric','min:2'],
         ]);
 
-        return Patient::create($attributes);
+        $patient = Patient::create($attributes);
 
-        return redirect()->route('patient');
-
+        //Create Record
+        AdmissionRecord::create([
+           'patient_id' =>  $patient->id
+        ]);
     }
 
     public function show($id)

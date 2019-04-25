@@ -46,7 +46,7 @@
                                 <div class="card-body">
                                     <div class="tab-content">
                                         <div class="tab-pane active show" id="admissionRecord">
-                                            <admission-record></admission-record>
+                                            @include('patient.formAdmissionRecord')
                                         </div>
                                         <!-- /.tab-pane -->
                                         <div class="tab-pane" id="timeline">

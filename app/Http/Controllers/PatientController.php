@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AdmissionRecord;
 use App\Patient;
 use Illuminate\Http\Request;
 
@@ -52,9 +53,10 @@ class PatientController extends Controller
      * @param  \App\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient)
+    public function show(Patient $patient, AdmissionRecord $admissionRecord_id)
     {
-        return view('patient.show',compact('patient'));
+        $admissionRecord_id = AdmissionRecord::where('patient_id', '=', $patient->id )->first()->id;
+       return view('patient.show',compact('patient','admissionRecord_id'));
     }
 
     /**

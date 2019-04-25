@@ -152,17 +152,19 @@
                 //Post Patients API
                 this.form.post('api/patient')
                     .then(()=>{
-                            //Fire Event
+                                                    //Fire Event
                             Fire.$emit('LoadPatients');
+
 
                             //hide Modal
                             $('#addNew').modal('hide');
 
-                            //Sweet Alert
+                            // Sweet Alert
                             toast.fire({
                                 type: 'success',
                                 title: 'Patient Created Successfully'
                             });
+
                         }
                     )
                     .catch(()=>{
