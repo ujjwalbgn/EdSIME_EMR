@@ -1979,14 +1979,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['admissionRecord_id'],
+  props: {
+    admissionRecord: {
+      type: Object,
+      required: true
+    }
+  },
   data: function data() {
     return {
       editmode: false,
       aRecord: {},
       form: new Form({
+        id: '',
         patient_id: '',
         medical_record_no: '',
         healthcare_provider: '',
@@ -2013,20 +2018,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     loadAdmissionReocrd: function loadAdmissionReocrd(aRecord) {
-      var _this = this;
-
       {
         this.form.clear();
-        this.form.reset();
-        axios.get("api/admissionRecord/14").then(function (_ref) {
-          var data = _ref.data;
-          return _this.aRecord = data;
-        }); // this.form.fill(aRecord);
+        this.form.reset(); // axios.get("/api/admissionRecord/" +this.admissionRecord_id).then(({data}) => (this.aRecord = data));
       }
     }
   },
   mounted: function mounted() {
-    this.loadAdmissionReocrd();
+    // this.loadAdmissionReocrd();
+    console.log(this.admissionRecord_id);
   }
 });
 

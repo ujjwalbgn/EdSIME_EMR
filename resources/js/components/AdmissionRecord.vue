@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <form>
             <!--Patient Details-->
             <div class="form-group row">
@@ -200,7 +199,12 @@
 
 <script>
     export default {
-        props: ['admissionRecord_id'],
+        props: {
+            admissionRecord: {
+                type: Object,
+                required: true,
+            }
+        },
 
         data() {
             return {
@@ -209,6 +213,7 @@
                 aRecord : {},
 
                 form : new Form ({
+                    id : '',
                     patient_id : '',
                     medical_record_no : '',
                     healthcare_provider : '',
@@ -240,14 +245,15 @@
                 {
                     this.form.clear();
                     this.form.reset();
-                    axios.get("api/admissionRecord/14").then(({data}) => (this.aRecord = data));
-                    // this.form.fill(aRecord);
+                    // axios.get("/api/admissionRecord/" +this.admissionRecord_id).then(({data}) => (this.aRecord = data));
                 }
             },
+
         },
 
         mounted() {
-            this.loadAdmissionReocrd();
+            // this.loadAdmissionReocrd();
+            console.log(this.admissionRecord_id);
         }
     }
 </script>

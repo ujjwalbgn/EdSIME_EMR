@@ -43,10 +43,19 @@
                                         <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
                                     </ul>
                                 </div>
+                                {{--Admission Record--}}
                                 <div class="card-body">
                                     <div class="tab-content">
                                         <div class="tab-pane active show" id="admissionRecord">
-                                            @include('patient.formAdmissionRecord')
+                                            <form method="post" action="/admissionRecord/{{$admissionRecord->id}}">
+                                                @method('PATCH')
+                                                @csrf
+                                                @include('patient.formAdmissionRecord')
+                                                <div class="card-footer">
+                                                    <button type="submit" class="btn btn-info">Submit</button>
+                                                    {{--<button  class="btn btn-default float-right">Cancel</button>--}}
+                                                </div>
+                                            </form>
                                         </div>
                                         <!-- /.tab-pane -->
                                         <div class="tab-pane" id="timeline">
