@@ -165,6 +165,10 @@ return [
         /*
          * Package Service Providers...
          */
+        //For UniSharp/laravel-filemanager
+        UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+
 
         /*
          * Application Service Providers...
