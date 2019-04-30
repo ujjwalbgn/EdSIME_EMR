@@ -183,9 +183,7 @@
     <div class="form-group row">
         <label for="advance_directive" class="col-sm-2 col-form-label">Advance Directive</label>
         <div class="col-sm-10">
-                    <textarea type="text" name="advance_directive" class="form-control" id="advance_directive" placeholder="">
-                        @if(isset($admissionRecord)){{$admissionRecord->advance_directive}}@else{{old('advance_directive')}}@endif
-                    </textarea>
+                    <textarea type="text" name="advance_directive" class="form-control" id="advance_directive" placeholder="">@if(isset($admissionRecord)){{$admissionRecord->advance_directive}}@else{{old('advance_directive')}}@endif</textarea>
         </div>
     </div>
 

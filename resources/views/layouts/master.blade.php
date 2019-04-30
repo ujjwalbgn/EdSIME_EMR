@@ -12,6 +12,7 @@
     <title>@yield('pageTitle')</title>
 
     <link rel="stylesheet" href={{asset("/css/app.css")}}>
+    @yield('style')
 </head>
 <body class="hold-transition sidebar-open">
 <div class="wrapper" id="app">
@@ -25,14 +26,14 @@
         </ul>
 
         <!-- SEARCH FORM -->
-            <div class="input-group input-group-sm col-3">
-                <input class="form-control form-control-navbar" v-model="search" @keyup="searchStart" type="search" placeholder="Search" aria-label="Search" >
-                <div class="input-group-append">
-                    <button class="btn btn-navbar" @click="searchStart">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
+        <div class="input-group input-group-sm col-3">
+            <input class="form-control form-control-navbar" v-model="search" @keyup="searchStart" type="search" placeholder="Search" aria-label="Search" >
+            <div class="input-group-append">
+                <button class="btn btn-navbar" @click="searchStart">
+                    <i class="fa fa-search"></i>
+                </button>
             </div>
+        </div>
     </nav>
     <!-- /.navbar -->
 
@@ -60,8 +61,8 @@
             </div>
 
             <!-- Sidebar Menu -->
-            @include('layouts.nav')
-            <!-- /.sidebar-menu -->
+        @include('layouts.nav')
+        <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->
     </aside>
@@ -93,9 +94,10 @@
 <!-- ./wrapper -->
 @auth
     <script>
-    window.user=@json(auth()->user())
-        </script>
+        window.user=@json(auth()->user())
+    </script>
 @endauth
 <script src={{ asset('js/app.js') }}></script>
+@yield('script')
 </body>
 </html>
