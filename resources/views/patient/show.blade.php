@@ -60,7 +60,7 @@
                                         <!-- /.tab-pane -->
                                         <div class="tab-pane" id="timeline">
                                             <!-- The timeline -->
-                                            Tab 2
+                                            @include('patient.text')
                                         </div>
                                         <!-- /.tab-pane -->
 
