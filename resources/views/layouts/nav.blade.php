@@ -22,13 +22,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="/users" class="nav-link {{ Request::path() == 'users' ? 'nav-active' : '' }}" >
+                        <a href="/users" class="nav-link {{ Request::segment(1) == 'users' ? 'nav-active' : '' }}" >
                             <i class="fas fa-users nav-icon tealEF"></i>
                             <p>Users</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/userProfile" class="nav-link {{ Request::path() == 'userProfile' ? 'nav-active' : '' }} ">
+                        <a href="/userProfile" class="nav-link {{ Request::segment(1) == 'userProfile' ? 'nav-active' : '' }} ">
                             <i class="nav-icon fas fa-user-alt orange"></i>
                             <p>
                                 Profile
@@ -48,7 +48,7 @@
         @endcan
 
         <li class="nav-item">
-            <a href="/patient" class="nav-link {{ Request::path() == 'patient' ? 'nav-active' : '' }}">
+            <a href="/patient" class="nav-link {{ Request::segment(1) == 'patient' ? 'nav-active' : '' }}">
                 <i class="nav-icon fa fa-user-md indigo"></i>
                 <p>
                     Patient
