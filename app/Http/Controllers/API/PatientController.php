@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\AdmissionRecord;
+use App\PatientDiagnosticStudy;
 use App\PatientForm;
 use App\PatientHistory;
 use App\PatientLabResult;
@@ -49,6 +50,9 @@ class PatientController extends Controller
             'patient_id' =>  $patient->id
         ]);
         PatientForm::create([
+            'patient_id' =>  $patient->id
+        ]);
+        PatientDiagnosticStudy::create([
             'patient_id' =>  $patient->id
         ]);
 

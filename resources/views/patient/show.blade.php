@@ -30,6 +30,7 @@
                                         <li class="nav-item"><a class="nav-link" href="#labResults" data-toggle="tab">Lab Results</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#providerOrder" data-toggle="tab">Provider Order</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#patientForm" data-toggle="tab">Form</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#patientDiagnosticStudy" data-toggle="tab">Diagnostic Study</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
                                     </ul>
                                 </div>
@@ -76,6 +77,13 @@
                                     <a class="btn btn-primary" href="/patientForm/{{$patientForm->id}}/edit">ADD/Edit Patient Froms</a>
                                     <div class="mt-3">
                                         {!! $patientForm->content !!}
+                                    </div>
+                                </div>
+                                {{--Patient Diagnostic Study--}}
+                                <div class="tab-pane" id="patientDiagnosticStudy">
+                                    <a class="btn btn-primary" href="/patientDiagnosticStudy/{{$patientDiagnosticStudy->id}}/edit">ADD/Edit Patient Froms</a>
+                                    <div class="mt-3">
+                                        {!! $patientDiagnosticStudy->content !!}
                                     </div>
                                 </div>
 

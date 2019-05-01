@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AdmissionRecord;
 use App\Patient;
+use App\PatientDiagnosticStudy;
 use App\PatientForm;
 use App\PatientHistory;
 use App\PatientLabResult;
@@ -58,16 +59,18 @@ class PatientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Patient $patient, AdmissionRecord $admissionRecord, PatientHistory $patientHistory,
-                         PatientLabResult $patientLabResult , ProviderOrder $providerOrder, PatientForm $patientForm)
+                         PatientLabResult $patientLabResult , ProviderOrder $providerOrder, PatientForm $patientForm ,
+                         PatientDiagnosticStudy $patientDiagnosticStudy)
     {
         $admissionRecord = AdmissionRecord::where('patient_id', '=', $patient->id )->first();
         $patientHistory = PatientHistory::where('patient_id', '=', $patient->id )->first();
         $patientLabResult = PatientLabResult::where('patient_id', '=', $patient->id )->first();
         $providerOrder = ProviderOrder::where('patient_id', '=', $patient->id )->first();
         $patientForm = PatientForm::where('patient_id', '=', $patient->id )->first();
+        $patientDiagnosticStudy = PatientDiagnosticStudy::where('patient_id', '=', $patient->id )->first();
 
         return view('patient.show',compact('patient','admissionRecord','patientHistory',
-            'patientLabResult','providerOrder','patientForm'));
+            'patientLabResult','providerOrder','patientForm','patientDiagnosticStudy'));
     }
 
     /**
