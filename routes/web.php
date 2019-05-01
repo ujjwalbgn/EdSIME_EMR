@@ -29,6 +29,8 @@ Route::middleware('auth')->group(function(){
     Route::resources([
         'patient' => 'PatientController',
         'admissionRecord' => 'AdmissionRecordController',
+        'patientHistory' => 'PatientHistoryController',
+
     ]);
 });
 
