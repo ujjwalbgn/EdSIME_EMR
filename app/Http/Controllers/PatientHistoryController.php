@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\AdmissionRecord;
+use App\PatientHistory;
 use Illuminate\Http\Request;
 
-class AdmissionRecordController extends Controller
+class PatientHistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,16 +35,16 @@ class AdmissionRecordController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\PatientHistory  $patientHistory
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(PatientHistory $patientHistory)
     {
         //
     }
@@ -52,10 +52,10 @@ class AdmissionRecordController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\PatientHistory  $patientHistory
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(PatientHistory $patientHistory)
     {
         //
     }
@@ -64,14 +64,13 @@ class AdmissionRecordController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\PatientHistory  $patientHistory
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-//        dd($request->healthcare_provider, $request->medical_record_no);
-        $admissionRecord = AdmissionRecord::findorFail($id);
-        $admissionRecord->fill($request->all())->save();
+        $patientHistory = PatientHistory::findorFail($id);
+        $patientHistory->fill($request->all())->save();
 
         return back()->with(['message' => 'Patient updated successfully']);
     }
@@ -79,10 +78,10 @@ class AdmissionRecordController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\PatientHistory  $patientHistory
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(PatientHistory $patientHistory)
     {
         //
     }

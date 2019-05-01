@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\AdmissionRecord;
+use App\PatientHistory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Patient;
@@ -31,9 +32,12 @@ class PatientController extends Controller
 
         $patient = Patient::create($attributes);
 
-        //Create Record
+        //Create Patient Record
         AdmissionRecord::create([
            'patient_id' =>  $patient->id
+        ]);
+        PatientHistory::create([
+            'patient_id' =>  $patient->id
         ]);
     }
 

@@ -1,12 +1,17 @@
-<?php
-$content = 123;
-?>
 <script>
     var route_prefix = "{{ url(config('lfm.url_prefix')) }}";
 </script>
+
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
-<textarea name="content" class="form-control my-editor">{!! old('content', $content) !!}</textarea>
-{{$content}}
+<form method="post" action="/patientHistory/{{$patientHistory->id}}">
+    @method('PATCH')
+    @csrf
+<textarea name="content" class="form-control my-editor">{!! old('content', $patientHistory->content) !!}</textarea>
+    <div class="mt-2">
+        <button type="submit" class="btn btn-info">Submit</button>
+    </div>
+
+</form>
 <script>
     var editor_config = {
         path_absolute : "/",

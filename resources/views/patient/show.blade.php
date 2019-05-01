@@ -39,7 +39,7 @@
                                 <div class="card-header p-2">
                                     <ul class="nav nav-pills">
                                         <li class="nav-item"><a class="nav-link active show" href="#admissionRecord" data-toggle="tab">Admission Record</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#history" data-toggle="tab">Patient's History</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
                                     </ul>
                                 </div>
@@ -57,10 +57,10 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        <!-- /.tab-pane -->
-                                        <div class="tab-pane" id="timeline">
-                                            <!-- The timeline -->
-                                            @include('patient.text')
+                                        {{--Patient History--}}
+                                        <div class="tab-pane" id="history">
+                                            {{--{{$patientHistory->id}}--}}
+                                            @include('patient.editHistory')
                                         </div>
                                         <!-- /.tab-pane -->
 
