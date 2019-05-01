@@ -26,7 +26,8 @@
                                 <div class="card-header p-2">
                                     <ul class="nav nav-pills">
                                         <li class="nav-item"><a class="nav-link active show" href="#admissionRecord" data-toggle="tab">Admission Record</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#history" data-toggle="tab">Patient's History</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#history" data-toggle="tab">H&P</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#labResults" data-toggle="tab">Lab Results</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
                                     </ul>
                                 </div>
@@ -49,11 +50,17 @@
                                 <div class="tab-pane" id="history">
                                     <a class="btn btn-primary" href="/patientHistory/{{$patientHistory->id}}/edit">ADD/Edit Patient History</a>
                                     <div class="mt-3">
-
                                     {!! $patientHistory->content !!}
                                     </div>
                                 </div>
-                                <!-- /.tab-pane -->
+                                {{--Patient Lab Result--}}
+                                <div class="tab-pane" id="labResults">
+                                    <a class="btn btn-primary" href="/patientLabResult/{{$patientLabResult->id}}/edit">ADD/Edit Patient History</a>
+                                    <div class="mt-3">
+
+                                        {!! $patientLabResult->content !!}
+                                    </div>
+                                </div>
 
                                 <div class="tab-pane" id="settings">
                                     <form class="form-horizontal">

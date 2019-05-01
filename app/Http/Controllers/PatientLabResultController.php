@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\PatientLabResult;
+use App\Patient;
 use Illuminate\Http\Request;
 
 class PatientLabResultController extends Controller
@@ -57,7 +58,8 @@ class PatientLabResultController extends Controller
      */
     public function edit(PatientLabResult $patientLabResult)
     {
-        //
+        $patient = Patient::where('id', '=' , $patientLabResult->patient_id)->first();
+        return view('patient.editLabResult', compact('patientLabResult', 'patient'));
     }
 
     /**
