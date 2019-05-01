@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\PatientHistory;
+use App\Patient;
 use Illuminate\Http\Request;
 
 class PatientHistoryController extends Controller
@@ -57,7 +58,8 @@ class PatientHistoryController extends Controller
      */
     public function edit(PatientHistory $patientHistory)
     {
-        //
+        $patient = Patient::where('id', '=' , $patientHistory->patient_id)->first();
+        return view('patient.editHistory', compact('patientHistory', 'patient'));
     }
 
     /**
