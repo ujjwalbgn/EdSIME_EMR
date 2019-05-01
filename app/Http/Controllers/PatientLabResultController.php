@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\AdmissionRecord;
-use App\Patient;
+use App\PatientLabResult;
 use Illuminate\Http\Request;
 
-class AdmissionRecordController extends Controller
+class PatientLabResultController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,16 +35,16 @@ class AdmissionRecordController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\PatientLabResult  $patientLabResult
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(PatientLabResult $patientLabResult)
     {
         //
     }
@@ -53,28 +52,25 @@ class AdmissionRecordController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\PatientLabResult  $patientLabResult
      * @return \Illuminate\Http\Response
      */
-    public function edit(AdmissionRecord $admissionRecord)
+    public function edit(PatientLabResult $patientLabResult)
     {
-        $patient = Patient::where('id', '=' , $admissionRecord->patient_id)->first();
-//        dd($patient);
-        return view('patient.editAdmissionRecord', compact('admissionRecord', 'patient'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\PatientLabResult  $patientLabResult
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-//        dd($request->healthcare_provider, $request->medical_record_no);
-        $admissionRecord = AdmissionRecord::findorFail($id);
-        $admissionRecord->fill($request->all())->save();
+        $patientLabResult = PatientLabResult::findorFail($id);
+        $patientLabResult->fill($request->all())->save();
 
         return back()->with(['message' => 'Patient updated successfully']);
     }
@@ -82,10 +78,10 @@ class AdmissionRecordController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\PatientLabResult  $patientLabResult
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(PatientLabResult $patientLabResult)
     {
         //
     }

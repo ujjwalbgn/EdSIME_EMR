@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\AdmissionRecord;
 use App\PatientHistory;
+use App\PatientLabResult;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Patient;
@@ -37,6 +38,9 @@ class PatientController extends Controller
            'patient_id' =>  $patient->id
         ]);
         PatientHistory::create([
+            'patient_id' =>  $patient->id
+        ]);
+        PatientLabResult::create([
             'patient_id' =>  $patient->id
         ]);
     }

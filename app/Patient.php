@@ -13,6 +13,7 @@ class Patient extends Model
     public function AdmissionRecord() {
         $this->belongsTo(AdmissionRecord::class);
     }
+
     public function PatientHistory() {
         $this->belongsTo(PatientHistory::class);
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AdmissionRecord;
 use App\Patient;
 use App\PatientHistory;
+use App\PatientLabResult;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
@@ -54,11 +55,14 @@ class PatientController extends Controller
      * @param  \App\Patient  $patient
      * @return \Illuminate\Http\Response
      */
-    public function show(Patient $patient, AdmissionRecord $admissionRecord, PatientHistory $patientHistory)
+    public function show(Patient $patient, AdmissionRecord $admissionRecord, PatientHistory $patientHistory,
+                         PatientLabResult $patientLabResult )
     {
         $admissionRecord = AdmissionRecord::where('patient_id', '=', $patient->id )->first();
         $patientHistory = PatientHistory::where('patient_id', '=', $patient->id )->first();
-        return view('patient.show',compact('patient','admissionRecord','patientHistory'));
+        $patientLabResult = PatientLabResult::where('patient_id', '=', $patient->id )->first();
+
+        return view('patient.show',compact('patient','admissionRecord','patientHistory','patientLabResult'));
     }
 
     /**
