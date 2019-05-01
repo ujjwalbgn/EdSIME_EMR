@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function(){
         'admissionRecord' => 'AdmissionRecordController',
         'patientHistory' => 'PatientHistoryController',
         'patientLabResult' => 'PatientLabResultController',
+        'providerOrder' => 'ProviderOrderController',
     ]);
 });
 

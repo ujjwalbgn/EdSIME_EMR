@@ -28,6 +28,7 @@
                                         <li class="nav-item"><a class="nav-link active show" href="#admissionRecord" data-toggle="tab">Admission Record</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#history" data-toggle="tab">H&P</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#labResults" data-toggle="tab">Lab Results</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#providerOrder" data-toggle="tab">Provider Order</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
                                     </ul>
                                 </div>
@@ -59,6 +60,14 @@
                                     <div class="mt-3">
 
                                         {!! $patientLabResult->content !!}
+                                    </div>
+                                </div>
+                                {{--Provider Order--}}
+                                <div class="tab-pane" id="providerOrder">
+                                    <a class="btn btn-primary" href="/providerOrder/{{$providerOrder->id}}/edit">ADD/Edit Patient History</a>
+                                    <div class="mt-3">
+                                            @include('patient.formProviderOrder')
+                                        {!! $providerOrder->content !!}
                                     </div>
                                 </div>
 
