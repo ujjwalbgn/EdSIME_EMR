@@ -29,6 +29,7 @@
                                         <li class="nav-item"><a class="nav-link" href="#history" data-toggle="tab">H&P</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#labResults" data-toggle="tab">Lab Results</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#providerOrder" data-toggle="tab">Provider Order</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="#patientForm" data-toggle="tab">Form</a></li>
                                         <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
                                     </ul>
                                 </div>
@@ -68,6 +69,13 @@
                                     <div class="mt-3">
                                             @include('patient.formProviderOrder')
                                         {!! $providerOrder->content !!}
+                                    </div>
+                                </div>
+                                {{--Patient Form--}}
+                                <div class="tab-pane" id="patientForm">
+                                    <a class="btn btn-primary" href="/patientForm/{{$patientForm->id}}/edit">ADD/Edit Patient Froms</a>
+                                    <div class="mt-3">
+                                        {!! $patientForm->content !!}
                                     </div>
                                 </div>
 

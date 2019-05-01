@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\ProviderOrder;
+use App\PatientForm;
 use App\Patient;
 use Illuminate\Http\Request;
 
-class ProviderOrderController extends Controller
+class PatientFormController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,10 +42,10 @@ class ProviderOrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ProviderOrder  $providerOrder
+     * @param  \App\PatientForm  $patientForm
      * @return \Illuminate\Http\Response
      */
-    public function show(ProviderOrder $providerOrder)
+    public function show(PatientForm $patientForm)
     {
         //
     }
@@ -53,26 +53,26 @@ class ProviderOrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ProviderOrder  $providerOrder
+     * @param  \App\PatientForm  $patientForm
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProviderOrder $providerOrder)
+    public function edit(PatientForm $patientForm)
     {
-        $patient = Patient::where('id', '=' , $providerOrder->patient_id)->first();
-        return view('patient.editProviderOrder', compact('providerOrder', 'patient'));
+        $patient = Patient::where('id', '=' , $patientForm->patient_id)->first();
+        return view('patient.editPatientForm', compact('patientForm', 'patient'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ProviderOrder  $providerOrder
+     * @param  \App\PatientForm  $patientForm
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $providerOrder = ProviderOrder::findorFail($id);
-        $providerOrder->fill($request->all())->save();
+        $patientForm = PatientForm::findorFail($id);
+        $patientForm->fill($request->all())->save();
 
         return back()->with(['message' => 'Patient updated successfully']);
     }
@@ -80,10 +80,10 @@ class ProviderOrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ProviderOrder  $providerOrder
+     * @param  \App\PatientForm  $patientForm
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProviderOrder $providerOrder)
+    public function destroy(PatientForm $patientForm)
     {
         //
     }

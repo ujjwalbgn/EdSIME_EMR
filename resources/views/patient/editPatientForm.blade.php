@@ -1,3 +1,5 @@
+@include('layouts.textEditorProperties')
+
 @extends('layouts.master')
 
 @section('content')
@@ -10,15 +12,13 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h6 class="">History of <strong>{{$patient->name}}</strong></h6>
-
+                            <h6 class="">Forms for <strong>{{$patient->name}}</strong></h6>
                         </div>
                         <div class="card-body">
-
-                            <form method="post" action="/patientHistory/{{$patientHistory->id}}">
+                            <form method="post" action="/patientForm/{{$patientForm->id}}">
                                 @method('PATCH')
                                 @csrf
-                                <textarea name="content" class="form-control TinyMCE-editor">{!! old('content', $patientHistory->content) !!}</textarea>
+                                <textarea name="content" class="form-control TinyMCE-editor">{!! old('content', $patientForm->content) !!}</textarea>
                                 <div class="mt-2">
                                     <button type="submit" class="btn btn-info">Submit</button>
                                 </div>
@@ -32,7 +32,6 @@
 
         </div>
     </section>
-
 
 
     @include('layouts.textEditorProperties')
