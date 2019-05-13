@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-    <title>@yield('pageTitle')</title>
+    <title>@yield('title')</title>
 
     <link rel="stylesheet" href={{asset("/css/app.css")}}>
     @yield('style')

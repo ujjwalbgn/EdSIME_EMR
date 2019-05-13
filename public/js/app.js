@@ -2067,6 +2067,266 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MedicationTable.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MedicationTable.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      editmode: false,
+      medications: {},
+      form: new Form({
+        id: '',
+        name: '',
+        level: '',
+        instructorNote: '',
+        barcode: ''
+      })
+    };
+  },
+  methods: {
+    editModal: function editModal(medication) {
+      this.editmode = true;
+      this.form.clear();
+      this.form.reset();
+      $('#addNew').modal('show');
+      this.form.fill(medication);
+    },
+    newModal: function newModal() {
+      this.editmode = false;
+      this.form.reset();
+      $('#addNew').modal('show');
+    },
+    loadmedications: function loadmedications() {
+      var _this = this;
+
+      {
+        axios.get("api/medication").then(function (_ref) {
+          var data = _ref.data;
+          return _this.medications = data;
+        });
+      }
+    },
+    createmedication: function createmedication() {
+      var _this2 = this;
+
+      //Progress bar
+      this.$Progress.start(); //Post medications API
+
+      this.form.post('api/medication').then(function () {
+        //Fire Event
+        Fire.$emit('Loadmedications'); //hide Modal
+
+        $('#addNew').modal('hide'); // Sweet Alert
+
+        toast.fire({
+          type: 'success',
+          title: 'medication Created Successfully'
+        });
+      }).catch(function () {
+        toast.fire({
+          type: 'error',
+          title: 'Oops...',
+          html: 'Something went wrong! </br> Unable to create New medications. '
+        });
+
+        _this2.$Progress.fail();
+      });
+      this.$Progress.finish();
+    },
+    updatemedication: function updatemedication() {
+      var _this3 = this;
+
+      this.$Progress.start();
+      this.form.put('api/medication/' + this.form.id).then(function () {
+        //Sweet Alert
+        toast.fire({
+          type: 'success',
+          title: 'medications Updated Successfully'
+        }); //Fire Event
+
+        Fire.$emit('Loadmedications'); //hide Modal
+
+        $('#addNew').modal('hide');
+
+        _this3.$Progress.finish();
+      }).catch(function () {
+        _this3.$Progress.fail();
+
+        toast.fire({
+          type: 'error',
+          title: 'Oops...',
+          text: 'Unable to Update medications!'
+        });
+      });
+    },
+    deletemedication: function deletemedication(id) {
+      var _this4 = this;
+
+      this.$Progress.start();
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then(function (result) {
+        //send  request to the server
+        if (result.value) {
+          _this4.form.delete('api/medication/' + id).then(function () {
+            {
+              //Fire Event
+              Fire.$emit('Loadmedications');
+              Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+            }
+
+            _this4.$Progress.finish();
+          }).catch(function () {
+            toast.fire({
+              type: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong! Unable to Delete medication'
+            });
+
+            _this4.$Progress.fail();
+          });
+        }
+      });
+    },
+    getResults: function getResults() {
+      var _this5 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get('api/medication?page=' + page).then(function (response) {
+        _this5.medications = response.data;
+      });
+    }
+  },
+  created: function created() {
+    var _this6 = this;
+
+    this.loadmedications();
+    Fire.$on('Loadmedications', function () {
+      _this6.loadmedications();
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PatientTable.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PatientTable.vue?vue&type=script&lang=js& ***!
@@ -63442,6 +63702,486 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MedicationTable.vue?vue&type=template&id=250081b8&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MedicationTable.vue?vue&type=template&id=250081b8& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container mt-5" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _c("h3", { staticClass: "card-title" }, [
+              _vm._v("medications Table")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-tools" }, [
+              _c(
+                "button",
+                { staticClass: "btn btn-success", on: { click: _vm.newModal } },
+                [
+                  _vm._v("Add New "),
+                  _c("i", { staticClass: "fas fa-user-plus fa-fw" })
+                ]
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "card-body table-responsive p-0" }, [
+              _c("table", { staticClass: "table table-hover" }, [
+                _c(
+                  "tbody",
+                  [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _vm._l(_vm.medications.data, function(medication) {
+                      return _c("tr", { key: medication.id }, [
+                        _c("td", [_vm._v(_vm._s(medication.id))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(_vm._s(_vm._f("upText")(medication.name)))
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(medication.level))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(medication.instructorNote))]),
+                        _vm._v(" "),
+                        _c("td", [_vm._v(_vm._s(medication.barcode))]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(_vm._f("filterDate")(medication.created_at))
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _vm._v(
+                            _vm._s(_vm._f("filterDate")(medication.update_at))
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.editModal(medication)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-edit blue" })]
+                          ),
+                          _vm._v(
+                            "\n                                    /\n                                    "
+                          ),
+                          _c(
+                            "a",
+                            {
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.deletemedication(medication.id)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-trash red" })]
+                          ),
+                          _vm._v(
+                            "\n                                    /\n                                    "
+                          ),
+                          _c(
+                            "a",
+                            { attrs: { href: "/medication/" + medication.id } },
+                            [
+                              _c(
+                                "i",
+                                { staticClass: "fas fa-address-card indigo" },
+                                [_vm._v(" EHR")]
+                              )
+                            ]
+                          )
+                        ])
+                      ])
+                    })
+                  ],
+                  2
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "card-footer" },
+              [
+                _c("pagination", {
+                  attrs: { data: _vm.medications },
+                  on: { "pagination-change-page": _vm.getResults }
+                })
+              ],
+              1
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "addNew",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "addNew",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-dialog-centered",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _c("div", { staticClass: "modal-header" }, [
+                  _c(
+                    "h5",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !_vm.editmode,
+                          expression: "!editmode"
+                        }
+                      ],
+                      staticClass: "modal-title",
+                      attrs: { id: "addNew" }
+                    },
+                    [_vm._v("Add New medication")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "h5",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.editmode,
+                          expression: "editmode"
+                        }
+                      ],
+                      staticClass: "modal-title",
+                      attrs: { id: "addNew" }
+                    },
+                    [_vm._v("Update medication")]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(1)
+                ]),
+                _vm._v(" "),
+                _c(
+                  "form",
+                  {
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        _vm.editmode
+                          ? _vm.updatemedication()
+                          : _vm.createmedication()
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "modal-body" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.name,
+                                expression: "form.name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("name")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "name",
+                              placeholder: "Name"
+                            },
+                            domProps: { value: _vm.form.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.form, "name", $event.target.value)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "name" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.level,
+                                expression: "form.level"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("level")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "level",
+                              placeholder: "Level"
+                            },
+                            domProps: { value: _vm.form.level },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.form, "level", $event.target.value)
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "level" }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _c(
+                          "textarea",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.instructorNote,
+                                expression: "form.instructorNote"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has(
+                                "instructorNote"
+                              )
+                            },
+                            attrs: {
+                              name: "instructorNote",
+                              placeholder:
+                                "Instructors Note (Not Visible to Students)"
+                            },
+                            domProps: { value: _vm.form.instructorNote },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "instructorNote",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _vm._v(
+                              '                        <has-error :form="form" field="instructorNote"></has-error>\n                        '
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "form-group" },
+                        [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.barcode,
+                                expression: "form.barcode"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              "is-invalid": _vm.form.errors.has("barcode")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "barcode",
+                              placeholder: "barcode"
+                            },
+                            domProps: { value: _vm.form.barcode },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "barcode",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("has-error", {
+                            attrs: { form: _vm.form, field: "barcode" }
+                          })
+                        ],
+                        1
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button", "data-dismiss": "modal" }
+                        },
+                        [_vm._v("Close")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.editmode,
+                              expression: "editmode"
+                            }
+                          ],
+                          staticClass: "btn btn-success",
+                          attrs: { type: "submit" }
+                        },
+                        [_vm._v("Update")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: !_vm.editmode,
+                              expression: "!editmode"
+                            }
+                          ],
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "submit" }
+                        },
+                        [_vm._v("Create")]
+                      )
+                    ])
+                  ]
+                )
+              ])
+            ]
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("th", [_vm._v("ID")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Level")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Note")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Barcode")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Created At")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Updated At")]),
+      _vm._v(" "),
+      _c("th", [_vm._v("Modify")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "button",
+      {
+        staticClass: "close",
+        attrs: {
+          type: "button",
+          "data-dismiss": "modal",
+          "aria-label": "Close"
+        }
+      },
+      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PatientTable.vue?vue&type=template&id=088ae334&":
 /*!***************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PatientTable.vue?vue&type=template&id=088ae334& ***!
@@ -78628,6 +79368,7 @@ Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ ".
 Vue.component('users-table', __webpack_require__(/*! ./components/Users */ "./resources/js/components/Users.vue").default);
 Vue.component('user-profile', __webpack_require__(/*! ./components/Profile */ "./resources/js/components/Profile.vue").default);
 Vue.component('patient-table', __webpack_require__(/*! ./components/PatientTable */ "./resources/js/components/PatientTable.vue").default);
+Vue.component('medication-table', __webpack_require__(/*! ./components/MedicationTable */ "./resources/js/components/MedicationTable.vue").default);
 Vue.component('admission-record', __webpack_require__(/*! ./components/AdmissionRecord */ "./resources/js/components/AdmissionRecord.vue").default);
 var app = new Vue({
   el: '#app',
@@ -78838,6 +79579,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/MedicationTable.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/MedicationTable.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MedicationTable_vue_vue_type_template_id_250081b8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MedicationTable.vue?vue&type=template&id=250081b8& */ "./resources/js/components/MedicationTable.vue?vue&type=template&id=250081b8&");
+/* harmony import */ var _MedicationTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MedicationTable.vue?vue&type=script&lang=js& */ "./resources/js/components/MedicationTable.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _MedicationTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _MedicationTable_vue_vue_type_template_id_250081b8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MedicationTable_vue_vue_type_template_id_250081b8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/MedicationTable.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/MedicationTable.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/MedicationTable.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MedicationTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./MedicationTable.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MedicationTable.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MedicationTable_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/MedicationTable.vue?vue&type=template&id=250081b8&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/MedicationTable.vue?vue&type=template&id=250081b8& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MedicationTable_vue_vue_type_template_id_250081b8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./MedicationTable.vue?vue&type=template&id=250081b8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MedicationTable.vue?vue&type=template&id=250081b8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MedicationTable_vue_vue_type_template_id_250081b8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MedicationTable_vue_vue_type_template_id_250081b8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

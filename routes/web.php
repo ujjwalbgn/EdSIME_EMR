@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function(){
         'providerOrder' => 'ProviderOrderController',
         'patientForm' => 'PatientFormController',
         'patientDiagnosticStudy' => 'PatientDiagnosticStudyController',
+        'medication' => 'MedicationController'
     ]);
 });
 

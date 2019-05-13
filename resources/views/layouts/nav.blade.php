@@ -56,6 +56,14 @@
             </a>
         </li>
         <li class="nav-item">
+            <a href="/medication" class="nav-link {{ Request::segment(1) == 'meds' ? 'nav-active' : '' }}">
+                <i class="nav-icon fas fa-briefcase-medical blue"></i>
+                <p>
+                    Medication
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}"
                onclick="event.preventDefault();
 document.getElementById('logout-form').submit();">

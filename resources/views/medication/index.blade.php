@@ -4,6 +4,6 @@
 
 @section('content')
     <div id="app">
-        <patient-table></patient-table>
+        <medication-table></medication-table>
     </div>
 @endsection
