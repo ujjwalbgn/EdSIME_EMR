@@ -2181,6 +2181,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2189,8 +2190,8 @@ __webpack_require__.r(__webpack_exports__);
       form: new Form({
         id: '',
         name: '',
-        level: '',
-        instructorNote: '',
+        type: '',
+        description: '',
         barcode: ''
       })
     };
@@ -2208,7 +2209,7 @@ __webpack_require__.r(__webpack_exports__);
       this.form.reset();
       $('#addNew').modal('show');
     },
-    loadmedications: function loadmedications() {
+    loadMedication: function loadMedication() {
       var _this = this;
 
       {
@@ -2218,7 +2219,7 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
-    createmedication: function createmedication() {
+    createMedication: function createMedication() {
       var _this2 = this;
 
       //Progress bar
@@ -2226,7 +2227,7 @@ __webpack_require__.r(__webpack_exports__);
 
       this.form.post('api/medication').then(function () {
         //Fire Event
-        Fire.$emit('Loadmedications'); //hide Modal
+        Fire.$emit('loadMedication'); //hide Modal
 
         $('#addNew').modal('hide'); // Sweet Alert
 
@@ -2245,7 +2246,7 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.$Progress.finish();
     },
-    updatemedication: function updatemedication() {
+    updateMedication: function updateMedication() {
       var _this3 = this;
 
       this.$Progress.start();
@@ -2253,10 +2254,10 @@ __webpack_require__.r(__webpack_exports__);
         //Sweet Alert
         toast.fire({
           type: 'success',
-          title: 'medications Updated Successfully'
+          title: 'Medications Updated Successfully'
         }); //Fire Event
 
-        Fire.$emit('Loadmedications'); //hide Modal
+        Fire.$emit('loadMedication'); //hide Modal
 
         $('#addNew').modal('hide');
 
@@ -2271,7 +2272,7 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    deletemedication: function deletemedication(id) {
+    deleteMedication: function deleteMedication(id) {
       var _this4 = this;
 
       this.$Progress.start();
@@ -2289,7 +2290,7 @@ __webpack_require__.r(__webpack_exports__);
           _this4.form.delete('api/medication/' + id).then(function () {
             {
               //Fire Event
-              Fire.$emit('Loadmedications');
+              Fire.$emit('loadMedication');
               Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
             }
 
@@ -2318,9 +2319,9 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this6 = this;
 
-    this.loadmedications();
-    Fire.$on('Loadmedications', function () {
-      _this6.loadmedications();
+    this.loadMedication();
+    Fire.$on('loadMedication', function () {
+      _this6.loadMedication();
     });
   }
 });
@@ -2336,6 +2337,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -63750,7 +63755,7 @@ var render = function() {
         _c("div", { staticClass: "card card-default" }, [
           _c("div", { staticClass: "card-header" }, [
             _c("h3", { staticClass: "card-title" }, [
-              _vm._v("medications Table")
+              _vm._v("Medications Table")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "card-tools" }, [
@@ -63781,9 +63786,9 @@ var render = function() {
                           _vm._v(_vm._s(_vm._f("upText")(medication.name)))
                         ]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(medication.level))]),
+                        _c("td", [_vm._v(_vm._s(medication.type))]),
                         _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(medication.instructorNote))]),
+                        _c("td", [_vm._v(_vm._s(medication.description))]),
                         _vm._v(" "),
                         _c("td", [_vm._v(_vm._s(medication.barcode))]),
                         _vm._v(" "),
@@ -63821,25 +63826,11 @@ var render = function() {
                               attrs: { href: "#" },
                               on: {
                                 click: function($event) {
-                                  return _vm.deletemedication(medication.id)
+                                  return _vm.deleteMedication(medication.id)
                                 }
                               }
                             },
                             [_c("i", { staticClass: "fa fa-trash red" })]
-                          ),
-                          _vm._v(
-                            "\n                                    /\n                                    "
-                          ),
-                          _c(
-                            "a",
-                            { attrs: { href: "/medication/" + medication.id } },
-                            [
-                              _c(
-                                "i",
-                                { staticClass: "fas fa-address-card indigo" },
-                                [_vm._v(" EHR")]
-                              )
-                            ]
                           )
                         ])
                       ])
@@ -63931,8 +63922,8 @@ var render = function() {
                       submit: function($event) {
                         $event.preventDefault()
                         _vm.editmode
-                          ? _vm.updatemedication()
-                          : _vm.createmedication()
+                          ? _vm.updateMedication()
+                          : _vm.createMedication()
                       }
                     }
                   },
@@ -63982,37 +63973,64 @@ var render = function() {
                         "div",
                         { staticClass: "form-group" },
                         [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.level,
-                                expression: "form.level"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              "is-invalid": _vm.form.errors.has("level")
-                            },
-                            attrs: {
-                              type: "text",
-                              name: "level",
-                              placeholder: "Level"
-                            },
-                            domProps: { value: _vm.form.level },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.type,
+                                  expression: "form.type"
                                 }
-                                _vm.$set(_vm.form, "level", $event.target.value)
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.form.errors.has("type")
+                              },
+                              attrs: { type: "text", name: "type" },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.form,
+                                    "type",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
                               }
-                            }
-                          }),
+                            },
+                            [
+                              _c("option", { attrs: { value: "" } }, [
+                                _vm._v("Select Medication Type")
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { attrs: { value: "Scheduled Medication" } },
+                                [_vm._v("Scheduled Medication")]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "option",
+                                { attrs: { value: "PRN Medication" } },
+                                [_vm._v("PRN Medication")]
+                              )
+                            ]
+                          ),
                           _vm._v(" "),
                           _c("has-error", {
-                            attrs: { form: _vm.form, field: "level" }
+                            attrs: { form: _vm.form, field: "type" }
                           })
                         ],
                         1
@@ -64026,22 +64044,20 @@ var render = function() {
                               {
                                 name: "model",
                                 rawName: "v-model",
-                                value: _vm.form.instructorNote,
-                                expression: "form.instructorNote"
+                                value: _vm.form.description,
+                                expression: "form.description"
                               }
                             ],
                             staticClass: "form-control",
                             class: {
-                              "is-invalid": _vm.form.errors.has(
-                                "instructorNote"
-                              )
+                              "is-invalid": _vm.form.errors.has("description")
                             },
                             attrs: {
-                              name: "instructorNote",
+                              name: "description",
                               placeholder:
                                 "Instructors Note (Not Visible to Students)"
                             },
-                            domProps: { value: _vm.form.instructorNote },
+                            domProps: { value: _vm.form.description },
                             on: {
                               input: function($event) {
                                 if ($event.target.composing) {
@@ -64049,7 +64065,7 @@ var render = function() {
                                 }
                                 _vm.$set(
                                   _vm.form,
-                                  "instructorNote",
+                                  "description",
                                   $event.target.value
                                 )
                               }
@@ -64057,7 +64073,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              '                        <has-error :form="form" field="instructorNote"></has-error>\n                        '
+                              '                        <has-error :form="form" field="description"></has-error>\n                        '
                             )
                           ]
                         )
@@ -64172,7 +64188,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("th", [_vm._v("Name")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Level")]),
+      _c("th", [_vm._v("Type")]),
       _vm._v(" "),
       _c("th", [_vm._v("Note")]),
       _vm._v(" "),
@@ -64316,6 +64332,20 @@ var render = function() {
                                 "i",
                                 { staticClass: "fas fa-address-card indigo" },
                                 [_vm._v(" EHR")]
+                              )
+                            ]
+                          ),
+                          _vm._v(
+                            "\n                                    /\n                                    "
+                          ),
+                          _c(
+                            "a",
+                            { attrs: { href: "/mar/patient" + patient.id } },
+                            [
+                              _c(
+                                "i",
+                                { staticClass: "fas fa-calendar-check orange" },
+                                [_vm._v(" MAR")]
                               )
                             ]
                           )
@@ -65401,11 +65431,7 @@ var render = function() {
                             class: {
                               "is-invalid": _vm.form.errors.has("type")
                             },
-                            attrs: {
-                              type: "text",
-                              name: "type",
-                              placeholder: "Name"
-                            },
+                            attrs: { type: "text", name: "type" },
                             on: {
                               change: function($event) {
                                 var $$selectedVal = Array.prototype.filter

@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title">medications Table</h3>
+                        <h3 class="card-title">Medications Table</h3>
                         <div class="card-tools">
                             <button class="btn btn-success" @click="newModal">Add New <i class="fas fa-user-plus fa-fw"></i> </button>
                         </div>
@@ -16,7 +16,7 @@
                                 <tbody><tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Level</th>
+                                    <th>Type</th>
                                     <th>Note</th>
                                     <th>Barcode</th>
                                     <th>Created At</th>
@@ -26,8 +26,8 @@
                                 <tr v-for="medication in medications.data" :key="medication.id">
                                     <td>{{medication.id}}</td>
                                     <td>{{medication.name | upText}}</td>
-                                    <td>{{medication.level}}</td>
-                                    <td>{{medication.instructorNote}}</td>
+                                    <td>{{medication.type}}</td>
+                                    <td>{{medication.description}}</td>
                                     <td>{{medication.barcode}}</td>
                                     <td>{{medication.created_at | filterDate}}</td>
                                     <td>{{medication.update_at | filterDate}}</td>
@@ -37,12 +37,8 @@
                                             <i class="fa fa-edit blue"></i>
                                         </a>
                                         /
-                                        <a href="#" @click="deletemedication(medication.id)">
+                                        <a href="#" @click="deleteMedication(medication.id)">
                                             <i class="fa fa-trash red"></i>
-                                        </a>
-                                        /
-                                        <a v-bind:href="'/medication/'+ medication.id" >
-                                            <i class="fas fa-address-card indigo"> EHR</i>
                                         </a>
                                     </td>
                                 </tr>
@@ -66,7 +62,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form @submit.prevent="editmode ? updatemedication() : createmedication()">
+                        <form @submit.prevent="editmode ? updateMedication() : createMedication()">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <input v-model="form.name" type="text" name="name" placeholder="Name"
@@ -74,14 +70,19 @@
                                     <has-error :form="form" field="name"></has-error>
                                 </div>
                                 <div class="form-group">
-                                    <input v-model="form.level" type="text" name="level" placeholder="Level"
-                                           class="form-control" :class="{ 'is-invalid': form.errors.has('level') }">
-                                    <has-error :form="form" field="level"></has-error>
+                                    <select v-model="form.type" type="text" name="type"
+                                           class="form-control" :class="{ 'is-invalid': form.errors.has('type') }">
+                                        <option value="">Select Medication Type</option>
+                                        <option value="Scheduled Medication">Scheduled Medication</option>
+                                        <option value="PRN Medication">PRN Medication</option>
+                                    </select>
+                                    <has-error :form="form" field="type"></has-error>
+
                                 </div>
                                 <div class="form-group">
-                            <textarea v-model="form.instructorNote" name="instructorNote" placeholder="Instructors Note (Not Visible to Students)"
-                                      class="form-control" :class="{ 'is-invalid': form.errors.has('instructorNote') }">
-                            <has-error :form="form" field="instructorNote"></has-error>
+                            <textarea v-model="form.description" name="description" placeholder="Instructors Note (Not Visible to Students)"
+                                      class="form-control" :class="{ 'is-invalid': form.errors.has('description') }">
+                            <has-error :form="form" field="description"></has-error>
                             </textarea>
                                 </div>
                                 <div class="form-group">
@@ -116,8 +117,8 @@
                 form : new Form ({
                     id: '',
                     name : '',
-                    level : '',
-                    instructorNote : '',
+                    type : '',
+                    description : '',
                     barcode : '',
                 })
             }
@@ -137,7 +138,7 @@
                 $('#addNew').modal('show');
             },
 
-            loadmedications(){
+            loadMedication(){
                 {
                     axios.get("api/medication").then(({data}) => (this.medications = data));
                 }
@@ -145,7 +146,7 @@
 
 
 
-            createmedication(){
+            createMedication(){
                 //Progress bar
                 this.$Progress.start();
 
@@ -153,7 +154,7 @@
                 this.form.post('api/medication')
                     .then(()=>{
                                                     //Fire Event
-                            Fire.$emit('Loadmedications');
+                            Fire.$emit('loadMedication');
 
 
                             //hide Modal
@@ -181,18 +182,18 @@
                 this.$Progress.finish();
             },
 
-            updatemedication(){
+            updateMedication(){
                 this.$Progress.start();
                 this.form.put('api/medication/' +this.form.id)
                     .then(()=>{
                         //Sweet Alert
                         toast.fire({
                             type: 'success',
-                            title: 'medications Updated Successfully'
+                            title: 'Medications Updated Successfully'
                         });
 
                         //Fire Event
-                        Fire.$emit('Loadmedications');
+                        Fire.$emit('loadMedication');
 
                         //hide Modal
                         $('#addNew').modal('hide');
@@ -210,7 +211,7 @@
                     });
             },
 
-            deletemedication(id){
+            deleteMedication(id){
                 this.$Progress.start();
                 Swal.fire({
                     title: 'Are you sure?',
@@ -227,7 +228,7 @@
                         this.form.delete('api/medication/'+id).then(()=>{
                             {
                                 //Fire Event
-                                Fire.$emit('Loadmedications');
+                                Fire.$emit('loadMedication');
 
                                 Swal.fire(
                                     'Deleted!',
@@ -259,9 +260,9 @@
         },
 
         created() {
-            this.loadmedications();
-            Fire.$on('Loadmedications', () => {
-                this.loadmedications();
+            this.loadMedication();
+            Fire.$on('loadMedication', () => {
+                this.loadMedication();
             })
         }
     }
