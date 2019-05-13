@@ -85,7 +85,7 @@
                             </textarea>
                             </div>
                             <div class="form-group">
-                                <select v-model="form.type" type="text" name="type" placeholder="Name"
+                                <select v-model="form.type" type="text" name="type"
                                         class="form-control" :class="{ 'is-invalid': form.errors.has('type') }">
                                     <option value="">Select User Role</option>
                                     <option value="admin">Admin</option>

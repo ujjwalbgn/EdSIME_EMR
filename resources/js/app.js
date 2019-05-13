@@ -91,6 +91,11 @@ Vue.component(
 );
 
 Vue.component(
+    'medication-table',
+    require('./components/MedicationTable').default
+);
+
+Vue.component(
     'admission-record',
     require('./components/AdmissionRecord').default
 );

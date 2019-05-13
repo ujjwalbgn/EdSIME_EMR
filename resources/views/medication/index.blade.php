@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
-@section('title', 'Patient Table')
+@section('title', 'Medication Table')
 
 @section('content')
     <div id="app">
-        <patient-table></patient-table>
+        <medication-table></medication-table>
     </div>
 @endsection

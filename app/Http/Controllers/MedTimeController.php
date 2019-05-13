@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Medication;
+use App\MedTime;
 use Illuminate\Http\Request;
 
-class MedicationController extends Controller
+class MedTimeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class MedicationController extends Controller
      */
     public function index()
     {
-        return view('medication.index');
+        //
     }
 
     /**
@@ -35,24 +35,16 @@ class MedicationController extends Controller
      */
     public function store(Request $request)
     {
-        $attributes=  request()->validate([
-            'name' => ['required','min:2','max:200'],
-            'type' => ['required'],
-            'description' => [],
-            'barcode' => ['required','numeric','min:2']
-        ]);
-        //dd($attributes);
-        Med::create($attributes);
-        return redirect('/meds')->with(['message' => 'Medication created successfully']);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Medication  $medication
+     * @param  \App\MedTime  $medTime
      * @return \Illuminate\Http\Response
      */
-    public function show(Medication $medication)
+    public function show(MedTime $medTime)
     {
         //
     }
@@ -60,10 +52,10 @@ class MedicationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Medication  $medication
+     * @param  \App\MedTime  $medTime
      * @return \Illuminate\Http\Response
      */
-    public function edit(Medication $medication)
+    public function edit(MedTime $medTime)
     {
         //
     }
@@ -72,10 +64,10 @@ class MedicationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Medication  $medication
+     * @param  \App\MedTime  $medTime
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Medication $medication)
+    public function update(Request $request, MedTime $medTime)
     {
         //
     }
@@ -83,10 +75,10 @@ class MedicationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Medication  $medication
+     * @param  \App\MedTime  $medTime
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Medication $medication)
+    public function destroy(MedTime $medTime)
     {
         //
     }

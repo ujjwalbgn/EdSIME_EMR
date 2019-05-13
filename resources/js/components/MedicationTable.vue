@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title">Patients Table</h3>
+                        <h3 class="card-title">Medications Table</h3>
                         <div class="card-tools">
                             <button class="btn btn-success" @click="newModal">Add New <i class="fas fa-user-plus fa-fw"></i> </button>
                         </div>
@@ -16,37 +16,29 @@
                                 <tbody><tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Level</th>
+                                    <th>Type</th>
                                     <th>Note</th>
                                     <th>Barcode</th>
                                     <th>Created At</th>
                                     <th>Updated At</th>
                                     <th>Modify</th>
                                 </tr>
-                                <tr v-for="patient in patients.data" :key="patient.id">
-                                    <td>{{patient.id}}</td>
-                                    <td>{{patient.name | upText}}</td>
-                                    <td>{{patient.level}}</td>
-                                    <td>{{patient.instructorNote}}</td>
-                                    <td>{{patient.barcode}}</td>
-                                    <td>{{patient.created_at | filterDate}}</td>
-                                    <td>{{patient.update_at | filterDate}}</td>
+                                <tr v-for="medication in medications.data" :key="medication.id">
+                                    <td>{{medication.id}}</td>
+                                    <td>{{medication.name | upText}}</td>
+                                    <td>{{medication.type}}</td>
+                                    <td>{{medication.description}}</td>
+                                    <td>{{medication.barcode}}</td>
+                                    <td>{{medication.created_at | filterDate}}</td>
+                                    <td>{{medication.update_at | filterDate}}</td>
 
                                     <td>
-                                        <a href="#" @click="editModal(patient)">
+                                        <a href="#" @click="editModal(medication)">
                                             <i class="fa fa-edit blue"></i>
                                         </a>
                                         /
-                                        <a href="#" @click="deletePatient(patient.id)">
+                                        <a href="#" @click="deleteMedication(medication.id)">
                                             <i class="fa fa-trash red"></i>
-                                        </a>
-                                        /
-                                        <a v-bind:href="'/patient/'+ patient.id" >
-                                            <i class="fas fa-address-card indigo"> EHR</i>
-                                        </a>
-                                        /
-                                        <a v-bind:href="'/mar/patient'+ patient.id" >
-                                            <i class="fas fa-calendar-check orange"> MAR</i>
                                         </a>
                                     </td>
                                 </tr>
@@ -54,7 +46,7 @@
                             </table>
                         </div>
                         <div class="card-footer">
-                            <pagination :data="patients" @pagination-change-page="getResults"></pagination>
+                            <pagination :data="medications" @pagination-change-page="getResults"></pagination>
                         </div>
                     </div>
                 </div>
@@ -63,14 +55,14 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" v-show="!editmode" id="addNew">Add New Patient</h5>
-                            <h5 class="modal-title" v-show="editmode" id="addNew">Update Patient</h5>
+                            <h5 class="modal-title" v-show="!editmode" id="addNew">Add New medication</h5>
+                            <h5 class="modal-title" v-show="editmode" id="addNew">Update medication</h5>
 
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form @submit.prevent="editmode ? updatePatient() : createPatient()">
+                        <form @submit.prevent="editmode ? updateMedication() : createMedication()">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <input v-model="form.name" type="text" name="name" placeholder="Name"
@@ -78,14 +70,19 @@
                                     <has-error :form="form" field="name"></has-error>
                                 </div>
                                 <div class="form-group">
-                                    <input v-model="form.level" type="text" name="level" placeholder="Level"
-                                           class="form-control" :class="{ 'is-invalid': form.errors.has('level') }">
-                                    <has-error :form="form" field="level"></has-error>
+                                    <select v-model="form.type" type="text" name="type"
+                                           class="form-control" :class="{ 'is-invalid': form.errors.has('type') }">
+                                        <option value="">Select Medication Type</option>
+                                        <option value="Scheduled Medication">Scheduled Medication</option>
+                                        <option value="PRN Medication">PRN Medication</option>
+                                    </select>
+                                    <has-error :form="form" field="type"></has-error>
+
                                 </div>
                                 <div class="form-group">
-                            <textarea v-model="form.instructorNote" name="instructorNote" placeholder="Instructors Note (Not Visible to Students)"
-                                      class="form-control" :class="{ 'is-invalid': form.errors.has('instructorNote') }">
-                            <has-error :form="form" field="instructorNote"></has-error>
+                            <textarea v-model="form.description" name="description" placeholder="Instructors Note (Not Visible to Students)"
+                                      class="form-control" :class="{ 'is-invalid': form.errors.has('description') }">
+                            <has-error :form="form" field="description"></has-error>
                             </textarea>
                                 </div>
                                 <div class="form-group">
@@ -115,24 +112,24 @@
             return {
                 editmode: false,
 
-                patients : {},
+                medications : {},
 
                 form : new Form ({
                     id: '',
                     name : '',
-                    level : '',
-                    instructorNote : '',
+                    type : '',
+                    description : '',
                     barcode : '',
                 })
             }
         },
         methods: {
-            editModal(patient){
+            editModal(medication){
                 this.editmode = true;
                 this.form.clear();
                 this.form.reset();
                 $('#addNew').modal('show');
-                this.form.fill(patient);
+                this.form.fill(medication);
             },
 
             newModal(){
@@ -141,23 +138,23 @@
                 $('#addNew').modal('show');
             },
 
-            loadPatients(){
+            loadMedication(){
                 {
-                    axios.get("api/patient").then(({data}) => (this.patients = data));
+                    axios.get("api/medication").then(({data}) => (this.medications = data));
                 }
             },
 
 
 
-            createPatient(){
+            createMedication(){
                 //Progress bar
                 this.$Progress.start();
 
-                //Post Patients API
-                this.form.post('api/patient')
+                //Post medications API
+                this.form.post('api/medication')
                     .then(()=>{
                                                     //Fire Event
-                            Fire.$emit('LoadPatients');
+                            Fire.$emit('loadMedication');
 
 
                             //hide Modal
@@ -166,7 +163,7 @@
                             // Sweet Alert
                             toast.fire({
                                 type: 'success',
-                                title: 'Patient Created Successfully'
+                                title: 'medication Created Successfully'
                             });
 
                         }
@@ -177,7 +174,7 @@
                         toast.fire({
                             type: 'error',
                             title: 'Oops...',
-                            html: 'Something went wrong! </br> Unable to create New Patients. '
+                            html: 'Something went wrong! </br> Unable to create New medications. '
                         })
                         this.$Progress.fail();
 
@@ -185,18 +182,18 @@
                 this.$Progress.finish();
             },
 
-            updatePatient(){
+            updateMedication(){
                 this.$Progress.start();
-                this.form.put('api/patient/' +this.form.id)
+                this.form.put('api/medication/' +this.form.id)
                     .then(()=>{
                         //Sweet Alert
                         toast.fire({
                             type: 'success',
-                            title: 'Patients Updated Successfully'
+                            title: 'Medications Updated Successfully'
                         });
 
                         //Fire Event
-                        Fire.$emit('LoadPatients');
+                        Fire.$emit('loadMedication');
 
                         //hide Modal
                         $('#addNew').modal('hide');
@@ -209,12 +206,12 @@
                         toast.fire({
                             type: 'error',
                             title: 'Oops...',
-                            text: 'Unable to Update Patients!'
+                            text: 'Unable to Update medications!'
                         })
                     });
             },
 
-            deletePatient(id){
+            deleteMedication(id){
                 this.$Progress.start();
                 Swal.fire({
                     title: 'Are you sure?',
@@ -228,10 +225,10 @@
 
                     //send  request to the server
                     if(result.value){
-                        this.form.delete('api/patient/'+id).then(()=>{
+                        this.form.delete('api/medication/'+id).then(()=>{
                             {
                                 //Fire Event
-                                Fire.$emit('LoadPatients');
+                                Fire.$emit('loadMedication');
 
                                 Swal.fire(
                                     'Deleted!',
@@ -244,7 +241,7 @@
                             toast.fire({
                                 type: 'error',
                                 title: 'Oops...',
-                                text: 'Something went wrong! Unable to Delete Patient'
+                                text: 'Something went wrong! Unable to Delete medication'
                             })
                             this.$Progress.fail();
                         })
@@ -254,18 +251,18 @@
 
 
             getResults(page = 1) {
-                axios.get('api/patient?page=' + page)
+                axios.get('api/medication?page=' + page)
                     .then(response => {
-                        this.patients = response.data;
+                        this.medications = response.data;
                     });
             },
 
         },
 
         created() {
-            this.loadPatients();
-            Fire.$on('LoadPatients', () => {
-                this.loadPatients();
+            this.loadMedication();
+            Fire.$on('loadMedication', () => {
+                this.loadMedication();
             })
         }
     }
