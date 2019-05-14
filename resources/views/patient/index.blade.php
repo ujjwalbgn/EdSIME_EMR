@@ -3,7 +3,7 @@
 @section('title', 'Patient Table')
 
 @section('content')
-    <div id="app">
+    <div>
         <patient-table></patient-table>
     </div>
 @endsection

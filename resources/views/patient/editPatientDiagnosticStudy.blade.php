@@ -12,7 +12,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h6 class="">Diagnostic Study for <strong>{{$patient->name}}</strong></h6>
+                            <h6 class="card-title">Diagnostic Study for <strong>{{$patient->name}}</strong></h6>
                         </div>
                         <div class="card-body">
                             <form method="post" action="/patientDiagnosticStudy/{{$patientDiagnosticStudy->id}}">
