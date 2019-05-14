@@ -64340,7 +64340,7 @@ var render = function() {
                           ),
                           _c(
                             "a",
-                            { attrs: { href: "/mar/patient" + patient.id } },
+                            { attrs: { href: "/mar/patient/" + patient.id } },
                             [
                               _c(
                                 "i",

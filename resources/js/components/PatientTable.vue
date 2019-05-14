@@ -45,7 +45,7 @@
                                             <i class="fas fa-address-card indigo"> EHR</i>
                                         </a>
                                         /
-                                        <a v-bind:href="'/mar/patient'+ patient.id" >
+                                        <a v-bind:href="'/mar/patient/'+ patient.id" >
                                             <i class="fas fa-calendar-check orange"> MAR</i>
                                         </a>
                                     </td>

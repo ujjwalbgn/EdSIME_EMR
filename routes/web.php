@@ -34,8 +34,11 @@ Route::middleware('auth')->group(function(){
         'providerOrder' => 'ProviderOrderController',
         'patientForm' => 'PatientFormController',
         'patientDiagnosticStudy' => 'PatientDiagnosticStudyController',
-        'medication' => 'MedicationController'
+        'medication' => 'MedicationController',
     ]);
+
+    //MAR Routes
+    Route::get('/mar/patient/{patient}','MedicationPatientController@index');
 });
 
 Auth::routes();
