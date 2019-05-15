@@ -16,6 +16,7 @@
 
                         </div>
                         <div class="card-body">
+                            Assign Medication
                             @foreach($medications as $medication)
                                 {{$medication->name}} <br>
                                 @endforeach
