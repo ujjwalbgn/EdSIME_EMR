@@ -16,17 +16,29 @@
 
                         </div>
                         <div class="card-body">
-                            Assign Medication
-                            @foreach($medications as $medication)
-                                {{$medication->name}} <br>
+                            <form method="post" action="/mar/patient/{{$patient->id}}/med">
+                                @method('post')
+                                @csrf
+                                @foreach($medications as $medication)
+                                    <ul>
+                                        <label class="checkbox" for="assigned">
+                                            <input type="checkbox" name="assigned[]" value="{{$medication->id}}">
+                                            {{$medication->name}}
+                                        </label>
+                                    </ul>
                                 @endforeach
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-info">Submit</button>
+                                    <button  class="btn btn-default float-right">Cancel</button>
+                                </div>
+                            </form>
+
                         </div>
                     </div>
 
                 </div>
             </div>
         </div>
-
         </div>
     </section>
 @endsection

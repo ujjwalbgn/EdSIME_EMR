@@ -64055,7 +64055,7 @@ var render = function() {
                             attrs: {
                               name: "description",
                               placeholder:
-                                "Instructors Note (Not Visible to Students)"
+                                "Description (This will be visible to students)"
                             },
                             domProps: { value: _vm.form.description },
                             on: {

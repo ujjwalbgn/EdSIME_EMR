@@ -19,7 +19,7 @@ class MedicationController extends Controller
      */
     public function index()
     {
-        return Medication::all()->first()->paginate(2);
+        return Medication::all()->first()->paginate(10);
 
     }
 
