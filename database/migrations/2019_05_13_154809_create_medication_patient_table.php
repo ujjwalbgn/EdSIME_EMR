@@ -15,8 +15,8 @@ class CreateMedicationPatientTable extends Migration
     {
         Schema::create('medication_patient', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('med_id');
-            $table->foreign('med_id')->references('id')->on('medications')->ondelete('cascade');
+            $table->unsignedInteger('medication_id');
+            $table->foreign('medication_id')->references('id')->on('medications')->ondelete('cascade');
             $table->unsignedInteger('patient_id');
             $table->foreign('patient_id')->references('id')->on('patients')->ondelete('cascade');
             $table->timestamps();

@@ -18,4 +18,9 @@ class Patient extends Model
         $this->belongsTo(PatientHistory::class);
     }
 
+    public function medication()
+    {
+        return $this->belongsToMany('App\Medication');
+    }
+
 }

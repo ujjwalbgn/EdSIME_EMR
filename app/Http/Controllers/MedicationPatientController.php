@@ -16,8 +16,8 @@ class MedicationPatientController extends Controller
     public function index(Patient $patient, Medication $medication)
     {
         $medications = Medication::all();
-//        dd($medications);
-        return view('medicationPatient.index', compact('patient', 'medications' ));
+        $assignedMeds = $patient->medication()->get();
+        return view('medicationPatient.index', compact('patient', 'medications', 'assignedMeds' ));
     }
 
     /**
@@ -36,10 +36,10 @@ class MedicationPatientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Patient $patient)
     {
-        $medsAssign = $request->input('assigned');
-        dd($medsAssign);
+        $patient->medication()->attach($request->assigned);
+        return redirect('/mar/patient/'.$patient->id )->with(['message' => 'Medication has been added to Patient`s record successfully']);
     }
 
     /**
@@ -48,9 +48,9 @@ class MedicationPatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Patient $patient)
     {
-        //
+
     }
 
     /**
