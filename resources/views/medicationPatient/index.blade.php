@@ -27,7 +27,9 @@
                                             <a href="" class="">Medication Time</a>
                                         </div>
                                         <div class="col-2">
-                                            <form>
+                                            <form method="post" action="/mar/patient/{{$patient->id}}/med/{{$assignMed->id}}">
+                                                @method('DELETE')
+                                                @csrf
                                                 <button class="small-box btn-danger">Remove</button>
                                             </form>
                                         </div>

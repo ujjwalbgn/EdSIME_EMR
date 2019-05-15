@@ -244,7 +244,7 @@
                             toast.fire({
                                 type: 'error',
                                 title: 'Oops...',
-                                text: 'Something went wrong! Unable to Delete Patient<br> Make your all Medications have been removed from pateint`s Mar'
+                                text: 'Something went wrong! Unable to Delete Patient Make your all Medications have been removed from Pateint`s Mar'
                             })
                             this.$Progress.fail();
                         })

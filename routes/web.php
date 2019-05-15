@@ -40,8 +40,7 @@ Route::middleware('auth')->group(function(){
     //MAR Routes
     Route::get('/mar/patient/{patient}','MedicationPatientController@index');
     Route::post('/mar/patient/{patient}/med','MedicationPatientController@store');
-    Route::get('/mar/patient/{patient}/med','MedicationPatientController@show');
-
+    Route::delete('/mar/patient/{patient}/med/{medication}','MedicationPatientController@destroy');
 
 });
 
