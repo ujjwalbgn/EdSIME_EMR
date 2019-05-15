@@ -38,7 +38,8 @@ class MedicationPatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $medsAssign = $request->input('assigned');
+        dd($medsAssign);
     }
 
     /**

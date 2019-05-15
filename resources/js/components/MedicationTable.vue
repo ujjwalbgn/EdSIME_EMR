@@ -80,7 +80,7 @@
 
                                 </div>
                                 <div class="form-group">
-                            <textarea v-model="form.description" name="description" placeholder="Instructors Note (Not Visible to Students)"
+                            <textarea v-model="form.description" name="description" placeholder="Description (This will be visible to students)"
                                       class="form-control" :class="{ 'is-invalid': form.errors.has('description') }">
                             <has-error :form="form" field="description"></has-error>
                             </textarea>

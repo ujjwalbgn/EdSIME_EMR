@@ -22,7 +22,7 @@ class PatientController extends Controller
 
     public function index()
     {
-        return Patient::all()->first()->paginate(2);
+        return Patient::all()->first()->paginate(10);
     }
 
     public function store(Request $request)
