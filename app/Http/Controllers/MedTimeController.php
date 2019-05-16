@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\MedTime;
+use App\Medication;
+use App\Patient;
 use Illuminate\Http\Request;
 
 class MedTimeController extends Controller
@@ -12,9 +14,9 @@ class MedTimeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Patient $patient, Medication $medication)
     {
-        //
+        return view('medicationPatient.medTime', compact('patient','medication'));
     }
 
     /**

@@ -24,7 +24,7 @@
                                             {{$assignMed->name}} Type:{{$assignMed->type}}
                                         </div>
                                         <div class="col-2">
-                                            <a href="" class="">Medication Time</a>
+                                            <a href="/mar/{{$patient->id}}/{{$assignMed->id}}/time" class="">Medication Time</a>
                                         </div>
                                         <div class="col-2">
                                             <form method="post" action="/mar/patient/{{$patient->id}}/med/{{$assignMed->id}}">
