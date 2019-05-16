@@ -43,6 +43,8 @@ Route::middleware('auth')->group(function(){
     Route::delete('/mar/patient/{patient}/med/{medication}','MedicationPatientController@destroy');
 
     Route::get('/mar/{patient}/{medication}/time', 'MedTimeController@index');
+    Route::post('/mar/{patient}/{medication}/time', 'MedTimeController@store');
+
 
 });
 
