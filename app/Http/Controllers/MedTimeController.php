@@ -16,6 +16,7 @@ class MedTimeController extends Controller
      */
     public function index(Patient $patient, Medication $medication)
     {
+//        dd($patient, $medication);
         return view('medicationPatient.medTime', compact('patient','medication'));
     }
 

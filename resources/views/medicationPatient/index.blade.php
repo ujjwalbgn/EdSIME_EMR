@@ -13,7 +13,6 @@
                         <div class="card">
                         <div class="card-header">
                             <h6 class="card-title"> <strong>Medication's to {{$patient->name}} Level: {{$patient->level }}</strong></h6>
-
                         </div>
                         <div class="mt m-5 align-center">
                             <h5><strong> List Of Medications Already Assigned</strong></h5>
@@ -48,10 +47,8 @@
                                 @csrf
                                 @foreach($medications as $medication)
                                     <ul>
-                                        <label class="checkbox" for="assigned">
                                             <input type="checkbox" name="assigned[]" value="{{$medication->id}}">
                                             {{$medication->name}} Type: {{$medication->type}}
-                                        </label>
                                     </ul>
                                 @endforeach
                                 <div class="card-footer">

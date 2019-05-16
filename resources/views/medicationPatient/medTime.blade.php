@@ -11,11 +11,18 @@
                     <div class="card">
                         <div class="card-header">
                             <h6 class="card-title"> <strong>Medication's to {{$patient->name}} Level: {{$patient->level }}</strong></h6>
-
                         </div>
                         <div class="mt m-3 align-center">
-                            <h5><strong>Add Time For Medication</strong></h5>
+                            <h5><strong>Add Medication Time For {{$medication->name}}</strong></h5>
+                            <form method="post" action="/mar/{{$patient->id}}/{{$medication->id}}/time">
+                                @method('post')
+                                @csrf
 
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-info">Submit</button>
+                                    <button  type="reset" class="btn btn-default float-right">Cancel</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
