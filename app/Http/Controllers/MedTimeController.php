@@ -17,8 +17,26 @@ class MedTimeController extends Controller
      */
     public function index(Patient $patient, Medication $medication)
     {
-//        dd($patient, $medication);
-        return view('medicationPatient.medTime', compact('patient','medication'));
+        $medPatient = DB::table('medication_patient')->select('id')
+            ->Where([
+                ['patient_id','=', $patient->id],
+                ['medication_id' ,'=', $medication->id]
+            ])->get()->first;
+        $medPatientId = $medPatient->id->id;
+        $assignedMedTimes = MedTime::where('med_patient_id' ,'=' , $medPatientId)->get();
+
+        $yesterdayMedTimes = $assignedMedTimes->where('day', '=', 'yesterday')->all();
+        $todayMedTimes = $assignedMedTimes->where('day', '=', 'today')->all();
+        $tomorrowMedTimes = $assignedMedTimes->where('day', '=', 'tomorrow')->all();
+
+    //        dd($todayMed);
+
+        return view('medicationPatient.medTime', compact('patient','medication'),[
+            'assignedMedTimes' => $assignedMedTimes,
+            'yesterdayMedTimes' => $yesterdayMedTimes,
+            'todayMedTimes' => $todayMedTimes,
+            'tomorrowMedTimes' => $tomorrowMedTimes,
+        ]);
     }
 
     /**
@@ -39,14 +57,27 @@ class MedTimeController extends Controller
      */
     public function store(Request $request, Patient $patient, Medication $medication)
     {
-       $medPatient = DB::table('medication_patient')->select('id')
-       ->Where([
-           ['patient_id','=', $patient->id],
-           ['medication_id' ,'=', $medication->id]
-       ])->get()->first;
+        $medPatient = DB::table('medication_patient')->select('id')
+            ->Where([
+                ['patient_id','=', $patient->id],
+                ['medication_id' ,'=', $medication->id]
+            ])->get()->first;
 
-       $medPatientId = $medPatient->id->id;
-        dd($medPatientId);
+        $medPatientId = $medPatient->id->id;
+
+
+        MedTime::create([
+            'med_patient_id' => $medPatientId,
+            'day' => $request->day,
+            'time' => $request->time,
+            'given' => $request->given,
+            'givenby' => $request->givenby,
+            'lock' => $request->lock,
+        ]);
+
+        return back()->with(['message' => 'Medication has been added to Patient`s record successfully']);
+
+
 
     }
 
@@ -92,6 +123,7 @@ class MedTimeController extends Controller
      */
     public function destroy(MedTime $medTime)
     {
-        //
+        $medTime->delete();
+        return back()->with(['message' => 'Medication Time has been removed']);
     }
 }

@@ -8,7 +8,7 @@ class MedicationPatient extends Model
 {
     protected $guarded = [];
 
-    public function med_times() {
+    public function MedTime() {
         return $this->hasMany(MedTime::class, 'med_patient_id');
     }
 }

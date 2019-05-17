@@ -18,6 +18,7 @@ class MedicationPatientController extends Controller
     {
         $medications = Medication::all();
         $assignedMeds = $patient->medication()->get();
+
         return view('medicationPatient.index', compact('patient', 'medications', 'assignedMeds' ));
     }
 
