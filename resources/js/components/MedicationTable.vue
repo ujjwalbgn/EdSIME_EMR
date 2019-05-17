@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-5">
+    <div class="row mt-5" v-if="$gate.isAdminOrAuthor()">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card card-default">
@@ -51,6 +51,14 @@
                     </div>
                 </div>
             </div>
+
+            <div v-if="!$gate.isAdminOrAuthor()">
+                <not-found></not-found>
+                Please make sure you have access of the requested resource.
+                </br>
+                If you think this a by mistake please contact EdSime.
+            </div>
+
             <div class="modal fade" id="addNew" tabindex="-1" role="dialog" aria-labelledby="addNew" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
@@ -102,6 +110,7 @@
             </div>
         </div>
     </div>
+
 </template>
 
 <script>
@@ -139,6 +148,7 @@
             },
 
             loadMedication(){
+                if (this.$gate.isAdminOrAuthor())
                 {
                     axios.get("api/medication").then(({data}) => (this.medications = data));
                 }

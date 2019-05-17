@@ -50,8 +50,10 @@
             </div>
         </div>
 
-        <div v-if="!$gate.isAdminOrAuthor()">
-            <not-found></not-found>
+        <div v-if="!$gate.isAdminOrAuthor()" class="mt-5">
+            Please make sure you have access of the requested resource.
+            </br>
+            If you think this a by mistake please contact EdSime.
         </div>
 
         <!-- Modal -->

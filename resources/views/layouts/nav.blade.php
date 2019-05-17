@@ -35,6 +35,22 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item">
+                <a href="/patient" class="nav-link {{ Request::segment(1) == 'patient' ? 'nav-active' : '' }}">
+                    <i class="nav-icon fa fa-user-md indigo"></i>
+                    <p>
+                        Patient
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/medication" class="nav-link {{ Request::segment(1) == 'medication' ? 'nav-active' : '' }}">
+                    <i class="nav-icon fas fa-briefcase-medical blue"></i>
+                    <p>
+                        Medication
+                    </p>
+                </a>
+            </li>
             {{--<li class="nav-item">--}}
                 {{--<a href="/developer" class="nav-link">--}}
                     {{--<i class="nav-icon fas fa-user-cog teal"></i>--}}
@@ -45,22 +61,7 @@
             {{--</li>--}}
         @endcan
 
-        <li class="nav-item">
-            <a href="/patient" class="nav-link {{ Request::segment(1) == 'patient' ? 'nav-active' : '' }}">
-                <i class="nav-icon fa fa-user-md indigo"></i>
-                <p>
-                    Patient
-                </p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="/medication" class="nav-link {{ Request::segment(1) == 'medication' ? 'nav-active' : '' }}">
-                <i class="nav-icon fas fa-briefcase-medical blue"></i>
-                <p>
-                    Medication
-                </p>
-            </a>
-        </li>
+
         <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}"
                onclick="event.preventDefault();
