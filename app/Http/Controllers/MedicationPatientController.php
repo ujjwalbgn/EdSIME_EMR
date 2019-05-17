@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Medication;
 use App\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MedicationPatientController extends Controller
 {
@@ -38,6 +39,18 @@ class MedicationPatientController extends Controller
      */
     public function store(Request $request, Patient $patient)
     {
+
+        foreach ($request->assigned as $med_id) {
+            $exists = DB::table('medication_patient')
+                    ->whereMedication_id($med_id)
+                    ->wherePatient_id($patient->id)
+                    ->count() > 0;
+                if($exists == true){
+                return redirect('/mar/patient/'.$patient->id )->with(['warning' =>
+                    'One or more of the selected Medication is already  present in Patient`s Record. Please try again']);
+            }
+        }
+
         $patient->medication()->attach($request->assigned);
         return redirect('/mar/patient/'.$patient->id )->with(['message' => 'Medication has been added to Patient`s record successfully']);
     }

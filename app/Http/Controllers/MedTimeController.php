@@ -39,15 +39,15 @@ class MedTimeController extends Controller
      */
     public function store(Request $request, Patient $patient, Medication $medication)
     {
-       $medPatient = DB::table('medication_patient')->where([
+       $medPatient = DB::table('medication_patient')->select('id')
+       ->Where([
            ['patient_id','=', $patient->id],
            ['medication_id' ,'=', $medication->id]
        ])->get()->first;
 
        $medPatientId = $medPatient->id->id;
-
-
         dd($medPatientId);
+
     }
 
     /**
