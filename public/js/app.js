@@ -2191,10 +2191,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       editmode: false,
+      search: "",
       medications: {},
       form: new Form({
         id: '',
@@ -2206,6 +2215,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    searchStart: _.debounce(function () {
+      Fire.$emit('searching');
+    }, 700),
     editModal: function editModal(medication) {
       this.editmode = true;
       this.form.clear();
@@ -2331,6 +2343,12 @@ __webpack_require__.r(__webpack_exports__);
     this.loadMedication();
     Fire.$on('loadMedication', function () {
       _this6.loadMedication();
+    });
+    Fire.$on('searching', function () {
+      var query = _this6.search;
+      axios.get('api/findMedication?q=' + query).then(function (data) {
+        _this6.medications = data.data;
+      }).catch(function () {});
     });
   }
 });
@@ -2464,10 +2482,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       editmode: false,
+      search: "",
       patients: {},
       form: new Form({
         id: '',
@@ -2479,6 +2506,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    searchStart: _.debounce(function () {
+      Fire.$emit('searching');
+    }, 700),
     editModal: function editModal(patient) {
       this.editmode = true;
       this.form.clear();
@@ -2604,6 +2634,12 @@ __webpack_require__.r(__webpack_exports__);
     this.loadPatients();
     Fire.$on('LoadPatients', function () {
       _this6.loadPatients();
+    });
+    Fire.$on('searching', function () {
+      var query = _this6.search;
+      axios.get('api/findPatient?q=' + query).then(function (data) {
+        _this6.patients = data.data;
+      }).catch(function () {});
     });
   }
 });
@@ -2972,10 +3008,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       editmode: false,
+      search: "",
       users: {},
       form: new Form({
         id: '',
@@ -2989,6 +3035,9 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    searchStart: _.debounce(function () {
+      Fire.$emit('searching');
+    }, 700),
     editModal: function editModal(user) {
       this.editmode = true;
       this.form.clear();
@@ -3004,7 +3053,7 @@ __webpack_require__.r(__webpack_exports__);
     loadUsers: function loadUsers() {
       var _this = this;
 
-      if (this.$gate.isAdminOrAuthor()) {
+      if (this.$gate.isAdmin()) {
         axios.get("api/user").then(function (_ref) {
           var data = _ref.data;
           return _this.users = data;
@@ -3117,7 +3166,7 @@ __webpack_require__.r(__webpack_exports__);
       _this6.loadUsers();
     });
     Fire.$on('searching', function () {
-      var query = _this6.$parent.search;
+      var query = _this6.search;
       axios.get('api/findUser?q=' + query).then(function (data) {
         _this6.users = data.data;
       }).catch(function () {});
@@ -63779,6 +63828,46 @@ var render = function() {
                   _vm._v("Medications Table")
                 ]),
                 _vm._v(" "),
+                _c("div", { staticClass: "input-group input-group-sm col-3" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.search,
+                        expression: "search"
+                      }
+                    ],
+                    staticClass: "form-control form-control-navbar",
+                    attrs: {
+                      type: "search",
+                      placeholder: "Search",
+                      "aria-label": "Search"
+                    },
+                    domProps: { value: _vm.search },
+                    on: {
+                      keyup: _vm.searchStart,
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.search = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group-append" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-navbar",
+                        on: { click: _vm.searchStart }
+                      },
+                      [_c("i", { staticClass: "fa fa-search" })]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
                 _c("div", { staticClass: "card-tools" }, [
                   _c(
                     "button",
@@ -63795,7 +63884,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "card-body" }, [
-                _c("div", { staticClass: "card-body table-responsive p-0" }, [
+                _c("div", { staticClass: "card-body table-responsive" }, [
                   _c("table", { staticClass: "table table-hover" }, [
                     _c(
                       "tbody",
@@ -64304,6 +64393,46 @@ var render = function() {
               _c("div", { staticClass: "card-header" }, [
                 _c("h3", { staticClass: "card-title" }, [
                   _vm._v("Patients Table")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "input-group input-group-sm col-3" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.search,
+                        expression: "search"
+                      }
+                    ],
+                    staticClass: "form-control form-control-navbar",
+                    attrs: {
+                      type: "search",
+                      placeholder: "Search",
+                      "aria-label": "Search"
+                    },
+                    domProps: { value: _vm.search },
+                    on: {
+                      keyup: _vm.searchStart,
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.search = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group-append" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-navbar",
+                        on: { click: _vm.searchStart }
+                      },
+                      [_c("i", { staticClass: "fa fa-search" })]
+                    )
+                  ])
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "card-tools" }, [
@@ -65225,25 +65354,67 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _vm.$gate.isAdminOrAuthor()
+    _vm.$gate.isAdmin()
       ? _c("div", { staticClass: "row mt-5" }, [
           _c("div", { staticClass: "col-12" }, [
             _c("div", { staticClass: "card" }, [
               _c("div", { staticClass: "card-header" }, [
                 _c("h3", { staticClass: "card-title" }, [_vm._v("User Table")]),
                 _vm._v(" "),
-                _c("div", { staticClass: "card-tools" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success",
-                      on: { click: _vm.newModal }
+                _c("div", { staticClass: "input-group input-group-sm col-3" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.search,
+                        expression: "search"
+                      }
+                    ],
+                    staticClass: "form-control form-control-navbar",
+                    attrs: {
+                      type: "search",
+                      placeholder: "Search",
+                      "aria-label": "Search"
                     },
-                    [
-                      _vm._v("Add New "),
-                      _c("i", { staticClass: "fas fa-user-plus fa-fw" })
-                    ]
-                  )
+                    domProps: { value: _vm.search },
+                    on: {
+                      keyup: _vm.searchStart,
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.search = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group-append" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-navbar",
+                        on: { click: _vm.searchStart }
+                      },
+                      [_c("i", { staticClass: "fa fa-search" })]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-tools" }, [
+                  _c("div", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        on: { click: _vm.newModal }
+                      },
+                      [
+                        _vm._v("Add New "),
+                        _c("i", { staticClass: "fas fa-user-plus fa-fw" })
+                      ]
+                    )
+                  ])
                 ])
               ]),
               _vm._v(" "),
@@ -65327,7 +65498,7 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    !_vm.$gate.isAdminOrAuthor()
+    !_vm.$gate.isAdmin()
       ? _c("div", { staticClass: "mt-5" }, [
           _vm._v(
             "\n        Please make sure you have access of the requested resource.\n        "
@@ -79531,15 +79702,7 @@ Vue.component('patient-table', __webpack_require__(/*! ./components/PatientTable
 Vue.component('medication-table', __webpack_require__(/*! ./components/MedicationTable */ "./resources/js/components/MedicationTable.vue").default);
 Vue.component('admission-record', __webpack_require__(/*! ./components/AdmissionRecord */ "./resources/js/components/AdmissionRecord.vue").default);
 var app = new Vue({
-  el: '#app',
-  data: {
-    search: ""
-  },
-  methods: {
-    searchStart: _.debounce(function () {
-      Fire.$emit('searching');
-    }, 700)
-  }
+  el: '#app'
 });
 
 /***/ }),

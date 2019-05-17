@@ -35,7 +35,9 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item">
+        @endcan
+        @can('isAdminAuthor')
+        <li class="nav-item">
                 <a href="/patient" class="nav-link {{ Request::segment(1) == 'patient' ? 'nav-active' : '' }}">
                     <i class="nav-icon fa fa-user-md indigo"></i>
                     <p>

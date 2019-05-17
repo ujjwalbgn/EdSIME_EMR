@@ -94,6 +94,21 @@ class MedicationController extends Controller
         $medication->update($request->all());
     }
 
+    public function search(){
+        if($search = \Request::get('q')){
+            $medications = Medication::where(function($query) use ($search){
+                $query->where('name','LIKE',"%$search%")
+                    ->orWhere('barcode','LIKE',"%$search%")
+                    ->orWhere('type','LIKE',"%$search%");
+            })->paginate(10);
+
+        } else {
+            $medications = parent::all()->first()->paginate(10);
+        }
+
+        return $medications;
+    }
+
     /**
      * Remove the specified resource from storage.
      *

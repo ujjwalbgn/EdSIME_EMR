@@ -1,14 +1,23 @@
 <template>
     <div class="container">
-        <div class="row mt-5" v-if="$gate.isAdminOrAuthor()">
+        <div class="row mt-5" v-if="$gate.isAdmin()">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title">User Table</h3>
+                        <div class="input-group input-group-sm col-3">
+                            <input class="form-control form-control-navbar" v-model="search" @keyup="searchStart" type="search" placeholder="Search" aria-label="Search" >
+                            <div class="input-group-append">
+                                <button class="btn btn-navbar" @click="searchStart">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
 
                         <div class="card-tools">
-                            <button class="btn btn-success" @click="newModal">Add New <i class="fas fa-user-plus fa-fw"></i> </button>
+                            <div><button class="btn btn-success" @click="newModal">Add New <i class="fas fa-user-plus fa-fw"></i> </button></div>
                         </div>
+
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body table-responsive p-0">
@@ -50,7 +59,7 @@
             </div>
         </div>
 
-        <div v-if="!$gate.isAdminOrAuthor()" class="mt-5">
+        <div v-if="!$gate.isAdmin()" class="mt-5">
             Please make sure you have access of the requested resource.
             </br>
             If you think this a by mistake please contact EdSime.
@@ -123,6 +132,8 @@
 
                 editmode: false,
 
+                search: "",
+
                 users : {},
 
                 form : new Form ({
@@ -138,6 +149,10 @@
         },
 
         methods: {
+            searchStart: _.debounce(()=>{
+                Fire.$emit('searching');
+            },700),
+
             editModal(user){
                 this.editmode = true;
                 this.form.clear();
@@ -152,7 +167,7 @@
             },
 
             loadUsers(){
-               if (this.$gate.isAdminOrAuthor())
+               if (this.$gate.isAdmin())
                {
                    axios.get("api/user").then(({data}) => (this.users = data));
                }
@@ -272,16 +287,16 @@
             this.loadUsers();
             Fire.$on('LoadUser',()=> {
                 this.loadUsers();
-            })
+            });
             Fire.$on('searching',()=>{
-                let query = this.$parent.search;
+                let query = this.search;
                 axios.get('api/findUser?q='+ query)
                     .then((data)=>{
                         this.users = data.data
                     })
                     .catch(()=>{
 
-                    })
+                    });
             })
         }
     }
