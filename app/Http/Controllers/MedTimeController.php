@@ -6,6 +6,7 @@ use App\MedTime;
 use App\Medication;
 use App\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MedTimeController extends Controller
 {
@@ -36,9 +37,17 @@ class MedTimeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Patient $patient, Medication $medication)
     {
-        //
+       $medPatient = DB::table('medication_patient')->where([
+           ['patient_id','=', $patient->id],
+           ['medication_id' ,'=', $medication->id]
+       ])->get()->first;
+
+       $medPatientId = $medPatient->id->id;
+
+
+        dd($medPatientId);
     }
 
     /**

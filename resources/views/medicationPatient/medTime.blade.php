@@ -48,7 +48,7 @@
                                 <div class="form-group row">
                                     <label for="givenby" class="col-sm-4 col-form-label">* Given by</label>
                                     <div class="col-sm-6">
-                                        <input type="text" name="givenby" class="form-control" id="givenby" placeholder="Given by" required
+                                        <input type="text" name="givenby" class="form-control" id="givenby" placeholder="Given by"
                                                value= @if(isset($medtime))"{{$medtime->givenby}}"@else "{{old('givenby')}}"@endif>
                                     </div>
                                 </div>
