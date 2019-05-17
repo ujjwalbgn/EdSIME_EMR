@@ -14,7 +14,7 @@
     <link rel="stylesheet" href={{asset("/css/app.css")}}>
     @yield('style')
 </head>
-<body class="hold-transition sidebar-open">
+<body class="hold-transition sidebar-mini">
 <div class="wrapper" id="app">
 
     <!-- Navbar -->
@@ -26,14 +26,14 @@
         </ul>
 
         <!-- SEARCH FORM -->
-        <div class="input-group input-group-sm col-3">
-            <input class="form-control form-control-navbar" v-model="search" @keyup="searchStart" type="search" placeholder="Search" aria-label="Search" >
-            <div class="input-group-append">
-                <button class="btn btn-navbar" @click="searchStart">
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
-        </div>
+        {{--<div class="input-group input-group-sm col-3">--}}
+            {{--<input class="form-control form-control-navbar" v-model="search" @keyup="searchStart" type="search" placeholder="Search" aria-label="Search" >--}}
+            {{--<div class="input-group-append">--}}
+                {{--<button class="btn btn-navbar" @click="searchStart">--}}
+                    {{--<i class="fa fa-search"></i>--}}
+                {{--</button>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </nav>
     <!-- /.navbar -->
 

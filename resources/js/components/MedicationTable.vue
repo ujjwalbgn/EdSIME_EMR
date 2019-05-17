@@ -5,13 +5,21 @@
                 <div class="card card-default">
                     <div class="card-header">
                         <h3 class="card-title">Medications Table</h3>
+                        <div class="input-group input-group-sm col-3">
+                            <input class="form-control form-control-navbar" v-model="search" @keyup="searchStart" type="search" placeholder="Search" aria-label="Search" >
+                            <div class="input-group-append">
+                                <button class="btn btn-navbar" @click="searchStart">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
                         <div class="card-tools">
                             <button class="btn btn-success" @click="newModal">Add New <i class="fas fa-user-plus fa-fw"></i> </button>
                         </div>
                     </div>
 
                     <div class="card-body">
-                        <div class="card-body table-responsive p-0">
+                        <div class="card-body table-responsive">
                             <table class="table table-hover">
                                 <tbody><tr>
                                     <th>ID</th>
@@ -121,6 +129,9 @@
             return {
                 editmode: false,
 
+                search: "",
+
+
                 medications : {},
 
                 form : new Form ({
@@ -133,6 +144,10 @@
             }
         },
         methods: {
+            searchStart: _.debounce(()=>{
+                Fire.$emit('searching');
+            },700),
+
             editModal(medication){
                 this.editmode = true;
                 this.form.clear();
@@ -273,7 +288,18 @@
             this.loadMedication();
             Fire.$on('loadMedication', () => {
                 this.loadMedication();
+            });
+            Fire.$on('searching',()=>{
+                let query = this.search;
+                axios.get('api/findMedication?q='+ query)
+                    .then((data)=>{
+                        this.medications = data.data
+                    })
+                    .catch(()=>{
+
+                    });
             })
+
         }
     }
 </script>

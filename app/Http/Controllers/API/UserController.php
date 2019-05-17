@@ -19,13 +19,13 @@ class UserController extends Controller
 
     public function index()
     {
-//        $this->authorize('isAdmin');
-        if(Gate::allows('isAdmin') || Gate::allows('isAuthor')){
+        $this->authorize('isAdmin');
+//        if(Gate::allows('isAdmin') || Gate::allows('isAuthor')){
             return user::all()->first()->paginate(2);
 
             //todo change pagination number
 
-        }
+//        }
     }
 
     public function store(Request $request)

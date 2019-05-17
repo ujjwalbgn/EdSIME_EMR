@@ -78,6 +78,22 @@ class PatientController extends Controller
         $patient->update($request->all());
     }
 
+    public function search(){
+        if($search = \Request::get('q')){
+            $patients = Patient::where(function($query) use ($search){
+                $query->where('name','LIKE',"%$search%")
+                    ->orWhere('barcode','LIKE',"%$search%")
+                    ->orWhere('level','LIKE',"%$search%");
+            })->paginate(3);
+
+            //todo change pagination number
+        } else {
+            $patients = parent::all()->first()->paginate(3);
+        }
+
+        return $patients;
+    }
+
 
     public function destroy($id)
     {

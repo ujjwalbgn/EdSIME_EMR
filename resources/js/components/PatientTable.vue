@@ -5,6 +5,14 @@
                 <div class="card card-default">
                     <div class="card-header">
                         <h3 class="card-title">Patients Table</h3>
+                        <div class="input-group input-group-sm col-3">
+                            <input class="form-control form-control-navbar" v-model="search" @keyup="searchStart" type="search" placeholder="Search" aria-label="Search" >
+                            <div class="input-group-append">
+                                <button class="btn btn-navbar" @click="searchStart">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
                         <div class="card-tools">
                             <button class="btn btn-success" @click="newModal">Add New <i class="fas fa-user-plus fa-fw"></i> </button>
                         </div>
@@ -124,6 +132,8 @@
             return {
                 editmode: false,
 
+                search: "",
+
                 patients : {},
 
                 form : new Form ({
@@ -136,6 +146,10 @@
             }
         },
         methods: {
+            searchStart: _.debounce(()=>{
+                Fire.$emit('searching');
+            },700),
+
             editModal(patient){
                 this.editmode = true;
                 this.form.clear();
@@ -276,6 +290,16 @@
             this.loadPatients();
             Fire.$on('LoadPatients', () => {
                 this.loadPatients();
+            });
+            Fire.$on('searching',()=>{
+                let query = this.search;
+                axios.get('api/findPatient?q='+ query)
+                    .then((data)=>{
+                        this.patients = data.data
+                    })
+                    .catch(()=>{
+
+                    });
             })
         }
     }

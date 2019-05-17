@@ -25,4 +25,6 @@ Route::apiResources([
 
 Route::get('profile','API\UserController@profile');
 Route::get('findUser','API\UserController@search');
+Route::get('findPatient','API\PatientController@search');
+Route::get('findMedication','API\MedicationController@search');
 Route::put('profile','API\UserController@updateProfile');
