@@ -35,6 +35,8 @@ class MedicationController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('isAdminAuthor');
+
         $attributes=  request()->validate([
             'name' => ['required','min:2','max:200'],
             'type' => ['required'],

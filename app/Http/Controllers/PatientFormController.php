@@ -58,6 +58,8 @@ class PatientFormController extends Controller
      */
     public function edit(PatientForm $patientForm)
     {
+        $this->authorize('isAdminAuthor');
+
         $patient = Patient::where('id', '=' , $patientForm->patient_id)->first();
         return view('patient.editPatientForm', compact('patientForm', 'patient'));
     }
@@ -71,6 +73,8 @@ class PatientFormController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('isAdminAuthor');
+
         $patientForm = PatientForm::findorFail($id);
         $patientForm->fill($request->all())->save();
 

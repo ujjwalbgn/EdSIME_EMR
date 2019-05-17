@@ -58,6 +58,8 @@ class ProviderOrderController extends Controller
      */
     public function edit(ProviderOrder $providerOrder)
     {
+        $this->authorize('isAdminAuthor');
+
         $patient = Patient::where('id', '=' , $providerOrder->patient_id)->first();
         return view('patient.editProviderOrder', compact('providerOrder', 'patient'));
     }
@@ -71,6 +73,8 @@ class ProviderOrderController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('isAdminAuthor');
+
         $providerOrder = ProviderOrder::findorFail($id);
         $providerOrder->fill($request->all())->save();
 

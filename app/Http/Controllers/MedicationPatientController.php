@@ -40,6 +40,7 @@ class MedicationPatientController extends Controller
      */
     public function store(Request $request, Patient $patient)
     {
+        $this->authorize('isAdminAuthor');
 
         foreach ($request->assigned as $med_id) {
             $exists = DB::table('medication_patient')
@@ -98,6 +99,8 @@ class MedicationPatientController extends Controller
      */
     public function destroy(Request $request,Patient $patient,Medication $medication)
     {
+        $this->authorize('isAdminAuthor');
+
         $patient->medication()->detach($medication->id);
         return redirect('/mar/patient/'.$patient->id )->with(['message' => 'Medication has been removed from Patient`s record successfully']);
     }
