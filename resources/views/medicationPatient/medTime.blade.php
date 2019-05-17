@@ -5,15 +5,14 @@
 @section('content')
     <section class="content mt-3">
         <div class="container mt-10">
-            <a href="/mar/patient/{{$patient->id}}/" class=" btn btn-primary">View to Patient`s Medication <List></List></a>
+            <a href="/mar/patient/{{$patient->id}}/" class=" btn btn-primary">View to Patient`s Medication List</a>
             <div class="row m-2">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h6 class="card-title"> <strong>Medication's to {{$patient->name}} Level: {{$patient->level }}</strong></h6>
+                            <h6 class="card-title"> <strong>Add {{$patient->name}}'s (Level: {{$patient->level }}) time for {{$medication->name}}</strong></h6>
                         </div>
                         <div class="mt m-3 align-center">
-                            <h5><strong>Add Medication Time For {{$medication->name}}</strong></h5>
                             <form method="post" action="/mar/{{$patient->id}}/{{$medication->id}}/time">
                                 @method('post')
                                 @csrf
@@ -48,7 +47,7 @@
                                 <div class="form-group row">
                                     <label for="givenby" class="col-sm-4 col-form-label">* Given by</label>
                                     <div class="col-sm-6">
-                                        <input type="text" name="givenby" class="form-control" id="givenby" placeholder="Given by" required
+                                        <input type="text" name="givenby" class="form-control" id="givenby" placeholder="Given by"
                                                value= @if(isset($medtime))"{{$medtime->givenby}}"@else "{{old('givenby')}}"@endif>
                                     </div>
                                 </div>
@@ -69,8 +68,79 @@
                             </form>
                         </div>
                     </div>
+
+                    @if(isset($assignedMedTimes))
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">{{$medication->name}}'s Time Table for {{$patient->name}} Level: {{$patient->level }}</h3>
+                            </div>
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover">
+                                    <tbody>
+                                    <tr>
+                                        <th>Yesterday</th>
+                                        <th>Today</th>
+                                        <th>Tomorrow</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @foreach($yesterdayMedTimes as $yesterdayMedTime )
+                                                @if($yesterdayMedTime->given)
+                                                    <i class="fas fa-check green"></i><strike>
+                                                        @endif
+                                                        {{$yesterdayMedTime->time}}
+                                                        @if($yesterdayMedTime->given) </strike>
+                                                    <em>{{$yesterdayMedTime->givenby}}</em>@endif
+                                                    <form method="post" action="/mar/{{$yesterdayMedTime->id}}">
+                                                        @csrf
+                                                        @method('Delete')
+                                                        <button class="btn-danger">Remove</button>
+                                                </form>
+                                                <hr>
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            @foreach($todayMedTimes as $todayMedTime )
+                                                @if($todayMedTime->given)
+                                                    <i class="fas fa-check green"></i><strike>
+                                                        @endif
+                                                        {{$todayMedTime->time}}
+                                                        @if($todayMedTime->given) </strike>
+                                                    <em>{{$todayMedTime->givenby}}</em>@endif
+                                                    <form method="post" action="/mar/{{$todayMedTime->id}}">
+                                                        @csrf
+                                                        @method('Delete')
+                                                    <button class="btn-danger">Remove</button>
+                                                </form>
+                                                <hr>
+                                            @endforeach
+                                        </td>
+                                        <td>
+                                            @foreach($tomorrowMedTimes as $tomorrowMedTime )
+                                                @if($tomorrowMedTime->given)
+                                                    <i class="fas fa-check green"></i><strike>
+                                                        @endif
+                                                        {{$tomorrowMedTime->time}}
+                                                        @if($tomorrowMedTime->given) </strike>
+                                                    <em>{{$tomorrowMedTime->givenby}}</em>@endif
+                                                <form method="post" action="/mar/{{$tomorrowMedTime->id}}">
+                                                    @csrf
+                                                    @method('Delete')
+                                                    <button class="btn-danger">Remove</button>
+                                                </form>
+                                                <hr>
+                                            @endforeach
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                 </div>
+                @endif
             </div>
+        </div>
         </div>
     </section>
 @endsection
