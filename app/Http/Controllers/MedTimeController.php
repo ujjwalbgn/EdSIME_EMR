@@ -57,6 +57,8 @@ class MedTimeController extends Controller
      */
     public function store(Request $request, Patient $patient, Medication $medication)
     {
+        $this->authorize('isAdminAuthor');
+
         $medPatient = DB::table('medication_patient')->select('id')
             ->Where([
                 ['patient_id','=', $patient->id],
@@ -123,6 +125,8 @@ class MedTimeController extends Controller
      */
     public function destroy(MedTime $medTime)
     {
+        $this->authorize('isAdminAuthor');
+
         $medTime->delete();
         return back()->with(['message' => 'Medication Time has been removed']);
     }

@@ -58,6 +58,8 @@ class PatientLabResultController extends Controller
      */
     public function edit(PatientLabResult $patientLabResult)
     {
+        $this->authorize('isAdminAuthor');
+
         $patient = Patient::where('id', '=' , $patientLabResult->patient_id)->first();
         return view('patient.editLabResult', compact('patientLabResult', 'patient'));
     }
@@ -71,6 +73,8 @@ class PatientLabResultController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('isAdminAuthor');
+
         $patientLabResult = PatientLabResult::findorFail($id);
         $patientLabResult->fill($request->all())->save();
 

@@ -58,6 +58,8 @@ class PatientHistoryController extends Controller
      */
     public function edit(PatientHistory $patientHistory)
     {
+        $this->authorize('isAdminAuthor');
+
         $patient = Patient::where('id', '=' , $patientHistory->patient_id)->first();
         return view('patient.editHistory', compact('patientHistory', 'patient'));
     }
@@ -71,6 +73,8 @@ class PatientHistoryController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('isAdminAuthor');
+
         $patientHistory = PatientHistory::findorFail($id);
         $patientHistory->fill($request->all())->save();
 

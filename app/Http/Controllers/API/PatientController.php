@@ -22,11 +22,13 @@ class PatientController extends Controller
 
     public function index()
     {
+        $this->authorize('isAdminAuthor');
         return Patient::all()->first()->paginate(10);
     }
 
     public function store(Request $request)
     {
+        $this->authorize('isAdminAuthor');
         $attributes=  request()->validate([
             'name' => ['required','min:2','max:200'],
             'level' => ['required'],
@@ -66,6 +68,8 @@ class PatientController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->authorize('isAdminAuthor');
+
         $patient = Patient::findOrFail($id);
 
         $this->validate($request,[
@@ -78,7 +82,10 @@ class PatientController extends Controller
         $patient->update($request->all());
     }
 
-    public function search(){
+    public function search()
+    {
+        $this->authorize('isAdminAuthor');
+
         if($search = \Request::get('q')){
             $patients = Patient::where(function($query) use ($search){
                 $query->where('name','LIKE',"%$search%")
@@ -97,6 +104,8 @@ class PatientController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('isAdminAuthor');
+
         $patient = Patient::findOrFail($id);
         $patient->delete();
     }

@@ -58,6 +58,7 @@ class AdmissionRecordController extends Controller
      */
     public function edit(AdmissionRecord $admissionRecord)
     {
+        $this->authorize('isAdminAuthor');
         $patient = Patient::where('id', '=' , $admissionRecord->patient_id)->first();
 //        dd($patient);
         return view('patient.editAdmissionRecord', compact('admissionRecord', 'patient'));
@@ -72,6 +73,8 @@ class AdmissionRecordController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('isAdminAuthor');
+
 //        dd($request->healthcare_provider, $request->medical_record_no);
         $admissionRecord = AdmissionRecord::findorFail($id);
         $admissionRecord->fill($request->all())->save();
