@@ -24,10 +24,14 @@ Route::middleware('auth')->group(function(){
         return view('vueLoader.usersTable');
     });
 
-
     Route::get('/userProfile', function () {
         return view('vueLoader.userProfile');
     });
+
+    Route::get('/ehr', function () {
+        return view('ehr.index');
+    });
+
     Route::resources([
         'patient' => 'PatientController',
         'admissionRecord' => 'AdmissionRecordController',
@@ -39,14 +43,19 @@ Route::middleware('auth')->group(function(){
         'medication' => 'MedicationController',
     ]);
 
-    //MAR Routes
-    Route::get('/mar/patient/{patient}','MedicationPatientController@index');
-    Route::post('/mar/patient/{patient}/med','MedicationPatientController@store');
-    Route::delete('/mar/patient/{patient}/med/{medication}','MedicationPatientController@destroy');
 
-    Route::get('/mar/{patient}/{medication}/time', 'MedTimeController@index');
-    Route::post('/mar/{patient}/{medication}/time', 'MedTimeController@store');
-    Route::delete('/mar/{medTime}', 'MedTimeController@destroy');
+    //Admin and Author
+    Route::middleware('can:isAdminAuthor')->group(function (){
+        Route::get('/ehr/patient/{patient}','MedicationPatientController@index');
+        Route::post('/ehr/patient/{patient}/med','MedicationPatientController@store');
+        Route::delete('/ehr/patient/{patient}/med/{medication}','MedicationPatientController@destroy');
+
+        Route::get('/ehr/{patient}/{medication}/time', 'MedTimeController@index');
+        Route::post('/ehr/{patient}/{medication}/time', 'MedTimeController@store');
+        Route::delete('/ehr/{medTime}', 'MedTimeController@destroy');
+    });
+    //MAR Routes
+
 
 });
 

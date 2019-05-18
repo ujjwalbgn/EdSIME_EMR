@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
-@section('title', 'Patient`s Medication')
+@section('title', 'Scan Patient')
 
 @section('content')
     <section class="content mt-3">
-
+        <patient-scan></patient-scan>
     </section>
 @endsection

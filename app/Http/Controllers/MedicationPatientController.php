@@ -48,13 +48,13 @@ class MedicationPatientController extends Controller
                     ->wherePatient_id($patient->id)
                     ->count() > 0;
                 if($exists == true){
-                return redirect('/mar/patient/'.$patient->id )->with(['warning' =>
+                return redirect('/ehr/patient/'.$patient->id )->with(['warning' =>
                     'One or more of the selected Medication is already  present in Patient`s Record. Please try again']);
             }
         }
 
         $patient->medication()->attach($request->assigned);
-        return redirect('/mar/patient/'.$patient->id )->with(['message' => 'Medication has been added to Patient`s record successfully']);
+        return redirect('/ehr/patient/'.$patient->id )->with(['message' => 'Medication has been added to Patient`s record successfully']);
     }
 
     /**
@@ -102,6 +102,6 @@ class MedicationPatientController extends Controller
         $this->authorize('isAdminAuthor');
 
         $patient->medication()->detach($medication->id);
-        return redirect('/mar/patient/'.$patient->id )->with(['message' => 'Medication has been removed from Patient`s record successfully']);
+        return redirect('/ehr/patient/'.$patient->id )->with(['message' => 'Medication has been removed from Patient`s record successfully']);
     }
 }
