@@ -1,45 +1,35 @@
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         {{--<li class="nav-item">--}}
-            {{--<a href="/dashboard" class="nav-link">--}}
-                {{--<i class="nav-icon fas fa-tachometer-alt blue"></i>--}}
-                {{--<p>--}}
-                    {{--Dashboard--}}
-                    {{--<span class="right badge badge-danger">New</span>--}}
-                {{--</p>--}}
-            {{--</a>--}}
+        {{--<a href="/dashboard" class="nav-link">--}}
+        {{--<i class="nav-icon fas fa-tachometer-alt blue"></i>--}}
+        {{--<p>--}}
+        {{--Dashboard--}}
+        {{--<span class="right badge badge-danger">New</span>--}}
+        {{--</p>--}}
+        {{--</a>--}}
         {{--</li>--}}
         @can('isAdmin')
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link ">
-                    <i class="nav-icon fas fa-cogs green"></i>
-                    <p>
-                        Management
-                        <i class="right fa fa-angle-left"></i>
-                    </p>
+            <li class="nav-item">
+                <a href="/users" class="nav-link {{ Request::segment(1) == 'users' ? 'nav-active' : '' }}" >
+                    <i class="fas fa-users nav-icon tealEF"></i>
+                    <p>Users</p>
                 </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="/users" class="nav-link {{ Request::segment(1) == 'users' ? 'nav-active' : '' }}" >
-                            <i class="fas fa-users nav-icon tealEF"></i>
-                            <p>Users</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/userProfile" class="nav-link {{ Request::segment(1) == 'userProfile' ? 'nav-active' : '' }} ">
-                            <i class="nav-icon fas fa-user-alt orange"></i>
-                            <p>
-                                Profile
-                            </p>
-                        </a>
-                    </li>
-                </ul>
             </li>
+
         @endcan
         @can('isAdminAuthor')
-        <li class="nav-item">
+            <li class="nav-item">
+                <a href="/userProfile" class="nav-link {{ Request::segment(1) == 'userProfile' ? 'nav-active' : '' }} ">
+                    <i class="nav-icon fas fa-user-alt orange"></i>
+                    <p>
+                        Profile
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a href="/patient" class="nav-link {{ Request::segment(1) == 'patient' ? 'nav-active' : '' }}">
-                    <i class="nav-icon fa fa-user-md indigo"></i>
+                    <i class="nav-icon fas fa-procedures indigo"></i>
                     <p>
                         Patient
                     </p>
@@ -54,14 +44,22 @@
                 </a>
             </li>
             {{--<li class="nav-item">--}}
-                {{--<a href="/developer" class="nav-link">--}}
-                    {{--<i class="nav-icon fas fa-user-cog teal"></i>--}}
-                    {{--<p>--}}
-                        {{--Developer--}}
-                    {{--</p>--}}
-                {{--</a>--}}
+            {{--<a href="/developer" class="nav-link">--}}
+            {{--<i class="nav-icon fas fa-user-cog teal"></i>--}}
+            {{--<p>--}}
+            {{--Developer--}}
+            {{--</p>--}}
+            {{--</a>--}}
             {{--</li>--}}
         @endcan
+        <li class="nav-item">
+            <a href="/ehr" class="nav-link {{ Request::segment(1) == 'patient' ? 'nav-active' : '' }}">
+                <i class="nav-icon fas fa-clipboard-list blue"></i>
+                <p>
+                    EHR
+                </p>
+            </a>
+        </li>
 
 
         <li class="nav-item">

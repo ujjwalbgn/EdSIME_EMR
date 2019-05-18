@@ -50,7 +50,7 @@
                                         </a>
                                         /
                                         <a v-bind:href="'/patient/'+ patient.id" >
-                                            <i class="fas fa-address-card indigo"> EHR</i>
+                                            <i class="fas fa-clipboard-list indigo"> EHR</i>
                                         </a>
                                         /
                                         <a v-bind:href="'/mar/patient/'+ patient.id" >

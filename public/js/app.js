@@ -64522,7 +64522,8 @@ var render = function() {
                                   _c(
                                     "i",
                                     {
-                                      staticClass: "fas fa-address-card indigo"
+                                      staticClass:
+                                        "fas fa-clipboard-list indigo"
                                     },
                                     [_vm._v(" EHR")]
                                   )
