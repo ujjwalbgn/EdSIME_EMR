@@ -84,8 +84,6 @@ class PatientController extends Controller
 
     public function search()
     {
-        $this->authorize('isAdminAuthor');
-
         if($search = \Request::get('q')){
             $patients = Patient::where(function($query) use ($search){
                 $query->where('name','LIKE',"%$search%")

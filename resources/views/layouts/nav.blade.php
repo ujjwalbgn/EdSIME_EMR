@@ -53,7 +53,7 @@
             {{--</li>--}}
         @endcan
         <li class="nav-item">
-            <a href="/ehr" class="nav-link {{ Request::segment(1) == 'patient' ? 'nav-active' : '' }}">
+            <a href="/ehr" class="nav-link {{ Request::segment(1) == 'ehr' ? 'nav-active' : '' }}">
                 <i class="nav-icon fas fa-clipboard-list blue"></i>
                 <p>
                     EHR

@@ -100,6 +100,11 @@ Vue.component(
     require('./components/AdmissionRecord').default
 );
 
+Vue.component(
+    'patient-scan',
+    require('./components/PatientScan').default
+);
+
 
 
 const app = new Vue({
