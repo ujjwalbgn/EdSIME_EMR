@@ -21,9 +21,7 @@ class UserController extends Controller
     {
         $this->authorize('isAdmin');
 //        if(Gate::allows('isAdmin') || Gate::allows('isAuthor')){
-            return user::all()->first()->paginate(3);
-
-            //todo change pagination number
+            return user::all()->first()->paginate(5);
 
 //        }
     }
@@ -114,11 +112,10 @@ class UserController extends Controller
                 $query->where('name','LIKE',"%$search%")
                     ->orWhere('email','LIKE',"%$search%")
                     ->orWhere('type','LIKE',"%$search%");
-            })->paginate(3);
+            })->paginate(5);
 
-            //todo change pagination number
         } else {
-            $users = user::all()->first()->paginate(3);
+            $users = user::all()->first()->paginate(5);
         }
 
         return $users;

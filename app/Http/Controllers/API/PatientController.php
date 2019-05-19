@@ -89,11 +89,10 @@ class PatientController extends Controller
                 $query->where('name','LIKE',"%$search%")
                     ->orWhere('barcode','LIKE',"%$search%")
                     ->orWhere('level','LIKE',"%$search%");
-            })->paginate(3);
+            })->paginate(10);
 
-            //todo change pagination number
         } else {
-            $patients = parent::all()->first()->paginate(3);
+            $patients = parent::all()->first()->paginate(10);
         }
 
         return $patients;
