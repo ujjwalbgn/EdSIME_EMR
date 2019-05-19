@@ -25,13 +25,6 @@
                                         <div class="col-2">
                                             <a href="/mar/{{$patient->id}}/{{$assignMed->id}}/time" class="">Medication Time</a>
                                         </div>
-                                        <div class="col-2">
-                                            <form method="post" action="/mar/patient/{{$patient->id}}/med/{{$assignMed->id}}">
-                                                @method('DELETE')
-                                                @csrf
-                                                <button class="small-box btn-danger">Remove</button>
-                                            </form>
-                                        </div>
                                     </div>
                                 @endforeach
                             </div>
@@ -42,20 +35,20 @@
                             <h6 class="card-title"> <strong>Select Medications for {{$patient->name}}</strong></h6>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="/mar/patient/{{$patient->id}}/med">
-                                @method('post')
-                                @csrf
+
                                 @foreach($medications as $medication)
                                     <ul>
-                                            <input type="checkbox" name="assigned[]" value="{{$medication->id}}">
-                                            {{$medication->name}} Type: {{$medication->type}}
+                                        <div class="row">
+                                            <div class="col-8">
+                                        {{$medication->name}}
+                                            </div>
+                                            <div class="col-2">
+                                                <a href="/mar/{{$patient->id}}/{{$medication->id}}/add" class="">Assign Med</a>
+                                            </div>
+                                        </div>
                                     </ul>
                                 @endforeach
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-info">Submit</button>
-                                    <button  type="reset" class="btn btn-default float-right">Cancel</button>
-                                </div>
-                            </form>
+
                         </div>
 
                     </div>
