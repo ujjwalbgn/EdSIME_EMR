@@ -16,10 +16,12 @@ class MedicationPatientController extends Controller
      */
     public function index(Patient $patient, Medication $medication)
     {
-        $medications = Medication::all();
+//        $medications = Medication::all();
         $assignedMeds = $patient->medication()->get();
 
-        return view('medicationPatient.index', compact('patient', 'medications', 'assignedMeds' ));
+        return view('deleteMe', ['assignedMeds' => $assignedMeds]);
+
+//        return view('medicationPatient.index', compact('patient', 'medications', 'assignedMeds' ));
     }
 
     /**
@@ -27,9 +29,9 @@ class MedicationPatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request,Patient $patient, Medication $medication)
     {
-        //
+        return view('medicationPatient.medTime', compact('patient','medication'));
     }
 
     /**
@@ -38,23 +40,16 @@ class MedicationPatientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Patient $patient)
+    public function store(Request $request, Patient $patient, Medication $medication)
     {
         $this->authorize('isAdminAuthor');
 
-        foreach ($request->assigned as $med_id) {
-            $exists = DB::table('medication_patient')
-                    ->whereMedication_id($med_id)
-                    ->wherePatient_id($patient->id)
-                    ->count() > 0;
-                if($exists == true){
-                return redirect('/ehr/patient/'.$patient->id )->with(['warning' =>
-                    'One or more of the selected Medication is already  present in Patient`s Record. Please try again']);
-            }
-        }
+        $patient->medication()->attach($request->medication,
+            array('day'=>$request->day,'time'=>$request->time,'given'=>$request->given,
+                'givenby'=>$request->givenby,'lock'=>$request->lock)
+        );
 
-        $patient->medication()->attach($request->assigned);
-        return redirect('/ehr/patient/'.$patient->id )->with(['message' => 'Medication has been added to Patient`s record successfully']);
+        return redirect('/mar/patient/'.$patient->id )->with(['message' => 'Medication has been added to Patient`s record successfully']);
     }
 
     /**

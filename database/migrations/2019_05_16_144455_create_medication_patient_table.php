@@ -19,6 +19,12 @@ class CreateMedicationPatientTable extends Migration
             $table->foreign('medication_id')->references('id')->on('medications')->ondelete('cascade');
             $table->unsignedInteger('patient_id');
             $table->foreign('patient_id')->references('id')->on('patients')->ondelete('cascade');
+            $table->string('type')->default('prn');
+            $table->string('day')->nullable();
+            $table->string('time')->nullable();
+            $table->boolean('given')->default('0');
+            $table->string('givenby')->nullable();
+            $table->boolean('lock')->default('1');
             $table->timestamps();
         });
     }

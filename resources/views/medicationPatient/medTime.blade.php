@@ -13,9 +13,10 @@
                             <h6 class="card-title"> <strong>Add {{$patient->name}}'s (Level: {{$patient->level }}) time for {{$medication->name}}</strong></h6>
                         </div>
                         <div class="mt m-3 align-center">
-                            <form method="post" action="/mar/{{$patient->id}}/{{$medication->id}}/time">
+                            <form method="post" action="/mar/{{$patient->id}}/{{$medication->id}}/add">
                                 @method('post')
                                 @csrf
+                                <input type="hidden" name="medication" id="medication" value="{{$medication->id}}">
                                 <div class="form-group row">
                                     <label for="day" class="col-sm-4 col-form-label">Select the Day</label>
                                     <div class="col-sm-6">

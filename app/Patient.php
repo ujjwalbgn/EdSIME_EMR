@@ -20,7 +20,8 @@ class Patient extends Model
 
     public function medication()
     {
-        return $this->belongsToMany('App\Medication');
+        return $this->belongsToMany('App\Medication')
+            ->withPivot('day', 'time', 'given','givenby','lock');
     }
 
 }
