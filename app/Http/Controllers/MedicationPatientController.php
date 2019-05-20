@@ -16,12 +16,17 @@ class MedicationPatientController extends Controller
      */
     public function index(Patient $patient, Medication $medication)
     {
-//        $medications = Medication::all();
+        $medications = Medication::all();
         $assignedMeds = $patient->medication()->get();
+
+//        $assignedMeds_group = $assignedMeds->groupBy('name');
+
+//        dd($assignedMeds_group);
 
         return view('deleteMe', ['assignedMeds' => $assignedMeds]);
 
-//        return view('medicationPatient.index', compact('patient', 'medications', 'assignedMeds' ));
+//                return view('medicationPatient.index', compact('patient', 'medications'),
+//                    ['assignedMeds' => $assignedMeds]);
     }
 
     /**

@@ -17,16 +17,19 @@
                         <div class="mt m-5 align-center">
                             <h5><strong> List Of Medications Already Assigned</strong></h5>
                             <div class="m-3">
+
+                                @if(isset($assignedMeds))
                                 @foreach($assignedMeds as $assignMed)
                                     <div class="row">
                                         <div class="col-8">
-                                            {{$assignMed->name}} Type:{{$assignMed->type}}
+                                            {{$assignMed->name}} Type:{{$assignMed->type}} {{$assignMed->time}}
                                         </div>
                                         <div class="col-2">
                                             <a href="/mar/{{$patient->id}}/{{$assignMed->id}}/time" class="">Medication Time</a>
                                         </div>
                                     </div>
                                 @endforeach
+                                    @endif
                             </div>
                         </div>
                     </div>
@@ -39,11 +42,11 @@
                                 @foreach($medications as $medication)
                                     <ul>
                                         <div class="row">
-                                            <div class="col-8">
+                                            <div class="col-9">
                                         {{$medication->name}}
                                             </div>
-                                            <div class="col-2">
-                                                <a href="/mar/{{$patient->id}}/{{$medication->id}}/add" class="">Assign Med</a>
+                                            <div class="col-3">
+                                                <a href="/mar/{{$patient->id}}/{{$medication->id}}/add" class="">Assign Med & Time</a>
                                             </div>
                                         </div>
                                     </ul>
