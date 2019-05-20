@@ -29589,3 +29589,15 @@ readers do not read off random characters that represent icons */
   color: #fff !important;
 }
 
+.text-button {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #e3342f;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
