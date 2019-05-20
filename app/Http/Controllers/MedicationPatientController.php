@@ -19,14 +19,18 @@ class MedicationPatientController extends Controller
         $medications = Medication::all();
         $assignedMeds = $patient->medication()->get();
 
-//        $assignedMeds_group = $assignedMeds->groupBy('name');
+        $assignedMeds_group = $assignedMeds->groupBy('name')->toBase();
+
+
 
 //        dd($assignedMeds_group);
 
-        return view('deleteMe', ['assignedMeds' => $assignedMeds]);
 
-//                return view('medicationPatient.index', compact('patient', 'medications'),
-//                    ['assignedMeds' => $assignedMeds]);
+
+//        return view('deleteMe', ['assignedMeds_group' => $assignedMeds_group]);
+
+                return view('medicationPatient.index', compact('patient', 'medications'),
+                    ['assignedMeds_group' => $assignedMeds_group]);
     }
 
     /**
