@@ -21,34 +21,17 @@ class MedicationPatientController extends Controller
 
         $assignedMeds_group = $assignedMeds->groupBy('name')->toBase();
 
-
-
-//        dd($assignedMeds_group);
-
-
-
-//        return view('deleteMe', ['assignedMeds_group' => $assignedMeds_group]);
-
                 return view('medicationPatient.index', compact('patient', 'medications'),
                     ['assignedMeds_group' => $assignedMeds_group]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create(Request $request,Patient $patient, Medication $medication)
     {
         return view('medicationPatient.medTime', compact('patient','medication'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request, Patient $patient, Medication $medication)
     {
         $this->authorize('isAdminAuthor');
@@ -58,54 +41,33 @@ class MedicationPatientController extends Controller
                 'givenby'=>$request->givenby,'lock'=>$request->lock)
         );
 
-        return redirect('/mar/patient/'.$patient->id )->with(['message' => 'Medication has been added to Patient`s record successfully']);
+        return redirect('/patient/mar/'.$patient->id )->with(['message' => 'Medication has been added to Patient`s record successfully']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Patient $patient)
     {
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Request $request,Patient $patient,Medication $medication)
     {
         $this->authorize('isAdminAuthor');
 
         $patient->medication()->detach($medication->id);
-        return redirect('/ehr/patient/'.$patient->id )->with(['message' => 'Medication has been removed from Patient`s record successfully']);
+        return redirect('/patient/mar/'.$patient->id )->with(['message' => 'Medication has been removed from Patient`s record successfully']);
     }
 }

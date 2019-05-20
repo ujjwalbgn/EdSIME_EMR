@@ -42,7 +42,7 @@
                                         {{$medication->name}}
                                             </div>
                                             <div class="col-3">
-                                                <a href="/mar/{{$patient->id}}/{{$medication->id}}/add" class="">Assign Med & Time</a>
+                                                <a href="/patient/mar/{{$patient->id}}/{{$medication->id}}/add" class="">Assign Med & Time</a>
                                             </div>
                                         </div>
                                     </ul>

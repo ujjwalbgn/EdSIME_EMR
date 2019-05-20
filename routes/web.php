@@ -46,11 +46,11 @@ Route::middleware('auth')->group(function(){
 
     //Admin and Author
     Route::middleware('can:isAdminAuthor')->group(function (){
-        Route::get('/mar/patient/{patient}','MedicationPatientController@index');
-        Route::get('/mar/{patient}/{medication}/add','MedicationPatientController@create');
-        Route::post('/mar/{patient}/{medication}/add','MedicationPatientController@store');
+        Route::get('/patient/mar/{patient}','MedicationPatientController@index');
+        Route::get('/patient/mar/{patient}/{medication}/add','MedicationPatientController@create');
+        Route::post('/patient/mar/{patient}/{medication}/add','MedicationPatientController@store');
 //        Route::post('/ehr/patient/{patient}/med','MedicationPatientController@store');
-        Route::delete('/mar/patient/{patient}/med/{medication}','MedicationPatientController@destroy');
+        Route::delete('/patient/mar/{patient}/{medication}','MedicationPatientController@destroy');
 
 //        Route::get('/ehr/{patient}/{medication}/time', 'MedTimeController@index');
 //        Route::post('/ehr/{patient}/{medication}/time', 'MedTimeController@store');
