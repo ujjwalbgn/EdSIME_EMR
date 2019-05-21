@@ -56,7 +56,12 @@ Route::middleware('auth')->group(function(){
 //        Route::post('/ehr/{patient}/{medication}/time', 'MedTimeController@store');
 //        Route::delete('/ehr/{medTime}', 'MedTimeController@destroy');
     });
-    //MAR Routes
+
+
+    //EHR Route
+    Route::get('/ehr/mar/{patient}','MARController@index');
+
+
 
 
 });

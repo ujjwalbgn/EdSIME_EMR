@@ -64563,17 +64563,13 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("td", [
-                      _c(
-                        "a",
-                        { attrs: { href: "/ehr/patient/" + patient.id } },
-                        [
-                          _c(
-                            "i",
-                            { staticClass: "fas fa-calendar-check orange" },
-                            [_vm._v(" MAR")]
-                          )
-                        ]
-                      )
+                      _c("a", { attrs: { href: "/ehr/mar/" + patient.id } }, [
+                        _c(
+                          "i",
+                          { staticClass: "fas fa-calendar-check orange" },
+                          [_vm._v(" MAR")]
+                        )
+                      ])
                     ])
                   ])
                 })

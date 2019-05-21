@@ -19,10 +19,18 @@ class MedicationPatientController extends Controller
         $medications = Medication::all();
         $assignedMeds = $patient->medication()->get();
 
-        $assignedMeds_group = $assignedMeds->groupBy('name')->toBase();
+        $scheduledMeds = $assignedMeds->where('type','=','Scheduled Medication')
+            ->groupBy('name')->toBase();
+
+        $prnMeds = $assignedMeds->where('type','=','PRN Medication')
+            ->groupBy('name')->toBase();
 
                 return view('medicationPatient.index', compact('patient', 'medications'),
-                    ['assignedMeds_group' => $assignedMeds_group]);
+                    [
+                        'scheduledMeds' => $scheduledMeds,
+                        'prnMeds' => $prnMeds
+                    ]
+                );
     }
 
 
@@ -41,7 +49,8 @@ class MedicationPatientController extends Controller
                 'givenby'=>$request->givenby,'lock'=>$request->lock)
         );
 
-        return redirect('/patient/mar/'.$patient->id )->with(['message' => 'Medication has been added to Patient`s record successfully']);
+        return redirect('/patient/mar/'.$patient->id )
+            ->with(['message' => 'Medication has been added to Patient`s record successfully']);
     }
 
 
