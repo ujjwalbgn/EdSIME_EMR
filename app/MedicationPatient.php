@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class MedicationPatient extends Model
 {
+    protected  $table = 'medication_patient';
+
     protected $guarded = [];
 
     public function MedTime() {

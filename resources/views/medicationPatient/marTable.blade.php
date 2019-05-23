@@ -2,7 +2,7 @@
     <div class="col-md-12 mt-3">
         <div class="card">
             <div class="card-header " data-widget="collapse">
-                <h3 class="card-title">Scheduled Medication</h3>
+            <h3 class="card-title">Scheduled Medication</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                     </button>
@@ -72,12 +72,7 @@
                             </td>
                             @can('isAdminAuthor')
                                 <td>
-
-                                    <form method="post" action="/patient/mar/{{$patient->id}}/{{$medtime->id}}">
-                                        @csrf
-                                        @method('Delete')
-                                        <button type="submit" class="text-button red"><a class="fa fa-trash red"></a></button>
-                                    </form>
+                                    <a href="/patient/mar/{{$patient->id}}/{{$medtime->id}}"><i class="fa fa-edit blue"></i></a>
                                 </td>
                             @endcan
                         </tr>
@@ -162,11 +157,7 @@
                             </td>
                             @can('isAdminAuthor')
                                 <td>
-                                    <form method="post" action="/patient/mar/{{$patient->id}}/{{$medtime->id}}">
-                                        @csrf
-                                        @method('Delete')
-                                        <button type="submit" class="text-button red"><a class="fa fa-trash red"></a></button>
-                                    </form>
+                                    <a href="/patient/mar/{{$patient->id}}/{{$medtime->id}}"><i class="fa fa-edit blue"></i></a>
                                 </td>
                             @endcan
                         </tr>
