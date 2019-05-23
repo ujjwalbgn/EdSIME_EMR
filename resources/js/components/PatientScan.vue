@@ -30,7 +30,7 @@
                                 </a>
                             </td>
                             <td>
-                                <a v-bind:href="'/ehr/patient/'+ patient.id" >
+                                <a v-bind:href="'/ehr/mar/'+ patient.id" >
                                     <i class="fas fa-calendar-check orange"> MAR</i>
                                 </a>
                             </td>

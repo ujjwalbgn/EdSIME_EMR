@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Medication;
+use App\MedicationPatient;
 use App\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class MedicationPatientController extends Controller
 {
@@ -19,10 +21,18 @@ class MedicationPatientController extends Controller
         $medications = Medication::all();
         $assignedMeds = $patient->medication()->get();
 
-        $assignedMeds_group = $assignedMeds->groupBy('name')->toBase();
+        $scheduledMeds = $assignedMeds->where('type','=','Scheduled Medication')
+            ->groupBy('name')->toBase();
+
+        $prnMeds = $assignedMeds->where('type','=','PRN Medication')
+            ->groupBy('name')->toBase();
 
                 return view('medicationPatient.index', compact('patient', 'medications'),
-                    ['assignedMeds_group' => $assignedMeds_group]);
+                    [
+                        'scheduledMeds' => $scheduledMeds,
+                        'prnMeds' => $prnMeds
+                    ]
+                );
     }
 
 
@@ -41,33 +51,77 @@ class MedicationPatientController extends Controller
                 'givenby'=>$request->givenby,'lock'=>$request->lock)
         );
 
-        return redirect('/patient/mar/'.$patient->id )->with(['message' => 'Medication has been added to Patient`s record successfully']);
+        return redirect('/patient/mar/'.$patient->id )
+            ->with(['message' => 'Medication has been added to Patient`s record successfully']);
     }
 
 
-    public function show(Patient $patient)
+    public function show(Request $request, Patient $patient, Medication $medication)
     {
+        $medicationDetail = MedicationPatient::where('patient_id', $patient->id)->where('medication_id', $medication->id)->get();
+        $yesterdayMeds = $medicationDetail->where('day', 'yesterday');
+        $todayMeds = $medicationDetail->where('day', 'today');
+        $tomorrowMeds = $medicationDetail->where('day', 'tomorrow');
 
+        return view('medicationPatient.giveMed', compact('patient'),
+            [
+                'yesterdayMeds' => $yesterdayMeds,
+                'todayMeds' => $todayMeds,
+                'tomorrowMeds' => $tomorrowMeds,
+                'medication' => $medication
+            ]
+        );
     }
 
 
-    public function edit($id)
+    public function edit(Request $request, Medication $medication, Patient $patient)
     {
-        //
+        try {
+            $medtime = DB::table('medication_patient')
+            ->where('id' , '=', $request->id)->get()->first();
+        }  catch (ModelNotFoundException $ex) {
+            return redirect()->back()->with('warning', 'There was an error, Please check your selection and  try Again'
+            );
+        }
+
+        $medication = Medication::where('id', $medtime->medication_id)->first();
+        $patient = Patient::where('id', $medtime->patient_id)->first();
+        return view('medicationPatient.medTime' ,[
+            'medtime'=> $medtime,
+            'medication' => $medication,
+            'patient' => $patient,
+        ]);
     }
 
 
     public function update(Request $request, $id)
     {
-        //
+        $medTime= MedicationPatient::findorFail($id);
+//        dd($medTime, $request);
+        $medTime->fill($request->all())->save();
+
+        return back()->with(['message' => 'Patient`s MAR updated successfully']);
     }
 
 
-    public function destroy(Request $request,Patient $patient,Medication $medication)
+    public function destroyMedPatient(Request $request,Patient $patient,Medication $medication)
     {
         $this->authorize('isAdminAuthor');
-
         $patient->medication()->detach($medication->id);
         return redirect('/patient/mar/'.$patient->id )->with(['message' => 'Medication has been removed from Patient`s record successfully']);
+    }
+
+    public function destroyMedTime(Request $request, $id)
+    {
+
+        $this->authorize('isAdminAuthor');
+
+        $pateint_id = $request->patient_id;
+        $medTime= MedicationPatient::findorFail($id);
+        $medTime->delete();
+
+
+
+        return redirect('/ehr/mar/'.$pateint_id)->with(['message' => 'Medication Time has been removed Patient`s record successfully']);
     }
 }
