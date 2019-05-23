@@ -14,8 +14,19 @@
             <div class="row justify-content-center mt-4">
                 <div class="col-md-12">
                     @include('medicationPatient.editMedTime')
+                    @can('isAdminAuthor')
+                        <form method="post" action="/patient/mar/{{$patient->id}}/{{$medication->id}}">
+                            @method('delete')
+                            @csrf
+                            <input hidden name="patient.id" value="{{$patient->id}}">
+                            <button type="submit" class="btn btn-danger">Delete Medication and All Med Time from {{$patient->name}}</button>
+                        </form>
+
+                    @endcan
                 </div>
+
             </div>
         </div>
+
     </section>
 @endsection
