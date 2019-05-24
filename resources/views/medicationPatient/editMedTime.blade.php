@@ -37,12 +37,14 @@
                             <em>{{$todayMed->givenby}}</em>
                         @else
                             <div>
-                                <form method="post" action="/patient/mar/{{$todayMed->id}}">
+                                <form method="post" action="/patient/edit/mar/{{$todayMed->id}}/{{$patient->id}}">
                                     @csrf
                                     @method('PATCH')
                                     <input hidden name="given" value="1">
+                                @if($medication->type == 'PRN Medication')
+                                        <input type="number" name="time" placeholder="Given at Time" required>
+                                    @endif
                                     <input type="text" name="givenby" placeholder="Given By" required>
-
                                     <button class="btn-primary">Give</button>
                                 </form>
                                     @endcan

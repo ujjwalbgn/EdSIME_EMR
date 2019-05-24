@@ -43,7 +43,6 @@ class MARController extends Controller
             return redirect()->back()->with('warning', 'Invalid Barcode for Medication. The barcode is not assigned to any medication in the system.'
             );
         }
-//        dd($patient->id);
         $exists = $medication->patient->contains($patient->id);
         if ($exists == true) {
             $medication = MedicationPatient::where('patient_id', $patient->id)->where('medication_id', $medication->id)->get();

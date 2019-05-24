@@ -21,12 +21,28 @@
                             @foreach($medications as $medication)
                                 <ul>
                                     <div class="row">
-                                        <div class="col-9">
+                                        <div class="col-8">
                                             {{$medication->name}}
                                         </div>
-                                        <div class="col-3">
-                                            <a href="/patient/mar/{{$patient->id}}/{{$medication->id}}/add" class="">Assign Med & Time</a>
+
+                                        <div class="col-2">
+                                            <button href="/patient/mar/{{$patient->id}}/{{$medication->id}}/add" class="btn btn-success">Assign Time</button>
                                         </div>
+                                        <div class="col-2">
+                                            @if($medication->type == "PRN Medication")
+                                                <form method="post" action="/patient/mar/{{$patient->id}}/{{$medication->id}}/add">
+                                                    @method('post')
+                                                    @csrf
+                                                    <input type="hidden" name="medication_id" id="medication" value="{{$medication->id}}">
+                                                    <input type="hidden" name="day" id="day" value="today">
+                                                    <input type="hidden" name="given" id="given" value="0">
+                                                    <input type="hidden" name="lock" id="given" value="1">
+                                                    <button class="btn btn-primary">Assign PRN</button>
+                                                </form>
+                                            @endif
+                                        </div>
+
+
                                     </div>
                                 </ul>
                             @endforeach

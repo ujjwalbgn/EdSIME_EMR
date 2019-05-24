@@ -65,7 +65,7 @@ Route::middleware('auth')->group(function(){
     //Edit or Give Medication
     Route::get('/patient/mar/{patient}/{medication}','MedicationPatientController@show');
     Route::get('/patient/edit/mar/{id}', 'MedicationPatientController@edit');
-    Route::patch('/patient/edit/mar/{id}', 'MedicationPatientController@update');
+    Route::patch('/patient/edit/mar/{id}/{patient_id}', 'MedicationPatientController@update');
     Route::delete('/patient/edit/mar/{id}', 'MedicationPatientController@destroyMedTime');
 
 

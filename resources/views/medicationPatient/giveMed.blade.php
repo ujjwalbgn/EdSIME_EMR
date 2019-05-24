@@ -21,12 +21,9 @@
                             <input hidden name="patient.id" value="{{$patient->id}}">
                             <button type="submit" class="btn btn-danger">Delete Medication and All Med Time from {{$patient->name}}</button>
                         </form>
-
                     @endcan
                 </div>
-
             </div>
         </div>
-
     </section>
 @endsection

@@ -17,7 +17,7 @@
                         <div class="mt m-3 align-center">
 
                             @if(isset($medtime))
-                                <form method="post" action="/patient/edit/mar/{{$medtime->id}}">
+                                <form method="post" action="/patient/edit/mar/{{$medtime->id}}/0">
                                     @method('PATCH')
                                     @else
                                         <form method="post" action="/patient/mar/{{$patient->id}}/{{$medication->id}}/add">
