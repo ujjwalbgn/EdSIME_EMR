@@ -2,7 +2,7 @@
     <div class="col-md-12 mt-3">
         <div class="card">
             <div class="card-header " data-widget="collapse">
-            <h3 class="card-title">Scheduled Medication</h3>
+                <h3 class="card-title">Scheduled Medication</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                     </button>
@@ -11,7 +11,7 @@
 
             <div class="card-body">
                 <table class="table table-hover">
-                    <tbody>
+                    <thead>
                     <tr>
                         <th>Name</th>
                         <th>Yesterday</th>
@@ -22,6 +22,9 @@
                             <th>Action</th>
                         @endcan
                     </tr>
+                    </thead>
+
+                    <tbody>
                     @foreach($scheduledMeds as $name => $medtimes)
                         <tr>
                             <td>
@@ -97,7 +100,7 @@
 
             <div class="card-body">
                 <table class="table table-hover">
-                    <tbody>
+                    <thead>
                     <tr>
                         <th>Name</th>
                         <th>Yesterday</th>
@@ -107,6 +110,9 @@
                             <th>Action</th>
                         @endcan
                     </tr>
+                    </thead>
+
+                    <tbody>
                     @foreach($prnMeds as $name => $medtimes)
                         <tr>
                             <td>
