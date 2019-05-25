@@ -40,38 +40,38 @@ class MedicationTableSeeder extends Seeder
                 'id' => '5',
                 'name' => 'Acetaminophen 500 mg PO every 4 hour PRN Pain less than or equal to 4 on 0-10 pain scale',
                 'type' => 'PRN Medication',
-                'barcode' => '103'
+                'barcode' => '105'
             ],
             [
                 'id' => '6',
                 'name' => 'Acetaminophen 500 mg / Hydrocodone 5mg 1 tablet PO every 4 hour PRN pain 5 to 7 on a 0-10 pain scale',
                 'type' => 'PRN Medication',
-                'barcode' => '103'
+                'barcode' => '106'
             ],
             [
                 'id' => '7',
                 'name' => 'IV saline lock; Flush with 0.9% NS every 8 hours per protocol',
                 'type' => 'Scheduled Medication',
-                'barcode' => '104'
+                'barcode' => '107'
             ],
             [
                 'id' => '8',
                 'name' => 'Acetaminophen 650 mg PO every 4 hours PRN pain 4 or less on 0-10 pain scale',
                 'type' => 'PRN Medication',
-                'barcode' => '105'
+                'barcode' => '108'
             ],
             [
                 'id' => '9',
                 'name' => 'Imitrex 100 mg PO BID PRN for migraine- May use own Imitrex for migraine if needed',
                 'type' => 'PRN Medication',
-                'barcode' => '106'
+                'barcode' => '109'
             ],
             [
                 'id' => '10',
                 'name' => 'Lorazepam 4 mg IVP, given at 2 mg per minute- Give 1 dose for
                            seizure activity PRN and notify HCP immediately for any change in condition',
                 'type' => 'PRN Medication',
-                'barcode' => '107'
+                'barcode' => '1010'
             ],
         ]);
     }

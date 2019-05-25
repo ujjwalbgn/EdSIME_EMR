@@ -41,15 +41,15 @@
                                                 </form>
                                             @endif
                                         </div>
-
-
                                     </div>
                                 </ul>
                             @endforeach
                         </div>
                     </div>
                 </div>
+                @include('nurse.index')
             </div>
+
         </div>
     </section>
 @endsection

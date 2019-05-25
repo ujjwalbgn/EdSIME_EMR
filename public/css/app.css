@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);/*!
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Tangerine);/*!
  *   AdminLTE v3.0.0-alpha
  *   Author: Abdullah Almsaeed
  *	 Website: AdminLTE.io <http://adminlte.io>
@@ -29599,5 +29599,10 @@ readers do not read off random characters that represent icons */
   color: #e3342f;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.signature {
+  font-family: "Tangerine", serif;
+  font-size: 20px;
 }
 
