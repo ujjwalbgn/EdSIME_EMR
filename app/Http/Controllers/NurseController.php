@@ -35,7 +35,21 @@ class NurseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('isAdminAuthor');
+
+        $attributes=  request()->validate([
+            'patient_id' => ['required','numeric'],
+            'nurseName' => ['required'],
+            'nurseInitial' => ['required'],
+            'nurseSign' => ['required'],
+            'dateTime' => ['required'],
+        ]);
+
+//        dd($attributes);
+
+        Nurse::create($attributes);
+
+        return back()->with(['message' => 'Nurse has been added to patient']);
     }
 
     /**

@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function(){
         'patientForm' => 'PatientFormController',
         'patientDiagnosticStudy' => 'PatientDiagnosticStudyController',
         'medication' => 'MedicationController',
+        'nurse' => 'NurseController'
     ]);
 
 

@@ -24,4 +24,9 @@ class Patient extends Model
             ->withPivot('day', 'time', 'given','givenby','lock');
     }
 
+    public function nurse()
+    {
+        return $this->hasMany('App\Nurse');
+    }
+
 }

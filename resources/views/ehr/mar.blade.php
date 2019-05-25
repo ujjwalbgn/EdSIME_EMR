@@ -25,7 +25,9 @@
                     </form>
                 </div>
             </div>
-                @include('medicationPatient.marTable')
+            @include('medicationPatient.marTable')
+
+            @include('nurse.index')
         </div>
     </section>
 @endsection

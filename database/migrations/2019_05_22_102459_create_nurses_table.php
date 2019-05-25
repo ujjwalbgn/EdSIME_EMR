@@ -15,8 +15,14 @@ class CreateNursesTable extends Migration
     {
         Schema::create('nurses', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('patient_id');
+            $table->foreign('patient_id')
+                ->references('id')->on('patients')
+                ->onDelete('cascade');
             $table->string('nurseName');
+            $table->string('nurseInitial')->nullable();
             $table->string('nurseSign')->nullable();
+            $table->string('dateTime')->nullable();
             $table->timestamps();
         });
     }

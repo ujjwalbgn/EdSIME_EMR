@@ -26,7 +26,7 @@
                                         </div>
 
                                         <div class="col-2">
-                                            <button href="/patient/mar/{{$patient->id}}/{{$medication->id}}/add" class="btn btn-success">Assign Time</button>
+                                            <a href="/patient/mar/{{$patient->id}}/{{$medication->id}}/add" class="btn btn-success">Assign Time</a>
                                         </div>
                                         <div class="col-2">
                                             @if($medication->type == "PRN Medication")
@@ -41,14 +41,13 @@
                                                 </form>
                                             @endif
                                         </div>
-
-
                                     </div>
                                 </ul>
                             @endforeach
                         </div>
                     </div>
                 </div>
+                @include('nurse.index')
             </div>
         </div>
     </section>
