@@ -37,21 +37,24 @@
                             <em>{{$todayMed->givenby}}</em>
                         @else
                             <div>
-                            <form method="post" action="/patient/mar/{{$todayMed->id}}">
-                                @csrf
-                                @method('PATCH')
-                                <input hidden name="given" value="1">
-                                <input type="text" name="givenby" placeholder="Given By" required>
-
-                                <button class="btn-primary">Give</button>
-                                @endcan
-                                @can('isAdminAuthor')
-                                    <div>
-                                        <a href="/patient/edit/mar/{{$todayMed->id}}" class="btn btn-primary">Edit</a>
-                                    </div>
+                                <form method="post" action="/patient/edit/mar/{{$todayMed->id}}/{{$patient->id}}">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input hidden name="given" value="1">
+                                @if($medication->type == 'PRN Medication')
+                                        <input type="number" name="time" placeholder="Given at Time" required>
+                                    @endif
+                                    <input type="text" name="givenby" placeholder="Given By" required>
+                                    <button class="btn-primary">Give</button>
+                                </form>
+                                    @endcan
+                                    @can('isAdminAuthor')
+                                        <div>
+                                            <a href="/patient/edit/mar/{{$todayMed->id}}" class="btn btn-primary">Edit</a>
+                                        </div>
                                 @endcan
                             </div>
-                                <hr>
+                            <hr>
                             @endforeach
                 </td>
                 <td>
@@ -70,3 +73,4 @@
         </table>
     </div>
 </div>
+

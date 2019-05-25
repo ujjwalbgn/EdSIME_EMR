@@ -141,6 +141,7 @@
                                                 <em>{{$medtime->pivot->givenby}}</em>
                                             @else
                                                 {{$medtime->pivot->time}}
+                                                X
                                             @endif
                                         @endif
                                     </p>

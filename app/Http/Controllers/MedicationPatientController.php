@@ -94,13 +94,15 @@ class MedicationPatientController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, $patient_id)
     {
         $medTime= MedicationPatient::findorFail($id);
-//        dd($medTime, $request);
         $medTime->fill($request->all())->save();
-
-        return back()->with(['message' => 'Patient`s MAR updated successfully']);
+        if ($patient_id == 0){
+            return back()->with(['message' => 'Patient`s MAR updated successfully']);
+        } else {
+            return redirect('/patient/mar/'.$patient_id)->with(['message' => 'Patient`s MAR updated successfully']);
+        }
     }
 
 
@@ -113,14 +115,11 @@ class MedicationPatientController extends Controller
 
     public function destroyMedTime(Request $request, $id)
     {
-
         $this->authorize('isAdminAuthor');
 
         $pateint_id = $request->patient_id;
         $medTime= MedicationPatient::findorFail($id);
         $medTime->delete();
-
-
 
         return redirect('/ehr/mar/'.$pateint_id)->with(['message' => 'Medication Time has been removed Patient`s record successfully']);
     }
