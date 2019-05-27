@@ -27,10 +27,12 @@ class MedicationPatientController extends Controller
         $prnMeds = $assignedMeds->where('type','=','PRN Medication')
             ->groupBy('name')->toBase();
 
+        $nurses= $patient->nurse()->get();
                 return view('medicationPatient.index', compact('patient', 'medications'),
                     [
                         'scheduledMeds' => $scheduledMeds,
-                        'prnMeds' => $prnMeds
+                        'prnMeds' => $prnMeds,
+                        'nurses' => $nurses,
                     ]
                 );
     }
@@ -101,7 +103,7 @@ class MedicationPatientController extends Controller
         if ($patient_id == 0){
             return back()->with(['message' => 'Patient`s MAR updated successfully']);
         } else {
-            return redirect('/patient/mar/'.$patient_id)->with(['message' => 'Patient`s MAR updated successfully']);
+            return redirect('/ehr/mar/'.$patient_id)->with(['message' => 'Patient`s MAR updated successfully']);
         }
     }
 

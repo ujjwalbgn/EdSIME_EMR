@@ -21,10 +21,13 @@ class MARController extends Controller
         $prnMeds = $assignedMeds->where('type','=','PRN Medication')
             ->groupBy('name')->toBase();
 
+        $nurses= $patient->nurse()->get();
+
         return view('ehr.mar', compact('patient', 'medications'),
             [
                 'scheduledMeds' => $scheduledMeds,
-                'prnMeds' => $prnMeds
+                'prnMeds' => $prnMeds,
+                'nurses' => $nurses,
             ]
         );
     }
