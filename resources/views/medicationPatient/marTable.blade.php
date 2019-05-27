@@ -13,6 +13,7 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
+                        <th>Verified</th>
                         <th>Name</th>
                         <th>Yesterday</th>
                         <th>Today</th>
@@ -28,8 +29,11 @@
                     @foreach($scheduledMeds as $name => $medtimes)
                         <tr>
                             <td>
+                                {{$nurses[0]->dateTime}}<br/>
+                                <em>{{$nurses[0]->nurseInitial}}</em>
+                            </td>
+                            <td>
                                 <h4>{{$name}}</h4>
-                                {{--@dd($medtimes)--}}
                                 <p>{{$medtimes[0]->description}}</p>
                             </td>
                             <td>
@@ -102,6 +106,7 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
+                        <th>Verified</th>
                         <th>Name</th>
                         <th>Yesterday</th>
                         <th>Today</th>
@@ -116,8 +121,11 @@
                     @foreach($prnMeds as $name => $medtimes)
                         <tr>
                             <td>
+                                {{$nurses[0]->dateTime}}<br/>
+                                <em>{{$nurses[0]->nurseInitial}}</em>
+                            </td>
+                            <td>
                                 <h4>{{$name}}</h4>
-                                {{--@dd($medtimes)--}}
                                 <p>{{$medtimes[0]->description}}</p>
                             </td>
                             <td>

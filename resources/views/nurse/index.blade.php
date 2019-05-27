@@ -21,25 +21,30 @@
                 </tr>
                 </thead>
                 <tbody>
+                @foreach($nurses as $nurse)
                 <tr>
                     <td>
-                        <em>KM</em>
+                        <em>{{$nurse->nurseInitial}}</em>
                     </td>
                     <td>
-                        Karen Martin
+                        {{$nurse->nurseName}}
                     </td>
                     <td>
                         <div class="signature">
-                            Karen Martin
+                            {{$nurse->nurseSign}}
                         </div>
                     </td>
                     @can('isAdminAuthor')
                         <td>
-                            <form>
+                            <form method="post" action="">
+                                @method('delete')
+                                @csrf
                                 <button class="btn btn-danger">Delete</button>
                             </form>
                         </td>
                 @endcan
+                </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
