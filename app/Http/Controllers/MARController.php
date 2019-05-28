@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 use App\MedicationPatient;
 use App\Patient;
 use App\Medication;
+use App\ProviderOrder;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 use Illuminate\Http\Request;
 
 class MARController extends Controller
 {
-    public function index(Patient $patient, Medication $medication)
+    public function index(Patient $patient, Medication $medication, ProviderOrder $providerOrder)
     {
         $medications = Medication::all();
         $assignedMeds = $patient->medication()->get();
@@ -23,7 +24,9 @@ class MARController extends Controller
 
         $nurses= $patient->nurse()->get();
 
-        return view('ehr.mar', compact('patient', 'medications'),
+        $providerOrder = ProviderOrder::where('patient_id', '=', $patient->id )->first();
+
+        return view('ehr.mar', compact('patient', 'medications', 'providerOrder'),
             [
                 'scheduledMeds' => $scheduledMeds,
                 'prnMeds' => $prnMeds,

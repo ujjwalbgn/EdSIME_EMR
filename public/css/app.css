@@ -29606,3 +29606,7 @@ readers do not read off random characters that represent icons */
   font-size: 20px;
 }
 
+.allergies {
+  color: #e3342f;
+}
+
