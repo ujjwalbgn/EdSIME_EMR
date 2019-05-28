@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Medication;
 use App\MedicationPatient;
 use App\Patient;
+use App\ProviderOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -16,7 +17,7 @@ class MedicationPatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Patient $patient, Medication $medication)
+    public function index(Patient $patient, Medication $medication, ProviderOrder $providerOrder)
     {
         $medications = Medication::all();
         $assignedMeds = $patient->medication()->get();
@@ -28,7 +29,10 @@ class MedicationPatientController extends Controller
             ->groupBy('name')->toBase();
 
         $nurses= $patient->nurse()->get();
-                return view('medicationPatient.index', compact('patient', 'medications'),
+
+        $providerOrder = ProviderOrder::where('patient_id', '=', $patient->id )->first();
+
+        return view('medicationPatient.index', compact('patient', 'medications', 'providerOrder'),
                     [
                         'scheduledMeds' => $scheduledMeds,
                         'prnMeds' => $prnMeds,
