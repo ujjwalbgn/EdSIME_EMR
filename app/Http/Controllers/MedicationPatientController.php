@@ -53,8 +53,12 @@ class MedicationPatientController extends Controller
         $this->authorize('isAdminAuthor');
 
         $patient->medication()->attach($request->medication,
-            array('day'=>$request->day,'time'=>$request->time,'given'=>$request->given,
-                'givenby'=>$request->givenby,'lock'=>$request->lock)
+            array('day'=>$request->day,
+                'time'=>$request->time,
+                'given'=>$request->given,
+                'givenby'=>$request->givenby,
+                'lock'=>$request->lock,
+                'prn'=>$request->prn)
         );
 
         return redirect('/patient/mar/'.$patient->id )
@@ -114,19 +118,29 @@ class MedicationPatientController extends Controller
     public function reset(Request $request,  Patient $patient)
     {
         $this->authorize('isAdminAuthor');
+
         try {
             $reset_scheduledMeds = DB::table('medication_patient')
                 ->where('patient_id' , '=', $patient->id)
                 ->where('lock', '=', '0')
+                ->where('prn','=', '0')
                 ->update(
-                    ['given' => 0],
-                    ['givenby' => null]
-                )
-            ;
+                    ['given' => 0, 'givenby' => null]
+                );
+
+            $reset_prnMeds = DB::table('medication_patient')
+                ->where('patient_id' , '=', $patient->id)
+                ->where('lock', '=', '0')
+                ->where('prn' ,'=', '1')
+                ->update(
+                    ['time' => null,'given' => 0, 'givenby' => null]
+                );
         }  catch (ModelNotFoundException $ex) {
             return redirect()->back()->with('warning', 'There was an error, Please check your selection and  try Again'
             );
         }
+
+
         return back()->with(['message' => 'Student Med Input Cleared']);
     }
 
