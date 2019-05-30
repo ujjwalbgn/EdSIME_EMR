@@ -10,7 +10,6 @@
             <a href="/patient/{{$patient->id}}" class=" btn btn-secondary">View to Patient`s EHR</a>
             <div class="row m-2">
 
-
                 @include('medicationPatient.marTable')
                 <div class="col-md-12">
                     <div class=" card">
@@ -47,6 +46,9 @@
                         </div>
                     </div>
                 </div>
+
+                {{--<assign-medication></assign-medication>--}}
+
                 @include('nurse.index')
             </div>
         </div>

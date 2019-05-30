@@ -79966,8 +79966,14 @@ Vue.component('patient-table', __webpack_require__(/*! ./components/PatientTable
 Vue.component('medication-table', __webpack_require__(/*! ./components/MedicationTable */ "./resources/js/components/MedicationTable.vue").default);
 Vue.component('admission-record', __webpack_require__(/*! ./components/AdmissionRecord */ "./resources/js/components/AdmissionRecord.vue").default);
 Vue.component('patient-scan', __webpack_require__(/*! ./components/PatientScan */ "./resources/js/components/PatientScan.vue").default);
+Vue.component('assign-medication', __webpack_require__(/*! ./components/AssignMedication */ "./resources/js/components/AssignMedication.vue").default);
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  methods: {
+    printme: function printme() {
+      window.print();
+    }
+  }
 });
 
 /***/ }),
@@ -80100,6 +80106,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AdmissionRecord_vue_vue_type_template_id_43fbb5c2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/components/AssignMedication.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/AssignMedication.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+var render, staticRenderFns
+var script = {}
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_0__["default"])(
+  script,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+component.options.__file = "resources/js/components/AssignMedication.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 

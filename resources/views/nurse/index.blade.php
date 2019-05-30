@@ -36,7 +36,7 @@
                     </td>
                     @can('isAdminAuthor')
                         <td>
-                            <form method="post" action="">
+                            <form method="post" action="/nurse/{{$nurse->id}}">
                                 @method('delete')
                                 @csrf
                                 <button class="btn btn-danger">Delete</button>

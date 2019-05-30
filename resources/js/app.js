@@ -104,10 +104,20 @@ Vue.component(
     'patient-scan',
     require('./components/PatientScan').default
 );
+Vue.component(
+    'assign-medication',
+    require('./components/AssignMedication').default
+);
 
 
 
 
 const app = new Vue({
     el: '#app',
+
+    methods: {
+        printme() {
+            window.print();
+        }
+    }
 });
