@@ -35,7 +35,7 @@
                                                     <input type="hidden" name="medication_id" id="medication" value="{{$medication->id}}">
                                                     <input type="hidden" name="day" id="day" value="today">
                                                     <input type="hidden" name="given" id="given" value="0">
-                                                    <input type="hidden" name="lock" id="given" value="1">
+                                                    <input type="hidden" name="lock" id="given" value="0">
                                                     <button class="btn btn-primary">Assign PRN</button>
                                                 </form>
                                             @endif
@@ -53,4 +53,5 @@
             </div>
         </div>
     </section>
+    @include('layouts.print')
 @endsection

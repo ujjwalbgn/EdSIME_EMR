@@ -111,6 +111,25 @@ class MedicationPatientController extends Controller
         }
     }
 
+    public function reset(Request $request,  Patient $patient)
+    {
+        $this->authorize('isAdminAuthor');
+        try {
+            $reset_scheduledMeds = DB::table('medication_patient')
+                ->where('patient_id' , '=', $patient->id)
+                ->where('lock', '=', '0')
+                ->update(
+                    ['given' => 0],
+                    ['givenby' => null]
+                )
+            ;
+        }  catch (ModelNotFoundException $ex) {
+            return redirect()->back()->with('warning', 'There was an error, Please check your selection and  try Again'
+            );
+        }
+        return back()->with(['message' => 'Student Med Input Cleared']);
+    }
+
 
     public function destroyMedPatient(Request $request,Patient $patient,Medication $medication)
     {
