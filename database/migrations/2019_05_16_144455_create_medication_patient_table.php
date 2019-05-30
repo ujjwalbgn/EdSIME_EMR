@@ -24,6 +24,7 @@ class CreateMedicationPatientTable extends Migration
             $table->boolean('given')->default('0');
             $table->string('givenby')->nullable();
             $table->boolean('lock')->default('1');
+            $table->boolean('prn')->default('0');
             $table->timestamps();
         });
     }
