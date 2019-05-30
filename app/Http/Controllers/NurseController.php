@@ -94,6 +94,11 @@ class NurseController extends Controller
      */
     public function destroy(Nurse $nurse)
     {
-        //
+        $this->authorize('isAdminAuthor');
+//        dd($nurse);
+//        $nurse = Nurse::findOrFail($nurse);
+        $nurse->delete();
+        return back()->with(['message' => 'Nurse has been deleted']);
+
     }
 }

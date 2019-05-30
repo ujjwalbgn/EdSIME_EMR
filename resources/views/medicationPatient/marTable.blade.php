@@ -29,8 +29,10 @@
                     @foreach($scheduledMeds as $name => $medtimes)
                         <tr>
                             <td>
-                                {{$nurses[0]->dateTime}}<br/>
-                                <em>{{$nurses[0]->nurseInitial}}</em>
+                                @if(isset($nurses))
+                                    {{$nurses[0]->dateTime}}<br/>
+                                    <em>{{$nurses[0]->nurseInitial}}</em>
+                                @endif
                             </td>
                             <td>
                                 <h4>{{$name}}</h4>
@@ -121,8 +123,10 @@
                     @foreach($prnMeds as $name => $medtimes)
                         <tr>
                             <td>
-                                {{$nurses[0]->dateTime}}<br/>
-                                <em>{{$nurses[0]->nurseInitial}}</em>
+                                @if(isset($nurses))
+                                    {{$nurses[0]->dateTime}}<br/>
+                                    <em>{{$nurses[0]->nurseInitial}}</em>
+                                @endif
                             </td>
                             <td>
                                 <h4>{{$name}}</h4>
