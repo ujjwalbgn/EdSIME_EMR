@@ -25,6 +25,7 @@
                                             @endif
                                             @csrf
                                             <input type="hidden" name="medication_id" id="medication" value="{{$medication->id}}">
+                                            <input type="hidden" name="prn" id="prn" value="{{($medication->type =="PRN Medication"? '1':'0')}}">
                                             <div class="form-group row">
                                                 <label for="day" class="col-sm-4 col-form-label">Select the Day</label>
                                                 <div class="col-sm-6">

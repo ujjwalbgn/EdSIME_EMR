@@ -75,6 +75,7 @@ class MedTimeController extends Controller
             'given' => $request->given,
             'givenby' => $request->givenby,
             'lock' => $request->lock,
+            'prn'  => $request->prn,
         ]);
 
         return back()->with(['message' => 'Medication has been added to Patient`s record successfully']);

@@ -33,6 +33,7 @@
                                                     @method('post')
                                                     @csrf
                                                     <input type="hidden" name="medication_id" id="medication" value="{{$medication->id}}">
+                                                    <input type="hidden" name="prn" id="prn" value="{{($medication->type =="PRN Medication"? '1':'0')}}">
                                                     <input type="hidden" name="day" id="day" value="today">
                                                     <input type="hidden" name="given" id="given" value="0">
                                                     <input type="hidden" name="lock" id="given" value="0">
