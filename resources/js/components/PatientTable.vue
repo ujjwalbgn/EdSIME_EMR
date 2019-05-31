@@ -15,6 +15,7 @@
                         </div>
                         <div class="card-tools">
                             <button class="btn btn-success" @click="newModal">Add New <i class="fas fa-user-plus fa-fw"></i> </button>
+                            <a href="/barcode/patient" class="btn btn-success">Print Barcode <i class="fas fa-barcode"></i></a>
                         </div>
                     </div>
 
