@@ -2199,6 +2199,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -64014,21 +64018,19 @@ var render = function() {
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(medication.description))]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(medication.barcode))]),
-                            _vm._v(" "),
                             _c("td", [
                               _vm._v(
-                                _vm._s(
-                                  _vm._f("filterDate")(medication.created_at)
-                                )
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                _vm._s(
-                                  _vm._f("filterDate")(medication.update_at)
-                                )
+                                _vm._s(medication.barcode) +
+                                  "\n                                    "
+                              ),
+                              _c(
+                                "a",
+                                {
+                                  attrs: {
+                                    href: "/barcode/medication/" + medication.id
+                                  }
+                                },
+                                [_c("i", { staticClass: "fas fa-print black" })]
                               )
                             ]),
                             _vm._v(" "),
@@ -64450,10 +64452,6 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("th", [_vm._v("Barcode")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Created At")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Updated At")]),
-      _vm._v(" "),
       _c("th", [_vm._v("Modify")])
     ])
   },
@@ -64734,18 +64732,6 @@ var render = function() {
                             _c("td", [_vm._v(_vm._s(patient.instructorNote))]),
                             _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(patient.barcode))]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                _vm._s(_vm._f("filterDate")(patient.created_at))
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _c("td", [
-                              _vm._v(
-                                _vm._s(_vm._f("filterDate")(patient.update_at))
-                              )
-                            ]),
                             _vm._v(" "),
                             _c("td", [
                               _c(
@@ -65173,10 +65159,6 @@ var staticRenderFns = [
       _c("th", [_vm._v("Note")]),
       _vm._v(" "),
       _c("th", [_vm._v("Barcode")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Created At")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Updated At")]),
       _vm._v(" "),
       _c("th", [_vm._v("Modify")])
     ])

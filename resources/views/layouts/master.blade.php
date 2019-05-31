@@ -88,7 +88,7 @@
             Anything you want
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2014-2019.</strong> All rights reserved.
+        <strong>Copyright &copy; 2018-2019.</strong>CodeVelo LLC.   All rights reserved.
     </footer>
 </div>
 <!-- ./wrapper -->

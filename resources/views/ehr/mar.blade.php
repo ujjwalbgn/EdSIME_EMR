@@ -32,4 +32,5 @@
         </div>
     </section>
     @include('layouts.print')
+    @include('layouts.resetInput')
 @endsection

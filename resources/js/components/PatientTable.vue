@@ -27,8 +27,8 @@
                                     <th>Level</th>
                                     <th>Note</th>
                                     <th>Barcode</th>
-                                    <th>Created At</th>
-                                    <th>Updated At</th>
+                                    <!--<th>Created At</th>-->
+                                    <!--<th>Updated At</th>-->
                                     <th>Modify</th>
                                 </tr>
                                 <tr v-for="patient in patients.data" :key="patient.id">
@@ -37,8 +37,8 @@
                                     <td>{{patient.level}}</td>
                                     <td>{{patient.instructorNote}}</td>
                                     <td>{{patient.barcode}}</td>
-                                    <td>{{patient.created_at | filterDate}}</td>
-                                    <td>{{patient.update_at | filterDate}}</td>
+                                    <!--<td>{{patient.created_at | filterDate}}</td>-->
+                                    <!--<td>{{patient.update_at | filterDate}}</td>-->
 
                                     <td>
                                         <a href="#" @click="editModal(patient)">

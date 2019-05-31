@@ -169,6 +169,8 @@ return [
         UniSharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
 
+        //Barcode
+        Milon\Barcode\BarcodeServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -230,6 +232,11 @@ return [
 
         //For UniSharp/laravel-filemanager
         'Image' => Intervention\Image\Facades\Image::class,
+
+
+        //for barcode
+        'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
+        'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
 
     ],
 
