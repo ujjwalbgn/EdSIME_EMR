@@ -27,8 +27,8 @@
                                     <th>Type</th>
                                     <th>Note</th>
                                     <th>Barcode</th>
-                                    <th>Created At</th>
-                                    <th>Updated At</th>
+                                    <!--<th>Created At</th>-->
+                                    <!--<th>Updated At</th>-->
                                     <th>Modify</th>
                                 </tr>
                                 <tr v-for="medication in medications.data" :key="medication.id">
@@ -36,9 +36,13 @@
                                     <td>{{medication.name | upText}}</td>
                                     <td>{{medication.type}}</td>
                                     <td>{{medication.description}}</td>
-                                    <td>{{medication.barcode}}</td>
-                                    <td>{{medication.created_at | filterDate}}</td>
-                                    <td>{{medication.update_at | filterDate}}</td>
+                                    <td>{{medication.barcode}}
+                                        <a v-bind:href="'/barcode/medication/'+ medication.id" >
+                                        <i class="fas fa-print black"></i>
+                                    </a>
+                                    </td>
+                                    <!--<td>{{medication.created_at | filterDate}}</td>-->
+                                    <!--<td>{{medication.update_at | filterDate}}</td>-->
 
                                     <td>
                                         <a href="#" @click="editModal(medication)">

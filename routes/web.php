@@ -53,6 +53,9 @@ Route::middleware('auth')->group(function(){
 //        Route::get('/patient/{patient}/{medication}','MedicationPatientController@edit');
         Route::delete('/patient/mar/{patient}/{medication}','MedicationPatientController@destroyMedPatient');
         Route::patch('/patient/mar/{patient}','MedicationPatientController@reset');
+        Route::get('/barcode/patient/','BarcodeController@patient');
+        Route::get('/barcode/medication/{medication}','BarcodeController@medication');
+
 
 //        Route::get('/ehr/{patient}/{medication}/time', 'MedTimeController@index');
 //        Route::post('/ehr/{patient}/{medication}/time', 'MedTimeController@store');
