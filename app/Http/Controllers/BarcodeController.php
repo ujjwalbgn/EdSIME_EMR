@@ -15,6 +15,13 @@ class BarcodeController extends Controller
             return view('barcode.index', compact('patients'));
         }
 
+    public function medications(Medication $medications)
+    {
+        $medications= Medication::all();
+        return view('barcode.index', compact('medications'));
+    }
+
+
         public function medication (Medication $medication)
         {
             return view('barcode.index', compact('medication'));

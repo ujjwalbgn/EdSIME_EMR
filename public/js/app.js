@@ -2203,6 +2203,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -63995,7 +63997,9 @@ var render = function() {
                       _vm._v("Add New "),
                       _c("i", { staticClass: "fas fa-user-plus fa-fw" })
                     ]
-                  )
+                  ),
+                  _vm._v(" "),
+                  _vm._m(0)
                 ])
               ]),
               _vm._v(" "),
@@ -64005,7 +64009,7 @@ var render = function() {
                     _c(
                       "tbody",
                       [
-                        _vm._m(0),
+                        _vm._m(1),
                         _vm._v(" "),
                         _vm._l(_vm.medications.data, function(medication) {
                           return _c("tr", { key: medication.id }, [
@@ -64160,7 +64164,7 @@ var render = function() {
                         [_vm._v("Update medication")]
                       ),
                       _vm._v(" "),
-                      _vm._m(1)
+                      _vm._m(2)
                     ]),
                     _vm._v(" "),
                     _c(
@@ -64438,6 +64442,19 @@ var render = function() {
     : _vm._e()
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "btn btn-success",
+        attrs: { href: "/barcode/medications" }
+      },
+      [_vm._v("Print Barcode "), _c("i", { staticClass: "fas fa-barcode" })]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

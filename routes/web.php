@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function(){
         Route::delete('/patient/mar/{patient}/{medication}','MedicationPatientController@destroyMedPatient');
         Route::patch('/patient/mar/{patient}','MedicationPatientController@reset');
         Route::get('/barcode/patient/','BarcodeController@patient');
+        Route::get('/barcode/medications/','BarcodeController@medications');
         Route::get('/barcode/medication/{medication}','BarcodeController@medication');
 
 
