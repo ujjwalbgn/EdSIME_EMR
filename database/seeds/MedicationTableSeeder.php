@@ -71,7 +71,67 @@ class MedicationTableSeeder extends Seeder
                 'name' => 'Lorazepam 4 mg IVP, given at 2 mg per minute- Give 1 dose for
                            seizure activity PRN and notify HCP immediately for any change in condition',
                 'type' => 'PRN Medication',
-                'barcode' => '1010'
+                'barcode' => '110'
+            ],
+            [
+                'id' => '11',
+                'name' => 'Warfarin 2 mg PO daily at 2100- start day of surgery',
+                'type' => 'Scheduled Medication',
+                'barcode' => '111'
+            ],
+            [
+                'id' => '12',
+                'name' => 'Cefazolin 1GM in 50 mL 0.9% NS IVPB every 8 hours to infuse over 30 min',
+                'type' => 'Scheduled Medication',
+                'barcode' => '112'
+            ],
+            [
+                'id' => '13',
+                'name' => 'Morphine 2 mg IVP every 4 hours PRN pain 8 or greater on 0-10 pain scale',
+                'type' => 'PRN Medication',
+                'barcode' => '113'
+            ],
+            [
+                'id' => '14',
+                'name' => 'Ondansetron 4 mg IVP every 4 hours PRN nausea',
+                'type' => 'PRN Medication',
+                'barcode' => '114'
+            ],
+            [
+                'id' => '15',
+                'name' => 'Saline lock; Flush saline lock with 0.9 % NS every 8 hours per protocol',
+                'type' => 'Scheduled Medication',
+                'barcode' => '115'
+            ],
+            [
+                'id' => '16',
+                'name' => '0.9% NS for IVPB medication administration only',
+                'type' => 'Scheduled Medication',
+                'barcode' => '116'
+            ],
+            [
+                'id' => '17',
+                'name' => 'Humulin N (NPH) insulin 8 units SubCut daily at 0800',
+                'type' => 'Scheduled Medication',
+                'barcode' => '117'
+            ],
+            [
+                'id' => '18',
+                'name' => 'Ceftazidime 1GM in 50 mL NS IVPB every 8 hours to infuse over 1 hour',
+                'type' => 'Scheduled Medication',
+                'barcode' => '118'
+            ],
+            [
+                'id' => '19',
+                'name' => 'Regular Humulin insulin per sliding scale',
+                'type' => 'PRN Medication',
+                'barcode' => '119'
+            ],
+            [
+                'id' => '20',
+                'name' => 'Acetaminophen 325mg/Oxycodone 5mg  1 tab PO every 4 hours PRN pain 6 or greater on 0-10 pain scale',
+                'type' => 'PRN Medication',
+                'barcode' => '120'
             ],
         ]);
     }

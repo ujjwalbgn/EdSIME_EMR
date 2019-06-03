@@ -40,43 +40,40 @@
                             </td>
                             <td>
                                 @foreach($medtimes as $medtime)
-                                    <p>
+
                                         @if(($medtime->pivot->day) == 'yesterday')
                                             @if($medtime->pivot->given)
                                                 <i class="fas fa-check green"></i><strike>
                                                     {{$medtime->pivot->time}}
                                                 </strike>
-                                                <em>{{$medtime->pivot->givenby}}</em>
+                                                <em>{{$medtime->pivot->givenby}}</em> <br/>
                                             @else
-                                                {{$medtime->pivot->time}}
+                                                {{$medtime->pivot->time}} <br/>
                                             @endif
                                         @endif
-                                    </p>
                                 @endforeach
                             </td>
                             <td>
                                 @foreach($medtimes as $medtime)
-                                    <p>
+
                                         @if(($medtime->pivot->day) == 'today')
                                             @if($medtime->pivot->given)
                                                 <i class="fas fa-check green"></i><strike>
                                                     {{$medtime->pivot->time}}
                                                 </strike>
-                                                <em>{{$medtime->pivot->givenby}}</em>
+                                                <em>{{$medtime->pivot->givenby}}</em> <br/>
                                             @else
-                                                {{$medtime->pivot->time}}
+                                                {{$medtime->pivot->time}} <br/>
                                             @endif
                                         @endif
-                                    </p>
                                 @endforeach
                             </td>
                             <td>
                                 @foreach($medtimes as $medtime)
-                                    <p>
+
                                         @if(($medtime->pivot->day) == 'tomorrow')
-                                            {{$medtime->pivot->time}}
+                                            {{$medtime->pivot->time}} <br/>
                                         @endif
-                                    </p>
                                 @endforeach
                             </td>
                             @can('isAdminAuthor')
@@ -134,18 +131,17 @@
                             </td>
                             <td>
                                 @foreach($medtimes as $medtime)
-                                    <p>
                                         @if(($medtime->pivot->day) == 'yesterday')
                                             @if($medtime->pivot->given)
                                                 <i class="fas fa-check green"></i><strike>
                                                     {{$medtime->pivot->time}}
                                                 </strike>
-                                                <em>{{$medtime->pivot->givenby}}</em>
+                                                <em>{{$medtime->pivot->givenby}}</em><br/>
                                             @else
-                                                {{$medtime->pivot->time}}
+                                                {{$medtime->pivot->time}}<br/>
                                             @endif
                                         @endif
-                                    </p>
+
                                 @endforeach
                             </td>
                             <td>
@@ -156,10 +152,14 @@
                                                 <i class="fas fa-check green"></i><strike>
                                                     {{$medtime->pivot->time}}
                                                 </strike>
-                                                <em>{{$medtime->pivot->givenby}}</em>
+                                                <em>{{$medtime->pivot->givenby}}</em><br/>
                                             @else
                                                 {{$medtime->pivot->time}}
-                                                X
+
+                                                @can('isAdminAuthor')
+                                                    X 
+                                                    @endcan
+                                                    <br/>
                                             @endif
                                         @endif
                                     </p>
@@ -167,11 +167,10 @@
                             </td>
                             <td>
                                 @foreach($medtimes as $medtime)
-                                    <p>
+
                                         @if(($medtime->pivot->day) == 'tomorrow')
-                                            {{$medtime->pivot->time}}
+                                            {{$medtime->pivot->time}} <br/>
                                         @endif
-                                    </p>
                                 @endforeach
                             </td>
                             @can('isAdminAuthor')

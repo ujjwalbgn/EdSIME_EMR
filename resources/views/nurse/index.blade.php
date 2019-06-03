@@ -66,28 +66,32 @@
                         <label for="nurseName" class="col-sm-3 col-form-label">Name</label>
                         <div class="col-sm-5">
                             <input type="text"  name="nurseName" class="form-control" id="nurseName" placeholder="Nurse Name" required
-                                   value= @if(isset($nurse))"{{$nurse->nurseName}}"@else "{{old('nurseName')}}"@endif>
+                                   {{--value= @if(isset($nurse))"{{$nurse->nurseName}}"@else "{{old('nurseName')}}"@endif--}}
+                            >
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="nurseInitial" class="col-sm-3 col-form-label">Initial</label>
                         <div class="col-sm-5">
                             <input type="text"  name="nurseInitial" class="form-control" id="nurseInitial" placeholder="Nurse Initial" required
-                                   value= @if(isset($nurse))"{{$nurse->nurseInitial}}"@else "{{old('nurseInitial')}}"@endif>
+                                   {{--value= @if(isset($nurse))"{{$nurse->nurseInitial}}"@else "{{old('nurseInitial')}}"@endif--}}
+                            >
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="dateTime" class="col-sm-3 col-form-label">Verified Date Time</label>
                         <div class="col-sm-5">
                             <input type="text"  name="dateTime" class="form-control" id="nurseName" placeholder="Verified Date Time" required
-                                   value= @if(isset($nurse))"{{$nurse->dateTime}}"@else "{{old('dateTime')}}"@endif>
+                                   {{--value= @if(isset($nurse))"{{$nurse->dateTime}}"@else "{{old('dateTime')}}"@endif--}}
+                            >
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="nurseSign" class="col-sm-3 col-form-label">Signature</label>
                         <div class="col-sm-5">
                             <input type="text"  name="nurseSign" class="form-control signature" id="initial" placeholder="Nurse Sign" required
-                                   value= @if(isset($nurse))"{{$nurse->nurseSign}}"@else "{{old('nurseSign')}}"@endif>
+                                   {{--value= @if(isset($nurse))"{{$nurse->nurseSign}}"@else "{{old('nurseSign')}}"@endif--}}
+                            >
                         </div>
                     </div>
                     <div class="card-footer">
