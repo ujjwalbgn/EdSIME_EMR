@@ -41,17 +41,17 @@
                                     @csrf
                                     @method('PATCH')
                                     <input hidden name="given" value="1">
-                                @if($medication->type == 'PRN Medication')
+                                    @if($medication->type == 'PRN Medication')
                                         <input type="number" name="time" placeholder="Given at Time" required>
                                     @endif
                                     <input type="text" name="givenby" placeholder="Given By" required>
                                     <button class="btn-primary">Give</button>
                                 </form>
-                                    @endcan
-                                    @can('isAdminAuthor')
-                                        <div>
-                                            <a href="/patient/edit/mar/{{$todayMed->id}}" class="btn btn-primary">Edit</a>
-                                        </div>
+                                @endcan
+                                @can('isAdminAuthor')
+                                    <div>
+                                        <a href="/patient/edit/mar/{{$todayMed->id}}" class="btn btn-primary">Edit</a>
+                                    </div>
                                 @endcan
                             </div>
                             <hr>
@@ -62,7 +62,7 @@
                         {{$tomorrowMed->time}}
                         @can('isAdminAuthor')
                             <div>
-                                <a href="/patient/edit/mar/{{$tomorrowMed->id}}" class="btn btn-primary">
+                                <a href="/patient/edit/mar/{{$tomorrowMed->id}}" class="btn btn-primary">Edit</a>
                             </div>
                         @endcan
                         <hr>
