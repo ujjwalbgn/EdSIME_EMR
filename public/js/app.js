@@ -64569,16 +64569,6 @@ var render = function() {
                     _c("td", [_vm._v(_vm._s(patient.barcode))]),
                     _vm._v(" "),
                     _c("td", [
-                      _c("a", { attrs: { href: "/patient/" + patient.id } }, [
-                        _c(
-                          "i",
-                          { staticClass: "fas fa-clipboard-list indigo" },
-                          [_vm._v(" EHR")]
-                        )
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("td", [
                       _c("a", { attrs: { href: "/ehr/mar/" + patient.id } }, [
                         _c(
                           "i",
@@ -64636,8 +64626,6 @@ var staticRenderFns = [
       _c("th", [_vm._v("Level")]),
       _vm._v(" "),
       _c("th", [_vm._v("Barcode")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Open Patient's Record")]),
       _vm._v(" "),
       _c("th", [_vm._v("Open Patient's MAR")])
     ])

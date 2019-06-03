@@ -16,7 +16,7 @@
                             <th>Name</th>
                             <th>Level</th>
                             <th>Barcode</th>
-                            <th>Open Patient's Record</th>
+                            <!--<th>Open Patient's Record</th>-->
                             <th>Open Patient's MAR</th>
 
                         </tr>
@@ -24,11 +24,11 @@
                             <td>{{patient.name | upText}}</td>
                             <td>{{patient.level}}</td>
                             <td>{{patient.barcode}}</td>
-                            <td>
-                                <a v-bind:href="'/patient/'+ patient.id" >
-                                    <i class="fas fa-clipboard-list indigo"> EHR</i>
-                                </a>
-                            </td>
+                            <!--<td>-->
+                                <!--<a v-bind:href="'/patient/'+ patient.id" >-->
+                                    <!--<i class="fas fa-clipboard-list indigo"> EHR</i>-->
+                                <!--</a>-->
+                            <!--</td>-->
                             <td>
                                 <a v-bind:href="'/ehr/mar/'+ patient.id" >
                                     <i class="fas fa-calendar-check orange"> MAR</i>
