@@ -19,7 +19,7 @@
                                 <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fa fa-search"></i>&nbsp </span>
                             </div>
                             <input autofocus="autofocus" type="text" name="barcode" class="form-control border border-primary" id="barcode"
-                                   placeholder="Scan barcod or enter patient's name here"
+                                   placeholder="Scan barcode or enter patient's name here"
                                    height="20" required>
                         </div>
                     </form>

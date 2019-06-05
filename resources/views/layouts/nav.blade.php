@@ -56,7 +56,7 @@
             <a href="/ehr" class="nav-link {{ Request::segment(1) == 'ehr' ? 'nav-active' : '' }}">
                 <i class="nav-icon fas fa-clipboard-list blue"></i>
                 <p>
-                    EHR
+                    MAR
                 </p>
             </a>
         </li>

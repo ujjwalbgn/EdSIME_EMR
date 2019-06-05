@@ -6,7 +6,7 @@
                     <div class="input-group-prepend ">
                         <span class="input-group-text" id="inputGroup-sizing-sm"><i class="fa fa-search"></i>&nbsp </span>
                     </div>
-                    <input v-model="search" @keyup="searchStart" type="search" class="form-control border border-primary" id="search" name="Scan" placeholder="Scan barcod or enter patient's name here" aria-label="Small" aria-describedby="inputGroup-sizing-sm" autofocus="autofocus" height="20">
+                    <input v-model="search" @keyup="searchStart" type="search" class="form-control border border-primary" id="search" name="Scan" placeholder="Scan barcode or enter patient's name here" aria-label="Small" aria-describedby="inputGroup-sizing-sm" autofocus="autofocus" height="20">
                 </div>
             </div>
             <div class="card-body">
@@ -16,7 +16,7 @@
                             <th>Name</th>
                             <th>Level</th>
                             <th>Barcode</th>
-                            <th>Open Patient's Record</th>
+                            <!--<th>Open Patient's Record</th>-->
                             <th>Open Patient's MAR</th>
 
                         </tr>
@@ -24,11 +24,11 @@
                             <td>{{patient.name | upText}}</td>
                             <td>{{patient.level}}</td>
                             <td>{{patient.barcode}}</td>
-                            <td>
-                                <a v-bind:href="'/patient/'+ patient.id" >
-                                    <i class="fas fa-clipboard-list indigo"> EHR</i>
-                                </a>
-                            </td>
+                            <!--<td>-->
+                                <!--<a v-bind:href="'/patient/'+ patient.id" >-->
+                                    <!--<i class="fas fa-clipboard-list indigo"> EHR</i>-->
+                                <!--</a>-->
+                            <!--</td>-->
                             <td>
                                 <a v-bind:href="'/ehr/mar/'+ patient.id" >
                                     <i class="fas fa-calendar-check orange"> MAR</i>

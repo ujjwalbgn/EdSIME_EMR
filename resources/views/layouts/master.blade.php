@@ -85,7 +85,7 @@
     <footer class="main-footer">
         <!-- To the right -->
         <div class="float-right d-none d-sm-inline">
-            Anything you want
+            For Simulation USE Only
         </div>
         <!-- Default to the left -->
         <strong>Copyright &copy; 2018-2019.</strong>CodeVelo LLC.   All rights reserved.
