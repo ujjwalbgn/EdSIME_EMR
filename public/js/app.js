@@ -64532,7 +64532,7 @@ var render = function() {
               type: "search",
               id: "search",
               name: "Scan",
-              placeholder: "Scan barcod or enter patient's name here",
+              placeholder: "Scan barcode or enter patient's name here",
               "aria-label": "Small",
               "aria-describedby": "inputGroup-sizing-sm",
               autofocus: "autofocus",
