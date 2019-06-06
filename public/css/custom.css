@@ -1,0 +1,32 @@
+/* Disabling navbar Animation  */
+.nav-section {
+	width: 100%;
+	position: relative;
+	text-align: left;
+    background-color:#9e45bb;
+    color: blue;
+	/* background: linear-gradient(-45deg, #4576c3, #5547bf, #9045c0, #be47b2); */
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 10s ease infinite;
+	-moz-animation: Gradient 10s ease infinite;
+	animation: Gradient 10s ease infinite;
+}
+/* Responsive Image */
+.img-res{
+    width: 100%;
+  height: auto;
+}
+ul.text-color a{
+    color: white;
+}
+ul.text-color a:hover{
+    color: #9e45bb;
+}
+/* collasped menu pushing down */
+.navbar-fixed-top{
+	position: relative!important;
+	background-color: #9e45bb!important;
+}
+.navbar{
+	margin-bottom: auto;
+}
