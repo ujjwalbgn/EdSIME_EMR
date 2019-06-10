@@ -5,8 +5,9 @@
 
     RewriteEngine On
 
-    RewriteCond %{HTTPS} !on
-    RewriteRule ^.*$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    # HTTPS
+    RewriteCond %{HTTP:X-Forwarded-Proto} =http
+    RewriteRule .* https://%{HTTP:Host}%{REQUEST_URI} [L,R=permanent]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
