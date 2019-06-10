@@ -1,5 +1,9 @@
 <?php
 
+if (env('APP_ENV') === 'production') {
+    URL::forceScheme('https');
+}
+
 //Website
 Route::get('/', function () {
     return view('welcome');
