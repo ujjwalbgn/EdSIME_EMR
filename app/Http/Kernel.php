@@ -36,6 +36,10 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \Laravel\Passport\Http\Middleware\CreateFreshApiToken::class,
+
+            //Custom HTTPS Middleware
+            \App\Http\Middleware\HttpsProtocol::class
+
         ],
 
         'api' => [
