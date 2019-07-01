@@ -21,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
 
         Passport::routes();
+
+        if(config('app.env') === 'production') {
+            \URL::forceScheme('https');
+        }
     }
 
     /**
