@@ -19,6 +19,8 @@ Route::get('/termOfUse', function () {
     return view('infoPages.termOfUse');
 });
 
+//Contact
+Route::post('contact-us', ['as'=>'contactUs.store','uses'=>'ContactUsController@contactUsPost']);
 
 // Application
 //authenticated user can view these
