@@ -2,7 +2,7 @@
 Project to simulate Patient Record to replicate clinical practices in a safe pratice environment for Nusing.
 
 
-<h3>Laravel and VUE JS</h3></br>
+<h3>Laravel and VUE JS</h3>
 Application is running Laravel and VUE JS.
 Installation: </br>
   1) Clone the repo </br>
